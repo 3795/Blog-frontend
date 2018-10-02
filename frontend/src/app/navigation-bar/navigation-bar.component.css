@@ -1,0 +1,39 @@
+.navigation{
+  padding-top: 2%;
+  text-align: center;
+  border: solid 1px #f1f5f8;
+  border-right: 0;
+  font-size: 16px;
+  height: 100%;
+  background-color: rgba(232, 238, 242, 0.91);
+  position: fixed;
+  box-shadow: 4px 0 8px rgba(173, 176, 178, 0.9);
+}
+
+.navigation .item {
+  height: 55px;
+  line-height: 55px;
+  font-size: 18px;
+}
+
+.navigation span {
+  padding: 0 5% 0 5%;
+}
+
+.navigation .user {
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  color: #858585;
+}
