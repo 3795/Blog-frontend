@@ -1,0 +1,29 @@
+.card .above {
+  height: 75%;
+}
+
+.card .below {
+  height: 25%;
+}
+
+.thumbnail {
+  margin: 15px 0 0 15px;
+  width: 225px;
+  height: 150px;
+}
+
+.card .title {
+  margin-top: 10px;
+  font-size: 20px;
+  transition: margin-left 1s;
+}
+
+.card .title:hover {
+  margin-left: 20px;
+}
+
+.card .summary {
+  margin-top: 5px;
+  font-size: 16px;
+  text-indent: 2em;
+}

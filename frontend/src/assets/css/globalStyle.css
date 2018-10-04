@@ -5,3 +5,31 @@ body {
   font-size: 16px;
   font-family: "华文楷体";
 }
+
+.card {
+  height: 230px;
+  margin-top: 40px;
+  padding-right: 10px;
+  background-color: #ffffff;
+  transition: box-shadow 1s;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 10px #dde3e7;
+}
+
+.below .layui-col-md4 {
+  text-align: center;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+.pagination .layui-btn {
+  background-color: #b5bbbf;
+  margin: 0 5px 0 5px;
+}
+
