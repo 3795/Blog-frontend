@@ -1,6 +1,9 @@
 <div class="layui-container">
   <div class="layui-row">
     <app-navigation-bar></app-navigation-bar>
-    <app-index-page></app-index-page>
+    <div class="layui-col-md10 main">
+      <app-top-bar></app-top-bar>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

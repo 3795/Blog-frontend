@@ -13,11 +13,10 @@ export class PagesService {
 
   /**
    * 获得文章卡片
-   * @param {number} page
    * @returns {Observable<Object>}
    */
-  public getArticleCards(page: number = 1) {
-    return this.getService.get("article?page=" + page);
+  public getArticleCards(url: string) {
+    return this.getService.get(url);
   }
 }
 
@@ -30,4 +29,9 @@ export class ArticleCard {
   public createTime: string;
 
   constructor() {}
+}
+
+export class Category {
+  public id: number;
+  public name: string;
 }

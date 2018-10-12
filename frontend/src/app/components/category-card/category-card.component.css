@@ -1,0 +1,29 @@
+.mix {
+  text-align: center;
+  height: 200px;
+  font-size: 60px;
+  font-family: "华文彩云";
+  padding-top: 70px;
+}
+
+.child-category {
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.child-category .item{
+  padding: 0 40px 0 40px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  float: left;
+  transition: color 0.5s, font-size 0.5s;
+}
+
+.child-category .item:hover{
+  color: #0a79db;
+  font-size: 24px;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-top-bar',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  constructor() { }
+  public keywords;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public search() {
+    this.keywords = this.keywords.replace(/\s+/g,"");
+    if(this.keywords !== "") {
+      this.router.navigateByUrl("//transitionPage").then(() => {
+        this.router.navigate(["/search"],
+          {queryParams: {"keywords": this.keywords}});
+        this.keywords = "";
+      });
+    }
   }
 
 }

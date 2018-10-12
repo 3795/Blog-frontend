@@ -8,7 +8,7 @@
         <span><a href="mailto:seven.wk@foxmail.com">我的EMail</a></span>
       </p>
     </div>
-    <a href="{{navigation.link}}" *ngFor="let navigation of navigations">
+    <a (click)="changeNavigation(navigation.link)" *ngFor="let navigation of navigations">
       <div class="layui-col-md12 item"  onmouseover="this.style.backgroundColor='#FFFFFF'"  onmouseout="this.style.backgroundColor='rgba(232, 238, 242, 0.91)'">
         {{navigation.name}}
       </div>

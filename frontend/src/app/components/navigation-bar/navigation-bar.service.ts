@@ -5,6 +5,7 @@
  */
 import {Injectable} from "@angular/core";
 import {GetService} from "../../service/get.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class NavigationBarService {
@@ -27,7 +28,6 @@ export class NavigationBarService {
   public getNavigations() {
     return this.getService.get("navigation");
   }
-
 
 }
 

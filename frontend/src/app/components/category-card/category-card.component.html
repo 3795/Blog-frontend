@@ -1,0 +1,8 @@
+<div class="layui-col-md12 card">
+  <div class="mix">
+    {{categoryName}}
+    <div class="child-category">
+      <a (click)="changeCategory(category.id)" *ngFor="let category of categories"><div class="item">{{category.name}}</div></a>
+    </div>
+  </div>
+</div>

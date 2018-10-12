@@ -5,7 +5,7 @@
         <img src="{{articleCard.img}}" title='{{articleCard.title}}' alt="{{articleCard.title}}" class="thumbnail">
       </div>
       <div class="layui-col-md7">
-        <p class="title"><a href="/article/s" target="_blank">{{articleCard.title}}</a></p>
+        <p class="title"><a routerLink="/article/{{articleCard.id}}">{{articleCard.title}}</a></p>
         <p class="summary">
           {{articleCard.summary}}
         </p>
@@ -22,4 +22,4 @@
     </div>
   </div>
 </div>
-<app-pagination [currentPage]="currentPage" [maxPage]="maxPage" ></app-pagination>
+<app-pagination [currentPage]="currentPage" [maxPage]="maxPage" [navUrl]="navUrl" ></app-pagination>

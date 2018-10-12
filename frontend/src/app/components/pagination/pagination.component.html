@@ -1,6 +1,6 @@
 <div class="layui-row pagination">
-  <button class="layui-btn"><em>←</em></button>
-  <a href="#"><button class="layui-btn"><em>1</em></button></a>
-  <a href="#"><button class="layui-btn"><em>{{maxPage}}</em></button></a>
-  <a href="#"><button class="layui-btn"><em>→</em></button></a>
+  <a (click)="pageTurning(currentPage-1)" ><button class="layui-btn"><em>←</em></button></a>
+  <a (click)="pageTurning(1)"><button class="layui-btn"><em>1</em></button></a>
+  <a (click)="pageTurning(maxPage)"><button class="layui-btn"><em>{{maxPage}}</em></button></a>
+  <a (click)="pageTurning(currentPage+1)"><button class="layui-btn"><em>→</em></button></a>
 </div>
