@@ -26,7 +26,7 @@ export class ArticleCardComponent implements OnInit {
   ngOnInit() {
     this.pagesService.getArticleCards(this.apiUrl)
       .subscribe(data => {
-        if(data['code'] == 404) {
+        if(data['code'] != 10) {
           this.router.navigateByUrl("/404");
         }
         else {

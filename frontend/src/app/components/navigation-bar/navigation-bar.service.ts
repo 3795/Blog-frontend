@@ -34,6 +34,7 @@ export class NavigationBarService {
 export class Author {
   public id: number;
   public username: string;
+  public avatar: string;
 
   constructor() {}
 }
