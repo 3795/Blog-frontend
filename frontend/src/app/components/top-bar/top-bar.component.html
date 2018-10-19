@@ -1,10 +1,23 @@
 <div class="row">
-  <div class="layui-col-md12 top-bar">
+  <div class="layui-col-md12 top-bar layui-hide-xs">
     <div class="title">
       <a routerLink="/">NTShare</a>
     </div>
     <div class="search">
       <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()"  placeholder="请输入关键字" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <!--移动端适配-->
+  <div class="layui-col-xs12 mobile-top-bar layui-hide-md layui-hide-lg layui-hide-sm">
+    <div class="mobile-menu" id="showMenu">
+      <i class="layui-icon layui-icon-spread-left" style="font-size: 22px"></i>
+    </div>
+    <div class="title">
+      <a routerLink="/">NTShare</a>
+    </div>
+    <div class="search">
+      <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" placeholder="请输入关键字" autocomplete="off" class="layui-input">
     </div>
   </div>
 </div>

@@ -37,3 +37,37 @@
   top: 90%;
   color: #858585;
 }
+
+.mobile-navigation{
+  padding-top: 26px;
+  text-align: center;
+  border: solid 1px #f1f5f8;
+  border-right: 0;
+  font-size: 16px;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(232, 238, 242, 0.91);
+  position: fixed;
+  box-shadow: 4px 0 8px rgba(173, 176, 178, 0.9);
+  display: none;
+}
+
+.mobile-navigation .item {
+  height: 55px;
+  line-height: 55px;
+  font-size: 18px;
+}
+
+.mobile-navigation span {
+  padding: 0 5% 0 5%;
+}
+
+.mobile-navigation .user {
+  margin-bottom: 30px;
+}
+
+.mobile-navigation .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}

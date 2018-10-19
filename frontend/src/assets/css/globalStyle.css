@@ -43,4 +43,19 @@ body {
   margin: 0 5px 0 5px;
 }
 
+/*移动端css*/
+.mobile-main {
+  font-size: 16px;
+  padding-bottom: 80px;
+  background-color: #ffffff;
+}
+
+.mobile-main .card {
+  height: 180px;
+  margin-top: 30px;
+  padding:3px 5px 3px 5px;
+  background-color: #ffffff;
+  border: 1px solid #c4c5cc;
+}
+
 

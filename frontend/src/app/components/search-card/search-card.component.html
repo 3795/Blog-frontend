@@ -1,5 +1,14 @@
 <div class="layui-row">
-  <div class="layui-col-md12 card">
+  <div class="layui-col-md12 card layui-hide-xs">
+    <div class="search">
+      <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" class="search-input" placeholder="请输入关键字" >
+      <button class="search-button" (click)="search()">搜索</button>
+    </div>
+  </div>
+</div>
+
+<div class="layui-row">
+  <div class="layui-col-xs12 card layui-hide-md layui-hide-sm layui-hide-lg">
     <div class="search">
       <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" class="search-input" placeholder="请输入关键字" >
       <button class="search-button" (click)="search()">搜索</button>

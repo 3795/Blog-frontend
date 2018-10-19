@@ -1,10 +1,10 @@
 <div class="layui-row">
-  <div class="layui-col-md12 card" *ngFor="let articleCard of articleCards">
+  <div class="layui-col-md12 card layui-col-xs12" *ngFor="let articleCard of articleCards">
     <div class="above">
-      <div class="layui-col-md5">
+      <div class="layui-col-md5 layui-hide-xs">
         <img src="{{articleCard.img}}" title='{{articleCard.title}}' alt="{{articleCard.title}}" class="thumbnail">
       </div>
-      <div class="layui-col-md7">
+      <div class="layui-col-md7 layui-col-xs12">
         <p class="title"><a routerLink="/article/{{articleCard.id}}">{{articleCard.title}}</a></p>
         <p class="summary">
           {{articleCard.summary}}
@@ -12,13 +12,13 @@
       </div>
     </div><hr/>
     <div class="below">
-      <div class="layui-col-md4">
+      <div class="layui-col-md4 layui-col-xs4">
         <i class="layui-icon layui-icon-log"></i>{{articleCard.createTime | date:'yyyy-MM-dd'}}
       </div>
-      <div class="layui-col-md4 ">
+      <div class="layui-col-md4 layui-col-xs4">
         <i class="layui-icon layui-icon-note"></i>{{articleCard.categoryName}}
       </div>
-      <div class="layui-col-md4"><a href="/article/s" target="_blank">阅读全文</a></div>
+      <div class="layui-col-md4 layui-col-xs4"><a href="/article/s" target="_blank">阅读全文</a></div>
     </div>
   </div>
 </div>

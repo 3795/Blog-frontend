@@ -1,15 +1,37 @@
-<div class="layui-col-md2 navigation">
+<div class="layui-col-md2 navigation layui-hide-xs">
   <div class="layui-row">
     <div class="layui-col-md12 user">
       <img src="{{author.avatar}}" title="头像" alt="头像" class="avatar">
       <br/><br/><h2>{{author.username}}</h2><br/>
       <p>
         <span><a href="https://blog.csdn.net/zai_xia" target="_blank">我的CSDN</a></span>
-        <span><a href="mailto:seven.wk@foxmail.com">我的EMail</a></span>
+        <span><a href="https://github.com/2471554649" target="_blank">GitHub</a></span>
       </p>
     </div>
     <a (click)="changeNavigation(navigation.link)" *ngFor="let navigation of navigations">
       <div class="layui-col-md12 item"  onmouseover="this.style.backgroundColor='#FFFFFF'"  onmouseout="this.style.backgroundColor='rgba(232, 238, 242, 0.91)'">
+        {{navigation.name}}
+      </div>
+    </a>
+    <div class="copyright">
+      Designed by {{author.username}}
+    </div>
+  </div>
+</div>
+
+<!--移动端适配-->
+<div class="layui-col-xs5 mobile-navigation layui-hide-md layui-hide-lg layui-hide-sm" id="mobile-navigation">
+  <div class="layui-row">
+    <div class="layui-col-xs12 user">
+      <img src="{{author.avatar}}" title="头像" alt="头像" class="avatar">
+      <br/><br/><h2>{{author.username}}</h2><br/>
+      <p>
+        <span><a href="https://blog.csdn.net/zai_xia" target="_blank">CSDN</a></span>
+        <span><a href="https://github.com/2471554649" target="_blank">GitHub</a></span>
+      </p>
+    </div>
+    <a (click)="changeNavigation(navigation.link)" *ngFor="let navigation of navigations">
+      <div class="layui-col-xs12 item"  onmouseover="this.style.backgroundColor='#FFFFFF'"  onmouseout="this.style.backgroundColor='rgba(232, 238, 242, 0.91)'">
         {{navigation.name}}
       </div>
     </a>
