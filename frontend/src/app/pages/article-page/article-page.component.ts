@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {GetService} from "../../service/get.service";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
 @Component({
@@ -10,35 +9,26 @@ import {Title} from "@angular/platform-browser";
 })
 export class ArticlePageComponent implements OnInit {
 
-  public apiUrl: string = "article";
+  public id: number;    // 文章的id
 
-  public id: number;
-
-  public title: string;
-
-  public content: string;
+  public title: string;   // 文章的标题
 
   constructor(private routerInfo: ActivatedRoute,
-              private router: Router,
-              private getService: GetService,
               private titleService: Title) { }
 
   ngOnInit() {
     this.routerInfo.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.apiUrl += "/" + this.id;
     });
+  }
 
-    this.getService.get(this.apiUrl)
-      .subscribe(data => {
-        if(data['code'] == 404)
-          this.router.navigateByUrl("/404");
-        else {
-          this.titleService.setTitle("NTShare-" + data['data']['title']);
-          this.title = data['data']['title'];
-          this.content = data['data']['content'];
-        }
-      });
+  /**
+   * 监听子组件传递过来的title
+   * @param {string} title
+   */
+  onTitle(title: string) {
+    this.titleService.setTitle("NTShare-" + title);
+    this.title = title;
   }
 
 }
