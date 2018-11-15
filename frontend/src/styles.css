@@ -1,3 +1,4 @@
 @import url("assets/layui/css/layui.css");
 @import url("assets/css/globalStyle.css");
 @import url("assets/editor.md/css/editormd.css");
+@import "~element-angular/theme/index.css";

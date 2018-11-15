@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
+import {ElModule} from "element-angular/release/element-angular.module";
 
 import {AppComponent} from './app.component';
 import {AppRouting} from "./app.router";
@@ -23,6 +24,8 @@ import {SearchCardComponent} from "./frontend/components/search-card/search-card
 import {FrontendService} from "./frontend/service/frontend.service";
 import {NavigationBarService} from "./frontend/components/navigation-bar/navigation-bar.service";
 import {HttpService} from "./service/http.service";
+import { BackendComponent } from './backend/backend.component';
+import { LoginPageComponent } from './backend/page/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import {HttpService} from "./service/http.service";
     SearchCardComponent,
     EditorShowDirective,
     FrontendComponent,
+    BackendComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import {HttpService} from "./service/http.service";
     HttpClientModule,
     AppRouting,
     FormsModule,
+    ElModule.forRoot(),
   ],
   providers: [
     NavigationBarService,

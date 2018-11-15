@@ -13,6 +13,6 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   get(url: string) {
-    return this.http.get("/api/index" + url);
+    return this.http.get("/blog/v1" + url);
   }
 }
