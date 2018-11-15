@@ -11,7 +11,13 @@ import {BackendComponent} from "./backend/backend.component";
 import {LoginPageComponent} from "./backend/page/login-page/login-page.component";
 
 const routes: Routes = [
-  {path: '', component: FrontendComponent, pathMatch: "full", children: [
+
+  {path: 'manage', component: BackendComponent, children: [
+      {path: '', component: LoginPageComponent},
+      {path: 'login', component: LoginPageComponent},
+    ]},
+
+  {path: '', component: FrontendComponent, children: [
       {path: '', component: IndexPageComponent},
       {path: 'category/:id', component: CategoryPageComponent},
       {path: "article/:id", component: ArticlePageComponent},
@@ -20,11 +26,7 @@ const routes: Routes = [
       {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
       {path: "**", pathMatch: "full", component: NotFoundComponent}
     ],
-  },
-  {path: 'manage', component: BackendComponent, children: [
-      {path: '', component: LoginPageComponent},
-      {path: 'login', component: LoginPageComponent},
-    ]}
+  }
 ];
 
 export const AppRouting = RouterModule.forRoot(routes);

@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
-import {ElModule} from "element-angular/release/element-angular.module";
 
 import {AppComponent} from './app.component';
 import {AppRouting} from "./app.router";
@@ -26,6 +25,7 @@ import {NavigationBarService} from "./frontend/components/navigation-bar/navigat
 import {HttpService} from "./service/http.service";
 import { BackendComponent } from './backend/backend.component';
 import { LoginPageComponent } from './backend/page/login-page/login-page.component';
+import {ElModule} from "element-angular/release/element-angular.module";
 
 @NgModule({
   declarations: [
