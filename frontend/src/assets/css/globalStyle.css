@@ -21,12 +21,9 @@ body {
   margin-top: 40px;
   padding-right: 10px;
   background-color: #ffffff;
-  transition: box-shadow 1s;
+  box-shadow: 5px 5px 10px #e2e2e2;
 }
 
-.card:hover {
-  box-shadow: 10px 10px 10px #dde3e7;
-}
 
 .below .layui-col-md4 {
   text-align: center;
