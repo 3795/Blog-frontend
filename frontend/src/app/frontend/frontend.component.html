@@ -1,0 +1,10 @@
+<div class="layui-container">
+  <div class="layui-row">
+    <app-navigation-bar></app-navigation-bar>
+    <div class="layui-col-md10 layui-col-xs12" [ngClass]="{'main': isPC, 'mobile-main': isMobile}">
+      <app-top-bar></app-top-bar>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

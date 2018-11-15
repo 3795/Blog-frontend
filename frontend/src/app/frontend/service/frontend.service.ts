@@ -4,21 +4,23 @@
  * Create At 2018/10/4
  */
 import {Injectable} from "@angular/core";
-import {GetService} from "../service/get.service";
+import {HttpService} from "../../service/http.service";
 
 @Injectable()
-export class PagesService {
+export class FrontendService {
 
-  constructor(private getService: GetService) {}
+  constructor(private httpService: HttpService) {}
 
   /**
-   * 获得文章卡片
+   * get方法
+   * @param {string} url
    * @returns {Observable<Object>}
    */
-  public getArticleCards(url: string) {
-    return this.getService.get(url);
+  public get(url: string) {
+    return this.httpService.get(url);
   }
 }
+
 
 export class ArticleCard {
   public id: number;

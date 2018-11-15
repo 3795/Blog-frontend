@@ -4,13 +4,12 @@
  * Create At 2018/10/4
  */
 import {Injectable} from "@angular/core";
-import {GetService} from "../../service/get.service";
-import {Router} from "@angular/router";
+import {FrontendService} from "../../service/frontend.service";
 
 @Injectable()
 export class NavigationBarService {
 
-  constructor(private getService:GetService) {
+  constructor(private frontendService:FrontendService) {
   }
 
   /**
@@ -18,7 +17,7 @@ export class NavigationBarService {
    * @returns {Observable<Object>}
    */
   public getAuthorInfo() {
-    return this.getService.get("user");
+    return this.frontendService.get("/user");
   }
 
   /**
@@ -26,7 +25,7 @@ export class NavigationBarService {
    * @returns {Observable<Object>}
    */
   public getNavigations() {
-    return this.getService.get("navigation");
+    return this.frontendService.get("/navigation");
   }
 
 }

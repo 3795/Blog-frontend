@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ArticleCard, PagesService} from "../../pages/pages.service";
 import {Router} from "@angular/router";
+import {ArticleCard, FrontendService} from "../../service/frontend.service";
 
 @Component({
   selector: 'app-article-card',
@@ -20,11 +20,11 @@ export class ArticleCardComponent implements OnInit {
   @Input()
   public navUrl: string;
 
-  constructor(private pagesService: PagesService,
+  constructor(private pagesService: FrontendService,
               private router: Router) { }
 
   ngOnInit() {
-    this.pagesService.getArticleCards(this.apiUrl)
+    this.pagesService.get(this.apiUrl)
       .subscribe(data => {
         if(data['code'] != 10) {
           this.router.navigateByUrl("/404");

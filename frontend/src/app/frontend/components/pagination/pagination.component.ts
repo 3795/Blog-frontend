@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PagesService} from "../../pages/pages.service";
 import {Router} from "@angular/router";
+import {FrontendService} from "../../service/frontend.service";
 
 @Component({
   selector: 'app-pagination',
@@ -18,7 +18,7 @@ export class PaginationComponent implements OnInit {
   @Input()
   public navUrl: string;
 
-  constructor(private pagesService: PagesService,
+  constructor(private pagesService: FrontendService,
               private router: Router) { }
 
   ngOnInit() {}

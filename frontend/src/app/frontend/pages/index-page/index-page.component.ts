@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-index-page',
@@ -8,8 +8,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 })
 export class IndexPageComponent implements OnInit {
 
-  //todo 重命名，分别为apiUrl和navUrl
-  public apiUrl: string = "article";
+  public apiUrl: string = "/article";
 
   public page: number;
 

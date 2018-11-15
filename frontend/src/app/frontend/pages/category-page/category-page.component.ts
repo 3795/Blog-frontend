@@ -8,7 +8,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class CategoryPageComponent implements OnInit {
 
-  public apiUrl: string = "category";
+  public apiUrl: string = "/category";
 
   public id: number;
 

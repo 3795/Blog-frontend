@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {GetService} from "../../service/get.service";
-import {Category} from "../../pages/pages.service";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {Category, FrontendService} from "../../service/frontend.service";
 
 @Component({
   selector: 'app-category-card',
@@ -11,7 +10,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class CategoryCardComponent implements OnInit {
 
-  public apiUrl: string = "category";
+  public apiUrl: string = "/category";
 
   public categoryName: string;
 
@@ -19,7 +18,7 @@ export class CategoryCardComponent implements OnInit {
 
   public id: number;
 
-  constructor(private getService: GetService,
+  constructor(private frontendService: FrontendService,
               private router: Router,
               private titleService: Title,
               private routeInfo: ActivatedRoute) { }
@@ -29,7 +28,7 @@ export class CategoryCardComponent implements OnInit {
       this.id = params['id'];
     });
     this.apiUrl += "/" + this.id + "/children";
-    this.getService.get(this.apiUrl)
+    this.frontendService.get(this.apiUrl)
       .subscribe(data => {
         if(data['code'] != 10) {
           return;

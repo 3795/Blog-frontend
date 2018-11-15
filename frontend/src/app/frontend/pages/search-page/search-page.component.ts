@@ -11,7 +11,7 @@ export class SearchPageComponent implements OnInit {
 
   public keywords;
 
-  public apiUrl: string = "article/search";
+  public apiUrl: string = "/article/search";
 
   public navUrl: string = "/search";
 
