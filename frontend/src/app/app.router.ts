@@ -9,12 +9,14 @@ import {NotFoundComponent} from "./frontend/pages/not-found/not-found.component"
 import {TransitionPageComponent} from "./frontend/pages/transition-page/transition-page.component";
 import {BackendComponent} from "./backend/backend.component";
 import {LoginPageComponent} from "./backend/page/login-page/login-page.component";
+import {ConsolePageComponent} from "./backend/page/console-page/console-page.component";
 
 const routes: Routes = [
 
   {path: 'manage', component: BackendComponent, children: [
       {path: '', component: LoginPageComponent},
       {path: 'login', component: LoginPageComponent},
+      {path: 'console', component: ConsolePageComponent}
     ]},
 
   {path: '', component: FrontendComponent, children: [

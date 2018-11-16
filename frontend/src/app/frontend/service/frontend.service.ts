@@ -1,6 +1,6 @@
 /**
  * Create By Seven.wk
- * Description: 为这些页面提供服务
+ * Description: 前台系统的网络服务
  * Create At 2018/10/4
  */
 import {Injectable} from "@angular/core";

@@ -1,19 +1,36 @@
 .login-page {
-  /*background: url("../../../../assets/images/background.jpg") no-repeat;*/
-  background-color: #cccccc;
   height: 750px;
 }
 
 .login-box {
-  border: solid 1px #000000;
-  height: 600px;
-  margin-top: 100px;
-  background-color: #FFFFFF;
-  padding-top: 100px;
-  padding-left: 40px;
+  height: 500px;
+  margin-top: 50px;
+  padding: 100px 40px 0 40px;
+  background-color: #f4f8ed;
+  box-shadow: 5px 5px 5px #e2e2e2;
 }
 
 .title {
   font-size: 24px;
   font-weight: 400;
+}
+
+.input-box {
+  margin: 20px 0 10px 0;
+}
+
+.captcha {
+  width: 66%;
+  float: left;
+}
+
+.captcha-code {
+  float: left;
+  padding: 2px 0 0 15px;
+}
+
+.login-button {
+  padding-top: 25px;
+  clear:both;
+  text-align: center
 }

@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 
 /**
@@ -10,9 +10,32 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class HttpService {
 
-  constructor(private http: HttpClient) {}
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json'
+    })
+  };
 
-  get(url: string) {
-    return this.http.get("/blog/v1" + url);
+  constructor(private httpClient: HttpClient) {}
+
+  /**
+   * Get请求
+   * @param {string} url
+   * @returns {any}
+   */
+  public get(url: string): any {
+    return this.httpClient.get("/blog/v1" + url);
   }
+
+  /**
+   * Post请求
+   * @param {string} url
+   * @param {string} requestBody
+   * @returns {Observable<Object>}
+   */
+  public post(url: string, requestBody: string) {
+    return this.httpClient.post("/blog/v1" + url, requestBody);
+  }
+
+
 }

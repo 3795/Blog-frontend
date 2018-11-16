@@ -26,6 +26,9 @@ import {HttpService} from "./service/http.service";
 import { BackendComponent } from './backend/backend.component';
 import { LoginPageComponent } from './backend/page/login-page/login-page.component';
 import {ElModule} from "element-angular/release/element-angular.module";
+import { ConsolePageComponent } from './backend/page/console-page/console-page.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BackendService} from "./backend/service/backend.service";
 
 @NgModule({
   declarations: [
@@ -47,19 +50,22 @@ import {ElModule} from "element-angular/release/element-angular.module";
     FrontendComponent,
     BackendComponent,
     LoginPageComponent,
+    ConsolePageComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRouting,
+    BrowserAnimationsModule,
     FormsModule,
     ElModule.forRoot(),
   ],
   providers: [
-    NavigationBarService,
+    HttpService,
     FrontendService,
-    HttpService
+    NavigationBarService,
+    BackendService
   ],
   bootstrap: [AppComponent]
 })

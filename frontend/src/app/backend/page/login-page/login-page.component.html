@@ -1,8 +1,22 @@
 <div el-row type="flex" justify="center" class="login-page">
   <div el-col [md]="6" class="login-box">
-    <p class="title">登录</p>
-    <el-input placeholder="请输入账号"></el-input>
-    <el-input placeholder="请输入密码"></el-input>
-    <el-input placeholder="请输入验证码"></el-input>
+    <p class="title">登录</p><br/>
+    <div class="input-box">
+      <el-input placeholder="请输入账号" [(ngModel)]="account"></el-input>
+    </div>
+    <div class="input-box">
+      <el-input placeholder="请输入密码" native-type='password' [(ngModel)]="password"></el-input>
+    </div>
+    <div class="input-box captcha">
+      <el-input placeholder="请输入验证码" [(ngModel)]="captchaCode"></el-input>
+    </div>
+    <div class="input-box captcha-code">
+      <img src="http://api.ntshare.cn/blog/v1/captcha"
+           onclick="this.src='http://api.ntshare.cn/blog/v1/captcha?d=' + new Date()*1"/>
+    </div>
+
+    <div class="login-button">
+      <el-button type="primary" [round]="true" [plain]="true" (click)="login()">登录</el-button>
+    </div>
   </div>
 </div>
