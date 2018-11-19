@@ -1,0 +1,9 @@
+.header {
+  border-bottom: solid 1px #e2e2e2;
+  height: 62px;
+}
+
+.personal-setting {
+  float: right;
+  margin-right: 100px;
+}

@@ -10,13 +10,17 @@ import {TransitionPageComponent} from "./frontend/pages/transition-page/transiti
 import {BackendComponent} from "./backend/backend.component";
 import {LoginPageComponent} from "./backend/page/login-page/login-page.component";
 import {ConsolePageComponent} from "./backend/page/console-page/console-page.component";
+import {BackendDashboardComponent} from "./backend/component/backend-dashboard/backend-dashboard.component";
 
 const routes: Routes = [
 
   {path: 'manage', component: BackendComponent, children: [
       {path: '', component: LoginPageComponent},
       {path: 'login', component: LoginPageComponent},
-      {path: 'console', component: ConsolePageComponent}
+      {path: 'console', component: ConsolePageComponent, children: [
+          {path: '', component: BackendDashboardComponent},
+          {path: 'dashboard', component: BackendDashboardComponent},
+        ]}
     ]},
 
   {path: '', component: FrontendComponent, children: [

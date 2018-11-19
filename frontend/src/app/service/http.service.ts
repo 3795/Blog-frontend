@@ -12,9 +12,11 @@ export class HttpService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-type': 'application/json'
-    })
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+    }),
+    // withCredentials: true
   };
+
 
   constructor(private httpClient: HttpClient) {}
 
@@ -34,7 +36,7 @@ export class HttpService {
    * @returns {Observable<Object>}
    */
   public post(url: string, requestBody: string) {
-    return this.httpClient.post("/blog/v1" + url, requestBody);
+    return this.httpClient.post("/blog/v1" + url, requestBody, this.httpOptions);
   }
 
 

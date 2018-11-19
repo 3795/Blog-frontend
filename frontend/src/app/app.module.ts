@@ -29,6 +29,9 @@ import {ElModule} from "element-angular/release/element-angular.module";
 import { ConsolePageComponent } from './backend/page/console-page/console-page.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BackendService} from "./backend/service/backend.service";
+import { BackendNavigationComponent } from './backend/component/backend-navigation/backend-navigation.component';
+import { BackendHeaderComponent } from './backend/component/backend-header/backend-header.component';
+import { BackendDashboardComponent } from './backend/component/backend-dashboard/backend-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import {BackendService} from "./backend/service/backend.service";
     BackendComponent,
     LoginPageComponent,
     ConsolePageComponent,
+    BackendNavigationComponent,
+    BackendHeaderComponent,
+    BackendDashboardComponent,
   ],
   imports: [
     BrowserModule,

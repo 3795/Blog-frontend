@@ -11,8 +11,8 @@
       <el-input placeholder="请输入验证码" [(ngModel)]="captchaCode"></el-input>
     </div>
     <div class="input-box captcha-code">
-      <img src="http://api.ntshare.cn/blog/v1/captcha"
-           onclick="this.src='http://api.ntshare.cn/blog/v1/captcha?d=' + new Date()*1"/>
+      <img src="http://localhost:8100/blog/v1/captcha" onclick="this.src='http://localhost:8100/blog/v1/captcha?d=' + new Date()*1"/>
+      <!--onclick="this.src='http://api.ntshare.cn/blog/v1/captcha?d=' + new Date()*1"/>-->
     </div>
 
     <div class="login-button">
