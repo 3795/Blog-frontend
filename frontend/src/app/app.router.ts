@@ -11,6 +11,7 @@ import {BackendComponent} from "./backend/backend.component";
 import {LoginPageComponent} from "./backend/page/login-page/login-page.component";
 import {ConsolePageComponent} from "./backend/page/console-page/console-page.component";
 import {BackendDashboardComponent} from "./backend/component/backend-dashboard/backend-dashboard.component";
+import {CategoryManageComponent} from "./backend/component/category-manage/category-manage.component";
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
       {path: 'console', component: ConsolePageComponent, children: [
           {path: '', component: BackendDashboardComponent},
           {path: 'dashboard', component: BackendDashboardComponent},
+          {path: 'category', component: CategoryManageComponent},
         ]}
     ]},
 

@@ -32,6 +32,7 @@ import {BackendService} from "./backend/service/backend.service";
 import { BackendNavigationComponent } from './backend/component/backend-navigation/backend-navigation.component';
 import { BackendHeaderComponent } from './backend/component/backend-header/backend-header.component';
 import { BackendDashboardComponent } from './backend/component/backend-dashboard/backend-dashboard.component';
+import { CategoryManageComponent } from './backend/component/category-manage/category-manage.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { BackendDashboardComponent } from './backend/component/backend-dashboard
     BackendNavigationComponent,
     BackendHeaderComponent,
     BackendDashboardComponent,
+    CategoryManageComponent,
   ],
   imports: [
     BrowserModule,
