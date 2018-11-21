@@ -1,5 +1,6 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/internal/Observable";
 
 /**
  * Create By Seven.wk
@@ -10,6 +11,8 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class HttpService {
 
+  private prefix: string = "/blog/v1";
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -17,16 +20,25 @@ export class HttpService {
     // withCredentials: true
   };
 
-
   constructor(private httpClient: HttpClient) {}
 
   /**
-   * Get请求
+   * 无参Get请求
    * @param {string} url
    * @returns {any}
    */
-  public get(url: string): any {
-    return this.httpClient.get("/blog/v1" + url);
+  public get(url: string): Observable<any> {
+    return this.httpClient.get(this.prefix + url);
+  }
+
+  /**
+   * 有参Get请求
+   * @param {string} url
+   * @param {HttpParams} params
+   * @returns {Observable<any>}
+   */
+  public getWithParams(url: string, params: HttpParams): Observable<any> {
+   return this.httpClient.get(this.prefix + url, {params});
   }
 
   /**
@@ -35,8 +47,27 @@ export class HttpService {
    * @param {string} requestBody
    * @returns {Observable<Object>}
    */
-  public post(url: string, requestBody: string) {
-    return this.httpClient.post("/blog/v1" + url, requestBody, this.httpOptions);
+  public post(url: string, requestBody: string): Observable<any> {
+    return this.httpClient.post(this.prefix + url, requestBody, this.httpOptions);
+  }
+
+  /**
+   * Patch请求
+   * @param {string} url
+   * @param body
+   * @returns {Observable<any>}
+   */
+  public patch(url: string, body: any): Observable<any> {
+    return this.httpClient.patch(this.prefix + url, body);
+  }
+
+  /**
+   * Delete请求
+   * @param {string} url
+   * @returns {Observable<any>}
+   */
+  public delete(url: string): Observable<any> {
+    return this.httpClient.delete(this.prefix + url);
   }
 
 

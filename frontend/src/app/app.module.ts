@@ -33,6 +33,7 @@ import { BackendNavigationComponent } from './backend/component/backend-navigati
 import { BackendHeaderComponent } from './backend/component/backend-header/backend-header.component';
 import { BackendDashboardComponent } from './backend/component/backend-dashboard/backend-dashboard.component';
 import { CategoryManageComponent } from './backend/component/category-manage/category-manage.component';
+import { BackendPaginationComponent } from './backend/component/backend-pagination/backend-pagination.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CategoryManageComponent } from './backend/component/category-manage/cat
     BackendHeaderComponent,
     BackendDashboardComponent,
     CategoryManageComponent,
+    BackendPaginationComponent,
   ],
   imports: [
     BrowserModule,

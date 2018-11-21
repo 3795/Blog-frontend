@@ -1,17 +1,62 @@
+<div el-row class="head">
+  <div el-col [md]="12" class="head-title">分类管理</div>
+  <div el-col [md]="12" class="head-button"><el-button (click)="dialogShow = true">添加分类</el-button></div>
+
+  <el-dialog [(visible)]="dialogShow">
+    <ng-template #title>
+      <span>添加分类</span>
+    </ng-template>
+
+
+    <el-form  label-width="100px">
+
+      <el-form-item label="分类名称" [required]="true">
+        <el-input></el-input>
+      </el-form-item>
+
+      <el-form-item label="父级分类" [required]="true">
+        <el-cascader [options]="options">
+        </el-cascader>
+      </el-form-item>
+
+      <el-form-item label="分类状态" [required]="true">
+        <el-radio-group [model]="'1'">
+          <el-radio label="0">禁用</el-radio>
+          <el-radio label="1">启用</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
+    </el-form>
+
+    <ng-template #footer>
+      <el-button>添加</el-button>
+      <el-button (click)="dialogShow = false">取消</el-button>
+    </ng-template>
+
+  </el-dialog>
+
+</div>
 <div el-row>
-  <el-table>
-    <el-table-column model-key="ID" label="ID" width="120">
-    </el-table-column>
-    <el-table-column model-key="categoryName" label="分类名称" width="120">
-    </el-table-column>
-    <el-table-column model-key="parentId" label="父分类ID" >
-    </el-table-column>
-    <el-table-column model-key="parentId" label="状态" >
-    </el-table-column>
-    <el-table-column label="操作" width="120">
-      <ng-template #slot let-scope="scope">
-        <el-button type="text" size="small">删除</el-button>
-      </ng-template>
-    </el-table-column>
-  </el-table>
+  <div el-col [md]="24">
+    <el-table [model]="list" center="all" [stripe]="true">
+      <el-table-column model-key="id" label="ID">
+      </el-table-column>
+      <el-table-column model-key="name" label="分类名称" >
+      </el-table-column>
+      <el-table-column model-key="parentId" label="父分类ID">
+      </el-table-column>
+      <el-table-column model-key="status" label="状态">
+      </el-table-column>
+      <el-table-column label="操作">
+        <ng-template #slot let-scope="scope">
+          <el-button type="text" size="small">编辑</el-button>
+          <el-button type="text" size="small" (click)="changeStatus(scope)">更改状态</el-button>
+          <el-button type="text" size="small" (click)="delete(scope)">删除</el-button>
+        </ng-template>
+      </el-table-column>
+    </el-table>
+
+    <app-backend-pagination [total]="total" [pageNum]="pageNum" (nowPageNum)="turnPage($event)"></app-backend-pagination>
+
+  </div>
 </div>

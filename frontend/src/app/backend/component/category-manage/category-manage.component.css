@@ -1,0 +1,15 @@
+.head {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.head-title {
+  font-size: 26px;
+  font-family: "华文行楷";
+}
+
+.head-button {
+  float: right;
+}

@@ -6,26 +6,36 @@
 import {HttpService} from "../../service/http.service";
 import {Observable} from "rxjs/internal/Observable";
 import {Injectable} from "@angular/core";
+import {HttpParams} from "@angular/common/http";
 
 @Injectable()
 export class BackendService {
 
-
+  private prefix: string = "/backend";
 
   constructor(private httpService: HttpService) {
 
   }
 
-  /**
-   * get服务
-   * @returns {any}
-   */
-  public get(url: string):  Observable<string> {
-    return this.httpService.get("/backend" + url);
+
+  public get(url: string):  Observable<any> {
+    return this.httpService.get(this.prefix + url);
   }
 
-  public post(url: string, requestBody: any): Observable<any> {
-    return this.httpService.post("/backend" + url, requestBody);
+  public getWithParams(url: string, params: HttpParams): Observable<string> {
+    return this.httpService.getWithParams(this.prefix + url, params);
+  }
+
+  public post(url: string, body: any): Observable<any> {
+    return this.httpService.post(this.prefix + url, body);
+  }
+
+  public patch(url: string, body: any): Observable<any> {
+    return this.httpService.patch(this.prefix + url, body);
+  }
+
+  public delete(url: string): Observable<any> {
+    return this.httpService.delete(this.prefix + url);
   }
 
 
