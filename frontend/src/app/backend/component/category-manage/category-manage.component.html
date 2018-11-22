@@ -1,62 +1,54 @@
-<div el-row class="head">
-  <div el-col [md]="12" class="head-title">分类管理</div>
-  <div el-col [md]="12" class="head-button"><el-button (click)="dialogShow = true">添加分类</el-button></div>
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <nz-table #categoryTable [nzTitle]="tableTitle" [nzData]="categoryData"
+              [(nzPageIndex)]="pageNum" [nzTotal]="total"
+              [nzFrontPagination]="false" (nzPageIndexChange)="turnPage($event)">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>parentId</th>
+        <th>status</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of categoryTable.data">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.parentId}}</td>
+        <td>{{data.status}}</td>
+        <td>
+          <a (click)="updateCategory(data)">编辑</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="changeStatus(data.id)" >更改状态</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(data.id)">删除</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
 
-  <el-dialog [(visible)]="dialogShow">
-    <ng-template #title>
-      <span>添加分类</span>
-    </ng-template>
+    <nz-drawer [nzClosable]="true" [nzVisible]="visible"
+               nzPlacement='right' nzTitle="编辑分类" [nzWidth]="400" (nzOnClose)="closeDrawer()">
 
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-label nzRequired>分类名称</nz-form-label>
+            <input nz-input type="text" name="name" placeholder="请输入分类名称">
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>父级分类</nz-form-label>
+            <input nz-input>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>分类状态</nz-form-label>
+          <nz-switch></nz-switch>
+        </nz-form-item>
+      </form>
 
-    <el-form  label-width="100px">
-
-      <el-form-item label="分类名称" [required]="true">
-        <el-input></el-input>
-      </el-form-item>
-
-      <el-form-item label="父级分类" [required]="true">
-        <el-cascader [options]="options">
-        </el-cascader>
-      </el-form-item>
-
-      <el-form-item label="分类状态" [required]="true">
-        <el-radio-group [model]="'1'">
-          <el-radio label="0">禁用</el-radio>
-          <el-radio label="1">启用</el-radio>
-        </el-radio-group>
-      </el-form-item>
-
-    </el-form>
-
-    <ng-template #footer>
-      <el-button>添加</el-button>
-      <el-button (click)="dialogShow = false">取消</el-button>
-    </ng-template>
-
-  </el-dialog>
-
-</div>
-<div el-row>
-  <div el-col [md]="24">
-    <el-table [model]="list" center="all" [stripe]="true">
-      <el-table-column model-key="id" label="ID">
-      </el-table-column>
-      <el-table-column model-key="name" label="分类名称" >
-      </el-table-column>
-      <el-table-column model-key="parentId" label="父分类ID">
-      </el-table-column>
-      <el-table-column model-key="status" label="状态">
-      </el-table-column>
-      <el-table-column label="操作">
-        <ng-template #slot let-scope="scope">
-          <el-button type="text" size="small">编辑</el-button>
-          <el-button type="text" size="small" (click)="changeStatus(scope)">更改状态</el-button>
-          <el-button type="text" size="small" (click)="delete(scope)">删除</el-button>
-        </ng-template>
-      </el-table-column>
-    </el-table>
-
-    <app-backend-pagination [total]="total" [pageNum]="pageNum" (nowPageNum)="turnPage($event)"></app-backend-pagination>
+    </nz-drawer>
 
   </div>
 </div>
+

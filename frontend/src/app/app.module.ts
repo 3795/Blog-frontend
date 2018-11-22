@@ -4,9 +4,9 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
 import {AppRouting} from "./app.router";
-import {FormsModule} from "@angular/forms";
-import { EditorShowDirective } from './directive/editor-show/editor-show.directive';
-import { FrontendComponent } from './frontend/frontend.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EditorShowDirective} from './directive/editor-show/editor-show.directive';
+import {FrontendComponent} from './frontend/frontend.component';
 import {NavigationBarComponent} from "./frontend/components/navigation-bar/navigation-bar.component";
 import {ArticleCardComponent} from "./frontend/components/article-card/article-card.component";
 import {CategoryPageComponent} from "./frontend/pages/category-page/category-page.component";
@@ -23,17 +23,18 @@ import {SearchCardComponent} from "./frontend/components/search-card/search-card
 import {FrontendService} from "./frontend/service/frontend.service";
 import {NavigationBarService} from "./frontend/components/navigation-bar/navigation-bar.service";
 import {HttpService} from "./service/http.service";
-import { BackendComponent } from './backend/backend.component';
-import { LoginPageComponent } from './backend/page/login-page/login-page.component';
-import {ElModule} from "element-angular/release/element-angular.module";
-import { ConsolePageComponent } from './backend/page/console-page/console-page.component';
+import {BackendComponent} from './backend/backend.component';
+import {LoginPageComponent} from './backend/page/login-page/login-page.component';
+import {ConsolePageComponent} from './backend/page/console-page/console-page.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BackendService} from "./backend/service/backend.service";
-import { BackendNavigationComponent } from './backend/component/backend-navigation/backend-navigation.component';
-import { BackendHeaderComponent } from './backend/component/backend-header/backend-header.component';
-import { BackendDashboardComponent } from './backend/component/backend-dashboard/backend-dashboard.component';
-import { CategoryManageComponent } from './backend/component/category-manage/category-manage.component';
-import { BackendPaginationComponent } from './backend/component/backend-pagination/backend-pagination.component';
+import {BackendNavigationComponent} from './backend/component/backend-navigation/backend-navigation.component';
+import {BackendHeaderComponent} from './backend/component/backend-header/backend-header.component';
+import {BackendDashboardComponent} from './backend/component/backend-dashboard/backend-dashboard.component';
+import {CategoryManageComponent} from './backend/component/category-manage/category-manage.component';
+import {BackendPaginationComponent} from './backend/component/backend-pagination/backend-pagination.component';
+
+import {NgZorroAntdModule} from "ng-zorro-antd";
 
 @NgModule({
   declarations: [
@@ -65,17 +66,17 @@ import { BackendPaginationComponent } from './backend/component/backend-paginati
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRouting,
     BrowserAnimationsModule,
-    FormsModule,
-    ElModule.forRoot(),
+    NgZorroAntdModule,
   ],
   providers: [
     HttpService,
     FrontendService,
     NavigationBarService,
-    BackendService
+    BackendService,
   ],
   bootstrap: [AppComponent]
 })

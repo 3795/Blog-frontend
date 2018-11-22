@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ElMessageService} from 'element-angular'
 import {BackendService} from "../../service/backend.service";
 import {Router} from "@angular/router";
+import {NzMessageService} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-login',
@@ -16,22 +16,27 @@ export class LoginPageComponent implements OnInit {
 
   public captchaCode: string;
 
-  constructor(private message: ElMessageService,
+
+  constructor(private message: NzMessageService,
               private backendService: BackendService,
               private router: Router) { }
 
   ngOnInit() {
   }
 
+  /**
+   * 用户登录
+   */
   public login(): void {
+
     let requestBody = "account=" + this.account + "&password=" + this.password + "&captchaCode=" + this.captchaCode;
     this.backendService.post("/login", requestBody)
       .subscribe((data) => {
         if (data.code == 11) {
-          this.message['success']("登录成功！");
+          this.message.create("success", data.msg);
           this.router.navigateByUrl("/manage/console");
         } else {
-          this.message['error']("登录失败！" + data.msg);
+          this.message.create("error","登录失败！" + data.msg);
         }
       });
   }

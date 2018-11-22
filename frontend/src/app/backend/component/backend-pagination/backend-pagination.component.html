@@ -1,4 +1,3 @@
 <div class="pagination">
-  <el-pagination [total]="total"
-                 [layout]="['prev', 'pager', 'next']" [(model)]="pageNum" (modelChange)="turnPage()"></el-pagination>
+  <nz-pagination [nzPageIndex]="pageNum" [nzTotal]="total" (nzPageIndexChange)="turnPage($event)"></nz-pagination>
 </div>

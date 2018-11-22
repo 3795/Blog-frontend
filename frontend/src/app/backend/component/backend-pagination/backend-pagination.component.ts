@@ -24,8 +24,8 @@ export class BackendPaginationComponent implements OnInit{
 
   }
 
-  turnPage() {
-    this.nowPageNum.emit(this.pageNum);
+  turnPage(nowPageNum) {
+    this.nowPageNum.emit(nowPageNum);
   }
 
 }
