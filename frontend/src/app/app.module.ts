@@ -35,6 +35,7 @@ import {CategoryManageComponent} from './backend/component/category-manage/categ
 import {BackendPaginationComponent} from './backend/component/backend-pagination/backend-pagination.component';
 
 import {NgZorroAntdModule} from "ng-zorro-antd";
+import {AuthGuard} from "./backend/guard/auth.guard";
 
 @NgModule({
   declarations: [

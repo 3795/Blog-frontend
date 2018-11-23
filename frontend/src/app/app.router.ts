@@ -12,13 +12,16 @@ import {LoginPageComponent} from "./backend/page/login-page/login-page.component
 import {ConsolePageComponent} from "./backend/page/console-page/console-page.component";
 import {BackendDashboardComponent} from "./backend/component/backend-dashboard/backend-dashboard.component";
 import {CategoryManageComponent} from "./backend/component/category-manage/category-manage.component";
+import {AuthGuard} from "./backend/guard/auth.guard";
 
 const routes: Routes = [
 
   {path: 'manage', component: BackendComponent, children: [
       {path: '', component: LoginPageComponent},
       {path: 'login', component: LoginPageComponent},
-      {path: 'console', component: ConsolePageComponent, children: [
+      {path: 'console', component: ConsolePageComponent,
+        canActivateChild: [AuthGuard],
+        children: [
           {path: '', component: BackendDashboardComponent},
           {path: 'dashboard', component: BackendDashboardComponent},
           {path: 'category', component: CategoryManageComponent},

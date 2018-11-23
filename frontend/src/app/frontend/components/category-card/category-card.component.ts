@@ -30,7 +30,7 @@ export class CategoryCardComponent implements OnInit {
     this.apiUrl += "/" + this.id + "/children";
     this.frontendService.get(this.apiUrl)
       .subscribe(data => {
-        if(data['code'] != 10) {
+        if(!(data['code']%2)) {
           return;
         }
         else {

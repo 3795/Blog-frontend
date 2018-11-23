@@ -43,7 +43,7 @@ export class CategoryManageComponent implements OnInit {
   initData(): void {
     this.backendService.get(this.url)
       .subscribe((data) => {
-        if (data['code'] != 10) {
+        if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
           this.categoryData = data['data']['list'];
@@ -61,7 +61,7 @@ export class CategoryManageComponent implements OnInit {
   updateData(params: HttpParams): void {
     this.backendService.getWithParams(this.url, params)
       .subscribe((data) => {
-        if (data['code'] != 10) {
+        if (!(data['code']%2)) {
           this.message.create('error', data['msg']);
         } else {
           this.categoryData = data['data']['list'];
@@ -74,12 +74,12 @@ export class CategoryManageComponent implements OnInit {
 
   /**
    * 改变分类状态
-   * @param scope
+   * @param id
    */
   changeStatus(id: number): void {
     this.backendService.patch(this.url + "/" + id, "")
       .subscribe((data) => {
-        if (data['code'] != 22) {
+        if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         }
       });
@@ -87,7 +87,7 @@ export class CategoryManageComponent implements OnInit {
 
   /**
    * 删除某一条记录
-   * @param scope
+   * @param id
    */
   delete(id: number): void {
     this.modalService.confirm({
@@ -98,7 +98,7 @@ export class CategoryManageComponent implements OnInit {
         let params = new HttpParams().set("pageNum", this.pageNum.toString());
         this.backendService.delete(this.url + "/" + id)
           .subscribe((data) => {
-            if (data['code'] != 24) {
+            if (!(data['code']%2)) {
               this.message.create('error', data.msg);
             } else {
               this.updateData(params);
@@ -135,7 +135,7 @@ export class CategoryManageComponent implements OnInit {
     // 获取下拉框数据
     this.backendService.get(this.url + "/" + "firstLevel")
       .subscribe((data) => {
-        if (data.code != 10) {
+        if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
           this.firstLevel = data.data;
@@ -150,7 +150,7 @@ export class CategoryManageComponent implements OnInit {
     let params = new HttpParams().set("pageNum", this.pageNum.toString());
     let body: string = "id=" + this.id + "&name=" + this.name + "&parentId=" + this.parentId + "&status=1";
     this.backendService.put(this.url, body).subscribe((data) => {
-      if (data.code != 22) {
+      if (!(data['code']%2)) {
         this.message.create('error', data.msg);
       } else {
         this.closeDrawer();
@@ -174,7 +174,7 @@ export class CategoryManageComponent implements OnInit {
     // 获取下拉框数据
     this.backendService.get(this.url + "/" + "firstLevel")
       .subscribe((data) => {
-        if (data.code != 10) {
+        if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
           this.firstLevel = data.data;
@@ -189,7 +189,7 @@ export class CategoryManageComponent implements OnInit {
     let params = new HttpParams().set("pageNum", this.total.toString());
     let body: string = "name=" + this.name + "&parentId=" + this.parentId + "&status=1";
     this.backendService.post(this.url, body).subscribe((data) => {
-      if (data.code != 20) {
+      if (!(data['code']%2)) {
         this.message.create('error', data.msg);
       } else {
         this.closeDrawer();

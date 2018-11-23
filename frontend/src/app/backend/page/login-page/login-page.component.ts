@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
     let requestBody = "account=" + this.account + "&password=" + this.password + "&captchaCode=" + this.captchaCode;
     this.backendService.post("/login", requestBody)
       .subscribe((data) => {
-        if (data.code == 11) {
+        if (data['code']%2) {
           this.message.create("success", data.msg);
           this.router.navigateByUrl("/manage/console");
         } else {
