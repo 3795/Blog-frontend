@@ -44,11 +44,21 @@ export class HttpService {
   /**
    * Post请求
    * @param {string} url
-   * @param {string} requestBody
+   * @param body
    * @returns {Observable<Object>}
    */
-  public post(url: string, requestBody: string): Observable<any> {
-    return this.httpClient.post(this.prefix + url, requestBody, this.httpOptions);
+  public post(url: string, body: any): Observable<any> {
+    return this.httpClient.post(this.prefix + url, body, this.httpOptions);
+  }
+
+  /**
+   * Put请求
+   * @param {string} url
+   * @param body
+   * @returns {Observable<any>}
+   */
+  public put(url: string, body: any): Observable<any> {
+    return this.httpClient.put(this.prefix + url, body, this.httpOptions);
   }
 
   /**

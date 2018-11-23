@@ -20,6 +20,13 @@ export class CategoryManageComponent implements OnInit {
 
   public visible: boolean = false;
 
+  public firstLevel: any[] = [];
+
+  // 表单部分
+  private id: number;
+  public name: string;
+  public parentId: number;
+
   private url: string = "/category";
 
   constructor(private backendService: BackendService,
@@ -70,14 +77,10 @@ export class CategoryManageComponent implements OnInit {
    * @param scope
    */
   changeStatus(id: number): void {
-    let params = new HttpParams().set("pageNum", this.pageNum.toString());
     this.backendService.patch(this.url + "/" + id, "")
       .subscribe((data) => {
         if (data['code'] != 22) {
           this.message.create('error', data.msg);
-        } else {
-          this.updateData(params);
-          this.message.create('success', data.msg);
         }
       });
   }
@@ -117,11 +120,99 @@ export class CategoryManageComponent implements OnInit {
     this.updateData(params);
   }
 
-  updateCategory(data: any): void {
+  /**
+   * 打开更新分类的抽屉
+   * @param data
+   */
+  updateDrawer(data: any): void {
     this.visible = true;
-    console.log(data);
+
+    // 渲染表单
+    this.id = data.id;
+    this.name = data.name;
+    this.parentId = data.parentId;
+
+    // 获取下拉框数据
+    this.backendService.get(this.url + "/" + "firstLevel")
+      .subscribe((data) => {
+        if (data.code != 10) {
+          this.message.create('error', data.msg);
+        } else {
+          this.firstLevel = data.data;
+        }
+      });
   }
 
+  /**
+   * 更新分类信息
+   */
+  update(): void {
+    let params = new HttpParams().set("pageNum", this.pageNum.toString());
+    let body: string = "id=" + this.id + "&name=" + this.name + "&parentId=" + this.parentId + "&status=1";
+    this.backendService.put(this.url, body).subscribe((data) => {
+      if (data.code != 22) {
+        this.message.create('error', data.msg);
+      } else {
+        this.closeDrawer();
+        this.updateData(params);
+        this.message.create('success', data.msg);
+      }
+    });
+  }
+
+  /**
+   * 打开新增分类的抽屉
+   */
+  insertDrawer(): void {
+    this.visible = true;
+
+    // 渲染表单
+    this.id = null;
+    this.name = "";
+    this.parentId = 0;
+
+    // 获取下拉框数据
+    this.backendService.get(this.url + "/" + "firstLevel")
+      .subscribe((data) => {
+        if (data.code != 10) {
+          this.message.create('error', data.msg);
+        } else {
+          this.firstLevel = data.data;
+        }
+      });
+  }
+
+  /**
+   * 添加分类信息
+   */
+  insert(): void {
+    let params = new HttpParams().set("pageNum", this.total.toString());
+    let body: string = "name=" + this.name + "&parentId=" + this.parentId + "&status=1";
+    this.backendService.post(this.url, body).subscribe((data) => {
+      if (data.code != 20) {
+        this.message.create('error', data.msg);
+      } else {
+        this.closeDrawer();
+        this.updateData(params);
+        this.message.create('success', data.msg);
+      }
+    });
+  }
+
+  /**
+   * 处理函数
+   */
+  handle(): void {
+    if (this.id != null) {
+      this.update();
+    } else {
+      this.insert();
+    }
+  }
+
+  /**
+   * 关闭抽屉
+   */
   closeDrawer(): void{
     this.visible = false;
   }

@@ -22,12 +22,16 @@ export class BackendService {
     return this.httpService.get(this.prefix + url);
   }
 
-  public getWithParams(url: string, params: HttpParams): Observable<string> {
+  public getWithParams(url: string, params: HttpParams): Observable<any> {
     return this.httpService.getWithParams(this.prefix + url, params);
   }
 
   public post(url: string, body: any): Observable<any> {
     return this.httpService.post(this.prefix + url, body);
+  }
+
+  public put(url: string, body: any): Observable<any> {
+    return this.httpService.put(this.prefix + url, body);
   }
 
   public patch(url: string, body: any): Observable<any> {
