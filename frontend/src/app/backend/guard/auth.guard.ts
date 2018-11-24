@@ -42,7 +42,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
    * @returns {boolean}
    */
   auth(): boolean {
-    this.backendService.get("/category/2")
+    this.backendService.get("/user/isLogin")
       .subscribe((data) => {
           if (!(data.code%2)) {
             this.router.navigateByUrl("/manage/login");

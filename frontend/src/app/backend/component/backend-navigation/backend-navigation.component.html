@@ -1,30 +1,20 @@
 
   <ul nz-menu [nzMode]="'inline'" style="height:100%">
-    <li nz-submenu>
-      <span title><i nz-icon type="user"></i>文章管理</span>
+    <li nz-menu-item routerLink="/manage/console/dashboard">
+      <span title><i nz-icon type="dashboard" theme="outline"></i>仪表盘</span>
+    </li>
+    <li nz-submenu routerLink="/manage/console/article/manage">
+      <span title><i nz-icon type="read" theme="outline"></i>文章管理</span>
       <ul>
-        <li nz-menu-item>option1</li>
-        <li nz-menu-item>option2</li>
-        <li nz-menu-item>option3</li>
-        <li nz-menu-item>option4</li>
+        <li nz-menu-item>新增文章</li>
+        <li nz-menu-item>草稿箱</li>
+        <li nz-menu-item>回收站</li>
       </ul>
     </li>
-    <li nz-submenu>
-      <span title routerLink="/manage/console/category"><i nz-icon type="laptop"></i>分类管理</span>
-      <ul>
-        <li nz-menu-item>option5</li>
-        <li nz-menu-item>option6</li>
-        <li nz-menu-item>option7</li>
-        <li nz-menu-item>option8</li>
-      </ul>
+    <li nz-menu-item routerLink="/manage/console/category">
+      <span title><i nz-icon type="tag" theme="outline"></i>分类管理</span>
     </li>
-    <li nz-submenu>
-      <span title><i nz-icon type="notification"></i>导航管理</span>
-      <ul>
-        <li nz-menu-item>option9</li>
-        <li nz-menu-item>option10</li>
-        <li nz-menu-item>option11</li>
-        <li nz-menu-item>option12</li>
-      </ul>
+    <li nz-menu-item routerLink="/manage/console/navigation">
+      <span title><i nz-icon type="compass" theme="outline"></i>导航管理</span>
     </li>
   </ul>

@@ -13,18 +13,25 @@ import {ConsolePageComponent} from "./backend/page/console-page/console-page.com
 import {BackendDashboardComponent} from "./backend/component/backend-dashboard/backend-dashboard.component";
 import {CategoryManageComponent} from "./backend/component/category-manage/category-manage.component";
 import {AuthGuard} from "./backend/guard/auth.guard";
+import {NavigationManageComponent} from "./backend/component/navigation-manage/navigation-manage.component";
+import {ArticleManageComponent} from "./backend/component/article-manage/article-manage/article-manage.component";
 
 const routes: Routes = [
 
   {path: 'manage', component: BackendComponent, children: [
       {path: '', component: LoginPageComponent},
       {path: 'login', component: LoginPageComponent},
-      {path: 'console', component: ConsolePageComponent,
+      {path: 'console', component: ConsolePageComponent, data: {breadcrumb: "控制台"},
         canActivateChild: [AuthGuard],
         children: [
-          {path: '', component: BackendDashboardComponent},
-          {path: 'dashboard', component: BackendDashboardComponent},
-          {path: 'category', component: CategoryManageComponent},
+          {path: '', redirectTo: '/manage/console/dashboard', pathMatch: 'full'},
+          {path: 'dashboard', component: BackendDashboardComponent, data: {breadcrumb: "仪表盘"}},
+          {path: 'category', component: CategoryManageComponent, data: {breadcrumb: "分类管理"}},
+          {path: 'navigation', component: NavigationManageComponent, data: {breadcrumb: "导航管理"}},
+          {path: 'article', data: {breadcrumb: "文章管理"},
+            children: [
+              {path: 'manage', component: ArticleManageComponent, data: {breadcrumb: "文章列表"}}
+            ]}
         ]}
     ]},
 

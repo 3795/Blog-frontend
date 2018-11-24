@@ -35,7 +35,9 @@ import {CategoryManageComponent} from './backend/component/category-manage/categ
 import {BackendPaginationComponent} from './backend/component/backend-pagination/backend-pagination.component';
 
 import {NgZorroAntdModule} from "ng-zorro-antd";
-import {AuthGuard} from "./backend/guard/auth.guard";
+import {BreadCrumbsComponent} from './backend/component/bread-crumbs/bread-crumbs.component';
+import {NavigationManageComponent} from './backend/component/navigation-manage/navigation-manage.component';
+import { ArticleManageComponent } from './backend/component/article-manage/article-manage/article-manage.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,9 @@ import {AuthGuard} from "./backend/guard/auth.guard";
     BackendDashboardComponent,
     CategoryManageComponent,
     BackendPaginationComponent,
+    BreadCrumbsComponent,
+    NavigationManageComponent,
+    ArticleManageComponent,
   ],
   imports: [
     BrowserModule,

@@ -68,7 +68,7 @@ export class HttpService {
    * @returns {Observable<any>}
    */
   public patch(url: string, body: any): Observable<any> {
-    return this.httpClient.patch(this.prefix + url, body);
+    return this.httpClient.patch(this.prefix + url, body, this.httpOptions);
   }
 
   /**
