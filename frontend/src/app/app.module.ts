@@ -38,6 +38,9 @@ import {NgZorroAntdModule} from "ng-zorro-antd";
 import {BreadCrumbsComponent} from './backend/component/bread-crumbs/bread-crumbs.component';
 import {NavigationManageComponent} from './backend/component/navigation-manage/navigation-manage.component';
 import { ArticleManageComponent } from './backend/component/article-manage/article-manage/article-manage.component';
+import { ArticleDraftboxComponent } from './backend/component/article-manage/article-draftbox/article-draftbox.component';
+import { ArticleRecoverComponent } from './backend/component/article-manage/article-recover/article-recover.component';
+import { UserInfoComponent } from './backend/component/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { ArticleManageComponent } from './backend/component/article-manage/artic
     BreadCrumbsComponent,
     NavigationManageComponent,
     ArticleManageComponent,
+    ArticleDraftboxComponent,
+    ArticleRecoverComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
       <div>
         <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
         <div nz-col [nzSpan]="12" style="text-align: right">
-
+          <button type="button" class="ant-btn ant-btn-primary">写文章</button>
         </div>
       </div>
     </div>
@@ -27,15 +27,10 @@
         <td>{{data.title}}</td>
         <td>{{data.categoryName}}</td>
         <td>{{data.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-        <td>
-          <nz-switch [ngModel]="data.status" [nzCheckedChildren]="checkedTemplate"
-                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeStatus(data.id, $event)"></nz-switch>
-          <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
-          <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
-        <td>
-          <a>编辑文章</a>
+        <td>已删除<td>
+          <a (click)="recover(data.id)">还原文章</a>
           <nz-divider nzType="vertical"></nz-divider>
-          <a (click)="delete(data.id)">删除</a>
+          <a (click)="delete(data.id)">彻底删除</a>
         </td>
       </tr>
       </tbody>

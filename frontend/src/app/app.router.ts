@@ -15,6 +15,9 @@ import {CategoryManageComponent} from "./backend/component/category-manage/categ
 import {AuthGuard} from "./backend/guard/auth.guard";
 import {NavigationManageComponent} from "./backend/component/navigation-manage/navigation-manage.component";
 import {ArticleManageComponent} from "./backend/component/article-manage/article-manage/article-manage.component";
+import {ArticleDraftboxComponent} from "./backend/component/article-manage/article-draftbox/article-draftbox.component";
+import {ArticleRecoverComponent} from "./backend/component/article-manage/article-recover/article-recover.component";
+import {UserInfoComponent} from "./backend/component/user-info/user-info.component";
 
 const routes: Routes = [
 
@@ -28,9 +31,13 @@ const routes: Routes = [
           {path: 'dashboard', component: BackendDashboardComponent, data: {breadcrumb: "仪表盘"}},
           {path: 'category', component: CategoryManageComponent, data: {breadcrumb: "分类管理"}},
           {path: 'navigation', component: NavigationManageComponent, data: {breadcrumb: "导航管理"}},
+          {path: 'userInfo', component: UserInfoComponent, data: {breadcrumb: "个人中心"}},
           {path: 'article', data: {breadcrumb: "文章管理"},
             children: [
-              {path: 'manage', component: ArticleManageComponent, data: {breadcrumb: "文章列表"}}
+              {path: '', redirectTo: "/manage/console/article/list", pathMatch: 'full'},
+              {path: 'list', component: ArticleManageComponent, data: {breadcrumb: "文章列表"}},
+              {path: 'draft', component: ArticleDraftboxComponent, data: {breadcrumb: "草稿箱"}},
+              {path: 'recover', component: ArticleRecoverComponent, data: {breadcrumb: "回收站"}}
             ]}
         ]}
     ]},

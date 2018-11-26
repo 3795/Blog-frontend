@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {BackendService} from "../../../service/backend.service";
+import { Component, OnInit } from '@angular/core';
 import {NzMessageService, NzModalService} from "ng-zorro-antd";
+import {BackendService} from "../../../service/backend.service";
 import {HttpParams} from "@angular/common/http";
 
 @Component({
-  selector: 'app-article-manage',
-  templateUrl: './article-manage.component.html',
-  styleUrls: ['./article-manage.component.css']
+  selector: 'app-article-draftbox',
+  templateUrl: './article-draftbox.component.html',
+  styleUrls: ['./article-draftbox.component.css']
 })
-export class ArticleManageComponent implements OnInit {
+export class ArticleDraftboxComponent implements OnInit {
 
-  public tableTitle: string = "文章列表";
+  public tableTitle: string = "草稿箱";
 
   public articleData: any[] = [];
 
@@ -19,7 +19,6 @@ export class ArticleManageComponent implements OnInit {
   public total: number = 0;
 
   private url: string = "/article";
-
 
   constructor(private backendService: BackendService,
               private message: NzMessageService,
@@ -30,7 +29,7 @@ export class ArticleManageComponent implements OnInit {
   }
 
   initData(): void {
-    let params = new HttpParams().set("status", "1");
+    let params = new HttpParams().set("status", "0");
     this.backendService.getWithParams(this.url, params)
       .subscribe((data) => {
         if (!(data['code']%2)) {
@@ -59,7 +58,7 @@ export class ArticleManageComponent implements OnInit {
   }
 
   turnPage(nowPageNum: number): void {
-    let params = new HttpParams().set("pageNum", nowPageNum.toString()).set("status", "1");
+    let params = new HttpParams().set("pageNum", nowPageNum.toString()).set("status", "0");
     this.updateData(params);
   }
 
@@ -71,8 +70,8 @@ export class ArticleManageComponent implements OnInit {
         if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
-          this.message.create('success', "下架成功");
-          let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
+          this.message.create('success', "发布成功");
+          let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "0");
           this.updateData(params);
         }
       });
@@ -84,7 +83,7 @@ export class ArticleManageComponent implements OnInit {
       nzOkText    : '删除',
       nzOkType    : 'danger',
       nzOnOk      : () => {
-        let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
+        let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "0");
         let body: string = "id=" + id + "&status=" + 2;
         this.backendService.patch(this.url, body)
           .subscribe((data) => {

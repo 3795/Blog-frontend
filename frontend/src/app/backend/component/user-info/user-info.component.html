@@ -1,0 +1,12 @@
+<div nz-row>
+  <div nz-col [nzSpan]="8">
+    <p>账号：{{account}}</p>
+    <p>昵称：{{username}}</p>
+    <p>头像：<img src="{{avatar}}" title="{{username}}" alt="{{username}}"/></p>
+    <p>创建时间：{{createTime | date: 'yyyy-MM-dd'}}</p>
+  </div>
+
+  <div nz-col [nzSpan]="16">
+    我是右边的操作区域
+  </div>
+</div>

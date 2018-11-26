@@ -3,12 +3,13 @@
     <li nz-menu-item routerLink="/manage/console/dashboard">
       <span title><i nz-icon type="dashboard" theme="outline"></i>仪表盘</span>
     </li>
-    <li nz-submenu routerLink="/manage/console/article/manage">
-      <span title><i nz-icon type="read" theme="outline"></i>文章管理</span>
+    <li nz-submenu>
+      <span title><i nz-icon type="read"></i>文章管理</span>
       <ul>
         <li nz-menu-item>新增文章</li>
-        <li nz-menu-item>草稿箱</li>
-        <li nz-menu-item>回收站</li>
+        <li nz-menu-item routerLink="/manage/console/article/list">文章列表</li>
+        <li nz-menu-item routerLink="/manage/console/article/draft">草稿箱</li>
+        <li nz-menu-item routerLink="/manage/console/article/recover">回收站</li>
       </ul>
     </li>
     <li nz-menu-item routerLink="/manage/console/category">

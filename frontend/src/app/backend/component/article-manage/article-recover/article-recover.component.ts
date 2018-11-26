@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {BackendService} from "../../../service/backend.service";
+import { Component, OnInit } from '@angular/core';
 import {NzMessageService, NzModalService} from "ng-zorro-antd";
+import {BackendService} from "../../../service/backend.service";
 import {HttpParams} from "@angular/common/http";
 
 @Component({
-  selector: 'app-article-manage',
-  templateUrl: './article-manage.component.html',
-  styleUrls: ['./article-manage.component.css']
+  selector: 'app-article-recover',
+  templateUrl: './article-recover.component.html',
+  styleUrls: ['./article-recover.component.css']
 })
-export class ArticleManageComponent implements OnInit {
+export class ArticleRecoverComponent implements OnInit {
 
-  public tableTitle: string = "文章列表";
+  public tableTitle: string = "回收站";
 
   public articleData: any[] = [];
 
@@ -19,7 +19,6 @@ export class ArticleManageComponent implements OnInit {
   public total: number = 0;
 
   private url: string = "/article";
-
 
   constructor(private backendService: BackendService,
               private message: NzMessageService,
@@ -30,7 +29,7 @@ export class ArticleManageComponent implements OnInit {
   }
 
   initData(): void {
-    let params = new HttpParams().set("status", "1");
+    let params = new HttpParams().set("status", "2");
     this.backendService.getWithParams(this.url, params)
       .subscribe((data) => {
         if (!(data['code']%2)) {
@@ -59,7 +58,7 @@ export class ArticleManageComponent implements OnInit {
   }
 
   turnPage(nowPageNum: number): void {
-    let params = new HttpParams().set("pageNum", nowPageNum.toString()).set("status", "1");
+    let params = new HttpParams().set("pageNum", nowPageNum.toString()).set("status", "2");
     this.updateData(params);
   }
 
@@ -71,26 +70,39 @@ export class ArticleManageComponent implements OnInit {
         if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
-          this.message.create('success', "下架成功");
-          let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
+          this.message.create('success', data.msg);
+          let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "2");
           this.updateData(params);
+        }
+      });
+  }
+
+  recover(id: number): void{
+    let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "2");
+    let body: string = "id=" + id + "&status=" + 0;
+    this.backendService.patch(this.url, body)
+      .subscribe((data) => {
+        if (data['code']%2) {
+          this.updateData(params);
+          this.message.create('success', "恢复成功");
+        } else {
+          this.message.create('error', data.msg);
         }
       });
   }
 
   delete(id: number): void {
     this.modalService.confirm({
-      nzTitle     : '确认删除该文章吗?',
+      nzTitle     : '彻底删除该文章吗?',
       nzOkText    : '删除',
       nzOkType    : 'danger',
       nzOnOk      : () => {
-        let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
-        let body: string = "id=" + id + "&status=" + 2;
-        this.backendService.patch(this.url, body)
+        let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "2");
+        this.backendService.delete(this.url + "/" + id)
           .subscribe((data) => {
             if (data['code']%2) {
               this.updateData(params);
-              this.message.create('success', "已放入回收站");
+              this.message.create('success', data.msg);
             } else {
               this.message.create('error', data.msg);
             }
