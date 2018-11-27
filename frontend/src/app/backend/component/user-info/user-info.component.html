@@ -1,12 +1,12 @@
-<div nz-row>
-  <div nz-col [nzSpan]="8">
-    <p>账号：{{account}}</p>
-    <p>昵称：{{username}}</p>
-    <p>头像：<img src="{{avatar}}" title="{{username}}" alt="{{username}}"/></p>
-    <p>创建时间：{{createTime | date: 'yyyy-MM-dd'}}</p>
-  </div>
+<div nz-col [nzSpan]="6" class="left-box">
+    <div>
+      <img src="{{avatar}}" title="{{username}}" alt="{{username}}" class="avatar"/>
+    </div>
+    <p></p>
+    <p class="username">{{username}}</p>
+    <p>{{account}}</p>
+</div>
 
-  <div nz-col [nzSpan]="16">
-    我是右边的操作区域
-  </div>
+<div nz-col [nzSpan]="17" [nzOffset]="1" class="right-box">
+  我是右边的操作区域
 </div>

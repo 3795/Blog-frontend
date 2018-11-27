@@ -1,0 +1,24 @@
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: solid #eeeeee 1px;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.left-box {
+  padding-top: 20px;
+  text-align: center;
+  background-color: #f0f2f5;
+  height: 100%;
+}
+
+.right-box {
+  padding-top: 20px;
+  background-color: #f0f2f5;
+  height: 100%;
+}

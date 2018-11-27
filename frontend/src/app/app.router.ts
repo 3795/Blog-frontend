@@ -18,6 +18,7 @@ import {ArticleManageComponent} from "./backend/component/article-manage/article
 import {ArticleDraftboxComponent} from "./backend/component/article-manage/article-draftbox/article-draftbox.component";
 import {ArticleRecoverComponent} from "./backend/component/article-manage/article-recover/article-recover.component";
 import {UserInfoComponent} from "./backend/component/user-info/user-info.component";
+import {WriteArticleComponent} from "./backend/component/article-manage/write-article/write-article.component";
 
 const routes: Routes = [
 
@@ -37,7 +38,9 @@ const routes: Routes = [
               {path: '', redirectTo: "/manage/console/article/list", pathMatch: 'full'},
               {path: 'list', component: ArticleManageComponent, data: {breadcrumb: "文章列表"}},
               {path: 'draft', component: ArticleDraftboxComponent, data: {breadcrumb: "草稿箱"}},
-              {path: 'recover', component: ArticleRecoverComponent, data: {breadcrumb: "回收站"}}
+              {path: 'recover', component: ArticleRecoverComponent, data: {breadcrumb: "回收站"}},
+              {path: 'write', component: WriteArticleComponent, data: {breadcrumb: '写文章'}},
+              {path: 'write/:id', component: WriteArticleComponent, data: {breadcrumb: '编辑文章'}}
             ]}
         ]}
     ]},

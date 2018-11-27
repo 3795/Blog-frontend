@@ -33,7 +33,7 @@
           <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
         <td>
-          <a>编辑文章</a>
+          <a routerLink="/manage/console/article/write/{{data.id}}">编辑文章</a>
           <nz-divider nzType="vertical"></nz-divider>
           <a (click)="delete(data.id)">删除</a>
         </td>

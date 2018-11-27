@@ -41,6 +41,8 @@ import { ArticleManageComponent } from './backend/component/article-manage/artic
 import { ArticleDraftboxComponent } from './backend/component/article-manage/article-draftbox/article-draftbox.component';
 import { ArticleRecoverComponent } from './backend/component/article-manage/article-recover/article-recover.component';
 import { UserInfoComponent } from './backend/component/user-info/user-info.component';
+import { WriteArticleComponent } from './backend/component/article-manage/write-article/write-article.component';
+import { EditorWriteDirective } from './directive/editor-write/editor-write.directive';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { UserInfoComponent } from './backend/component/user-info/user-info.compo
     ArticleDraftboxComponent,
     ArticleRecoverComponent,
     UserInfoComponent,
+    WriteArticleComponent,
+    EditorWriteDirective,
   ],
   imports: [
     BrowserModule,
