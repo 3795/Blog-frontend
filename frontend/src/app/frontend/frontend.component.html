@@ -1,10 +1,24 @@
-<div class="layui-container">
-  <div class="layui-row">
-    <app-navigation-bar></app-navigation-bar>
-    <div class="layui-col-md10 layui-col-xs12" [ngClass]="{'main': isPC, 'mobile-main': isMobile}">
-      <app-top-bar></app-top-bar>
-      <router-outlet></router-outlet>
-    </div>
+<div nz-row style="background-color: #f0f2f5; padding-top: 6px">
+  <div nz-col [nzSpan]="4" [nzOffset]="2" >
+    <app-sider></app-sider>
   </div>
-
+  <div nz-col [nzSpan]="16">
+    <nz-layout>
+      <nz-header class="header">
+        <app-header></app-header>
+      </nz-header>
+      <nz-content style="margin:9px 0 0 10px ;">
+        <div class="content-box" nz-col [nzSpan]="16">
+          这里将是路由
+        </div>
+        <div nz-col [nzSpan]="8" style="padding-left: 10px">
+          <div class="right-box">
+          右边的区域
+          </div>
+        </div>
+      </nz-content>
+      <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+    </nz-layout>
+  </div>
 </div>
+

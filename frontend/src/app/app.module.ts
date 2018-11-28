@@ -37,12 +37,14 @@ import {BackendPaginationComponent} from './backend/component/backend-pagination
 import {NgZorroAntdModule} from "ng-zorro-antd";
 import {BreadCrumbsComponent} from './backend/component/bread-crumbs/bread-crumbs.component';
 import {NavigationManageComponent} from './backend/component/navigation-manage/navigation-manage.component';
-import { ArticleManageComponent } from './backend/component/article-manage/article-manage/article-manage.component';
-import { ArticleDraftboxComponent } from './backend/component/article-manage/article-draftbox/article-draftbox.component';
-import { ArticleRecoverComponent } from './backend/component/article-manage/article-recover/article-recover.component';
-import { UserInfoComponent } from './backend/component/user-info/user-info.component';
-import { WriteArticleComponent } from './backend/component/article-manage/write-article/write-article.component';
-import { EditorWriteDirective } from './directive/editor-write/editor-write.directive';
+import {ArticleManageComponent} from './backend/component/article-manage/article-manage/article-manage.component';
+import {ArticleDraftboxComponent} from './backend/component/article-manage/article-draftbox/article-draftbox.component';
+import {ArticleRecoverComponent} from './backend/component/article-manage/article-recover/article-recover.component';
+import {UserInfoComponent} from './backend/component/user-info/user-info.component';
+import {WriteArticleComponent} from './backend/component/article-manage/write-article/write-article.component';
+import {EditorWriteDirective} from './directive/editor-write/editor-write.directive';
+import {SiderComponent} from './frontend/components/sider/sider.component';
+import { HeaderComponent } from './frontend/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { EditorWriteDirective } from './directive/editor-write/editor-write.dire
     UserInfoComponent,
     WriteArticleComponent,
     EditorWriteDirective,
+    SiderComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

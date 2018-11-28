@@ -1,0 +1,17 @@
+.header {
+  background-color: #ffffff;
+  padding:0;
+  margin-left: 10px;
+}
+
+.content-box {
+  background: #ffffff;
+  min-height: 650px;
+}
+
+.right-box {
+  background: #ffffff;
+  min-height: 650px;
+}
+
+

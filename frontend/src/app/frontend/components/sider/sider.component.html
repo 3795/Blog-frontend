@@ -1,0 +1,17 @@
+<div class="sider">
+  <div style="position: absolute">
+  <div class="background-box">
+    <img src="http://img.ntshare.cn/bg.jpg" class="background-image">
+  </div>
+  <div class="user-info">
+    <img src="{{avatar}}" class="avatar">
+    <p class="username">{{username}}</p>
+    <div style="width: 240px">世界上有许多你意想不到的事，<br/>比如，你以为我要举个例子。</div>
+  </div>
+  <ul nz-menu [nzTheme]="'light'" [nzMode]="'inline'">
+    <li nz-menu-item *ngFor="let navigation of navigations">
+      <span class="nav-text">{{navigation.name}}</span>
+    </li>
+  </ul>
+  </div>
+</div>
