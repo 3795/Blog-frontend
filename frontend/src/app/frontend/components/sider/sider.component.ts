@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FrontendService} from "../../service/frontend.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sider',
@@ -13,7 +14,8 @@ export class SiderComponent implements OnInit {
 
   public navigations: any[] = [];
 
-  constructor(private frontendService: FrontendService) { }
+  constructor(private frontendService: FrontendService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getInfo();
@@ -32,6 +34,13 @@ export class SiderComponent implements OnInit {
     this.frontendService.get("/navigation")
       .subscribe( (data) => {
         this.navigations = data.data;
+      });
+  }
+
+  public changeCategory(url: string) {
+    this.router.navigateByUrl("/transitionPage")
+      .then(() => {
+        this.router.navigate([url]);
       });
   }
 

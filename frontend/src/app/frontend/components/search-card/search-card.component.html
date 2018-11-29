@@ -1,17 +1,22 @@
-<div class="layui-row">
-  <div class="layui-col-md12 card layui-hide-xs">
-    <div class="search">
-      <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" class="search-input" placeholder="请输入关键字" >
-      <button class="search-button" (click)="search()">搜索</button>
+<!--<div class="layui-row">-->
+  <!--<div class="layui-col-md12 card layui-hide-xs">-->
+    <!--<div class="search">-->
+      <!--<input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" class="search-input" placeholder="请输入关键字" >-->
+      <!--<button class="search-button" (click)="search()">搜索</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div nz-col [nzSpan]="24">
+  <div class="card search">
+    <div nz-col [nzSpan]="16" [nzOffset]="4">
+      <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixButton">
+        <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" nz-input placeholder="请输入关键词">
+      </nz-input-group>
+      <ng-template #suffixButton>
+        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="search()">搜索</button>
+      </ng-template>
     </div>
   </div>
 </div>
 
-<div class="layui-row">
-  <div class="layui-col-xs12 card layui-hide-md layui-hide-sm layui-hide-lg">
-    <div class="search">
-      <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" class="search-input" placeholder="请输入关键字" >
-      <button class="search-button" (click)="search()">搜索</button>
-    </div>
-  </div>
-</div>

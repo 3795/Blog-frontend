@@ -5,6 +5,8 @@
  */
 import {Injectable} from "@angular/core";
 import {HttpService} from "../../service/http.service";
+import {HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs/internal/Observable";
 
 @Injectable()
 export class FrontendService {
@@ -19,6 +21,11 @@ export class FrontendService {
   public get(url: string) {
     return this.httpService.get(url);
   }
+
+  public getWithParams(url: string, params: HttpParams): Observable<any> {
+    return this.httpService.getWithParams(url, params);
+  }
+
 }
 
 

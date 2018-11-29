@@ -3,56 +3,19 @@
  */
 body {
   font-size: 16px;
-  font-family: "华文楷体";
+  font-family: "楷体";
 }
 
-.main {
-  border: solid 1px #f1f5f8;
-  font-size: 16px;
-  margin-left: 21.8%;
-  padding-bottom: 80px;
-  background-color: #f1f5f8;
-  min-height: 800px;
-  max-height: max-content;
+a {
+  color: black;
 }
 
 .card {
-  height: 230px;
-  margin-top: 40px;
-  padding-right: 10px;
+  height: 220px;
+  margin: 10px;
+  padding: 10px;
   background-color: #ffffff;
   box-shadow: 5px 5px 10px #e2e2e2;
-}
-
-
-.below .layui-col-md4 {
-  text-align: center;
-}
-
-.pagination {
-  text-align: center;
-  margin-top: 60px;
-  font-size: 18px;
-}
-
-.pagination .layui-btn {
-  background-color: #b5bbbf;
-  margin: 0 5px 0 5px;
-}
-
-/*移动端css*/
-.mobile-main {
-  font-size: 16px;
-  padding-bottom: 80px;
-  background-color: #ffffff;
-}
-
-.mobile-main .card {
-  height: 180px;
-  margin-top: 30px;
-  padding:3px 5px 3px 5px;
-  background-color: #ffffff;
-  border: 1px solid #c4c5cc;
 }
 
 /***************************************后台管理的CSS样式******************************************/

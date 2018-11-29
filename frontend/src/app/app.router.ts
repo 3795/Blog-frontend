@@ -47,12 +47,12 @@ const routes: Routes = [
 
   {path: '', component: FrontendComponent, children: [
       {path: '', component: IndexPageComponent},
-      // {path: 'category/:id', component: CategoryPageComponent},
-      // {path: "article/:id", component: ArticlePageComponent},
-      // {path: "search", component: SearchPageComponent},
-      // {path: "404", pathMatch: "full", component: NotFoundComponent},
-      // {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
-      // {path: "**", pathMatch: "full", component: NotFoundComponent}
+      {path: 'category/:id', component: CategoryPageComponent},
+      {path: "article/:id", component: ArticlePageComponent},
+      {path: "search", component: SearchPageComponent},
+      {path: "404", pathMatch: "full", component: NotFoundComponent},
+      {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
+      {path: "**", pathMatch: "full", component: NotFoundComponent}
     ],
   }
 

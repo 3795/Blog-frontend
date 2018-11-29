@@ -1,17 +1,12 @@
-<div class="layui-col-md12 card layui-hide-xs">
-  <div class="mix">
-    {{categoryName}}
-    <div class="child-category">
-      <a (click)="changeCategory(category.id)" *ngFor="let category of categories"><div class="item">{{category.name}}</div></a>
+<div nz-col [nzSpan]="24">
+  <div class="mix card">
+    <div nz-col [nzSpan]="24" class="category-name">
+      {{categoryName}}
     </div>
-  </div>
-</div>
-
-<div class="layui-col-xs12 card layui-hide-md layui-hide-sm layui-hide-lg">
-  <div class="mix">
-    {{categoryName}}
-    <div class="child-category">
-      <a (click)="changeCategory(category.id)" *ngFor="let category of categories"><div class="item">{{category.name}}</div></a>
+    <div nz-col [nzSpan]="24">
+      <div nz-col [nzSpan]="4" class="category-children" *ngFor="let category of categories">
+        <a (click)="changeCategory(category.id)">{{category.name}}</a>
+      </div>
     </div>
   </div>
 </div>

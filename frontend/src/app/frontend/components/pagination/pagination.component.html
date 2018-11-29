@@ -1,7 +1,3 @@
-<div class="layui-row pagination" >
-  <a (click)="pageTurning(1)" ><button class="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-prev"></i></button></a>
-  <a (click)="pageTurning(currentPage-1)" ><button class="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-left"></i></button></a>
-  <a (click)="pageTurning(currentPage)" ><button class="layui-btn layui-btn-sm">&nbsp;{{currentPage}}&nbsp;</button></a>
-  <a (click)="pageTurning(currentPage+1)"><button class="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-right"></i></button></a>
-  <a (click)="pageTurning(maxPage)" ><button class="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-next"></i></button></a>
+<div nz-col [nzSpan]="24" class="pagination">
+  <nz-pagination [nzPageIndex]="pageNum" [nzTotal]="total" (nzPageIndexChange)="turnPage($event)"></nz-pagination>
 </div>

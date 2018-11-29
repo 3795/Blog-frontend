@@ -1,4 +1,3 @@
-
 .card .above {
   height: 75%;
   overflow: hidden;
@@ -9,23 +8,33 @@
 }
 
 .thumbnail {
-  margin: 15px 0 0 15px;
-  width: 225px;
-  height: 150px;
+  width: 93%;
+  height: 170px;
 }
 
-.card .title {
-  margin-top: 10px;
+.title {
   font-size: 20px;
   transition: margin-left 1s;
+  font-family: "华文隶书";
 }
 
 .card .title:hover {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
-.card .summary {
-  margin-top: 5px;
+.summary {
+  padding-top: 10px;
   font-size: 16px;
   text-indent: 2em;
+  height: 126px;
+  line-height: 160%;
+}
+
+.label {
+  margin-top: 10px;
+  border-top: solid 1px #eaeaea;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 5px 0 5px;
 }

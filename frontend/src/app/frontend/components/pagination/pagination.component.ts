@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {FrontendService} from "../../service/frontend.service";
 
@@ -10,38 +10,20 @@ import {FrontendService} from "../../service/frontend.service";
 export class PaginationComponent implements OnInit {
 
   @Input()
-  public currentPage: number;
+  public pageNum: number = 1;
 
   @Input()
-  public maxPage: number;
+  public total: number = 0;
 
-  @Input()
-  public navUrl: string;
+  @Output()
+  public nowPageNum = new EventEmitter();
 
   constructor(private pagesService: FrontendService,
               private router: Router) { }
 
   ngOnInit() {}
 
-  /**
-   * 进行翻页
-   * @param pageNumber
-   * @returns {Promise<void>}
-   */
-  pageTurning(pageNumber) {
-    let reg = /\?keywords=.*/;
-    this.router.navigateByUrl("/transitionPage")
-      .then(() => {
-        if(reg.test(this.navUrl)) {
-          let param = this.navUrl.replace(/\/.*\?.*=/, "");   //将原url中的参数清洗出来
-          this.navUrl = this.navUrl.replace(/\?.*/, "");    //将url清洗出来
-          this.router.navigate([this.navUrl],
-            {queryParams: {"keywords": param, "page": pageNumber}});
-        }
-        else
-          this.router.navigate([this.navUrl],
-          {queryParams: {"page": pageNumber}})
-      });
+  turnPage($event): void {
+    this.nowPageNum.emit($event);
   }
-
 }

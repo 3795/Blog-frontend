@@ -12,27 +12,15 @@ export class CategoryPageComponent implements OnInit {
 
   public id: number;
 
-  public navUrl: string = "";
-
-  private page: number;
-
   constructor(private routerInfo: ActivatedRoute) { }
 
   ngOnInit() {
-    this.routerInfo.queryParams.subscribe((params: Params) => {
-      this.page = params['page'];
-    });
 
     this.routerInfo.params.subscribe((params: Params) => {
       this.id = params['id'];
     });
 
     this.apiUrl += "/" + this.id;
-    this.navUrl = this.apiUrl;
-
-    if(this.page != undefined) {
-      this.apiUrl += "?page=" + this.page;
-    }
   }
 
 }

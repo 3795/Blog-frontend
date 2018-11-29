@@ -1,25 +1,29 @@
-<div class="layui-row">
-  <div class="layui-col-md12 card layui-col-xs12" *ngFor="let articleCard of articleCards">
-    <div class="above">
-      <div class="layui-col-md5 layui-hide-xs">
+<nz-skeleton nzActive="true" [nzLoading]="loading">
+  <div nz-col [nzSpan]="24" *ngFor="let articleCard of articleCards">
+    <div class="card">
+      <div nz-col [nzSpan]="8">
         <img src="{{articleCard.img}}" title='{{articleCard.title}}' alt="{{articleCard.title}}" class="thumbnail">
       </div>
-      <div class="layui-col-md7 layui-col-xs12">
-        <p class="title"><a routerLink="/article/{{articleCard.id}}">{{articleCard.title}}</a></p>
-        <p class="summary">
+      <div nz-col [nzSpan]="16">
+        <div nz-col [nzSpan]="24" class="title">
+          <a routerLink="/article/{{articleCard.id}}">{{articleCard.title}}</a>
+        </div>
+        <div nz-col [nzSpan]="24" class="summary">
           {{articleCard.summary}}
-        </p>
+        </div>
+        <div nz-col [nzSpan]="24" class="label">
+          <div nz-col [nzSpan]="8" style="text-align: left">
+            <i nz-icon type="clock-circle" theme="outline"></i>&nbsp;{{articleCard.createTime | date: 'yyyy-MM-dd'}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            <i nz-icon type="tags" theme="outline"></i>&nbsp;{{articleCard.categoryName}}
+          </div>
+          <div nz-col [nzSpan]="8" style="text-align: right">
+            <a routerLink="/article/{{articleCard.id}}">阅读全文</a>
+          </div>
+        </div>
       </div>
-    </div><hr/>
-    <div class="below">
-      <div class="layui-col-md4 layui-col-xs4">
-        <i class="layui-icon layui-icon-log"></i>{{articleCard.createTime | date:'yyyy-MM-dd'}}
-      </div>
-      <div class="layui-col-md4 layui-col-xs4">
-        <i class="layui-icon layui-icon-note"></i>{{articleCard.categoryName}}
-      </div>
-      <div class="layui-col-md4 layui-col-xs4"><a routerLink="/article/{{articleCard.id}}">阅读全文</a></div>
     </div>
   </div>
-</div>
-<app-pagination [currentPage]="currentPage" [maxPage]="maxPage" [navUrl]="navUrl" ></app-pagination>
+</nz-skeleton>
+<app-pagination [pageNum]="pageNum" [total]="total" (nowPageNum)="turnPage($event)"></app-pagination>

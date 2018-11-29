@@ -1,18 +1,9 @@
 
-.card .pure {
+.pure {
   text-align: center;
-  height: 200px;
-  line-height: 200px;
+  height: 220px;
+  line-height: 220px;
   font-size: 60px;
   font-family: "华文彩云";
-}
-
-.layui-col-xs12 .pure {
-  text-align: center;
-  height: 180px;
-  line-height: 170px;
-  font-size: 40px;
-  font-family: "华文彩云";
-
 }
 

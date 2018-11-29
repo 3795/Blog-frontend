@@ -22,7 +22,7 @@ export class SearchCardComponent implements OnInit {
   public search() {
     this.keywords = this.keywords.replace(/\s+/g,"");
     if(this.keywords !== "") {
-      this.router.navigateByUrl("//transitionPage").then(() => {
+      this.router.navigateByUrl("/transitionPage").then(() => {
         this.router.navigate(["/search"],
           {queryParams: {"keywords": this.keywords}});
       });

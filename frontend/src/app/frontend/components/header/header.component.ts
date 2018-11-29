@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public keywords: string;
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+  search(): void {
+    this.keywords = this.keywords.replace(/\s+/g,"");
+    if(this.keywords !== "") {
+      this.router.navigateByUrl("/transitionPage").then(() => {
+        this.router.navigate(["/search"],
+          {queryParams: {"keywords": this.keywords}});
+        this.keywords = "";
+      });
+    }
+  }
 }

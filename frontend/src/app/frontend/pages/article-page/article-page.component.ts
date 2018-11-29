@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {FrontendService} from "../../service/frontend.service";
 
 @Component({
   selector: 'app-article-page',
@@ -9,26 +10,33 @@ import {Title} from "@angular/platform-browser";
 })
 export class ArticlePageComponent implements OnInit {
 
-  public id: number;    // 文章的id
+  public id: number;
 
-  public title: string;   // 文章的标题
+  public article: object;
+
+  public spin: boolean = true;
 
   constructor(private routerInfo: ActivatedRoute,
-              private titleService: Title) { }
+              private titleService: Title,
+              private frontendService: FrontendService,
+              private router: Router) { }
 
   ngOnInit() {
     this.routerInfo.params.subscribe((params: Params) => {
       this.id = params['id'];
     });
-  }
 
-  /**
-   * 监听子组件传递过来的title
-   * @param {string} title
-   */
-  onTitle(title: string) {
-    this.titleService.setTitle("NTShare-" + title);
-    this.title = title;
+    this.frontendService.get("/article/" + this.id)
+      .subscribe((data) => {
+        if (data.code % 2) {
+          this.article = data.data;
+          this.titleService.setTitle(data.data['title']);
+          this.spin = false;
+        } else {
+          this.router.navigateByUrl("/404");
+        }
+      });
+
   }
 
 }

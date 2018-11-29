@@ -10,7 +10,7 @@ import {Category, FrontendService} from "../../service/frontend.service";
 })
 export class CategoryCardComponent implements OnInit {
 
-  public apiUrl: string = "/category";
+  public apiUrl: string = "/category/children";
 
   public categoryName: string;
 
@@ -27,15 +27,15 @@ export class CategoryCardComponent implements OnInit {
     this.routeInfo.params.subscribe((params: Params) => {
       this.id = params['id'];
     });
-    this.apiUrl += "/" + this.id + "/children";
+    this.apiUrl += "?id=" + this.id;
     this.frontendService.get(this.apiUrl)
       .subscribe(data => {
         if(!(data['code']%2)) {
-          return;
+          this.router.navigateByUrl("/404");
         }
         else {
           this.categoryName = data['data']['name'];
-          this.categories = data['data']['categoryDtos'];
+          this.categories = data['data']['categoryDTOList'];
           this.titleService.setTitle("NTShare-" + this.categoryName);
         }
       });

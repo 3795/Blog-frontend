@@ -1,15 +1,27 @@
 
-.article {
-  margin-top: 30px;
-  padding: 10px 10px 30px 10px;
+.article-content {
   background-color: #ffffff;
+  min-height: 650px;
 }
 
-.article .title {
-  font-size: 26px;
+.title {
+  font-size: 30px;
+  font-family: '华文隶书';
+  height: 60px;
+  line-height: 80px;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.label {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: #efefef solid 1px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.article .content {
+.content {
   font-size: 16px;
+  padding-bottom: 30px ;
 }

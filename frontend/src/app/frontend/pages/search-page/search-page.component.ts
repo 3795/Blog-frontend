@@ -13,10 +13,6 @@ export class SearchPageComponent implements OnInit {
 
   public apiUrl: string = "/article/search";
 
-  public navUrl: string = "/search";
-
-  public page: number;
-
   constructor(private routeInfo: ActivatedRoute,
               private titleService: Title) { }
 
@@ -24,17 +20,12 @@ export class SearchPageComponent implements OnInit {
     this.titleService.setTitle("NTShare-搜索");
     this.routeInfo.queryParams.subscribe((params: Params) => {
       this.keywords = params['keywords'];
-      this.page = params['page'];
     });
 
     if(this.keywords == undefined)
       return ;
     else {
-      this.navUrl += "?keywords=" + this.keywords;
-      if(this.page != undefined)
-        this.apiUrl += "?keywords=" + this.keywords + "&page=" + this.page;
-      else
-        this.apiUrl += "?keywords=" + this.keywords;
+      this.apiUrl += "?keywords=" + this.keywords;
     }
   }
 
