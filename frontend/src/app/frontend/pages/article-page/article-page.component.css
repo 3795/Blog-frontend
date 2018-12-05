@@ -25,3 +25,12 @@
   font-size: 16px;
   padding-bottom: 30px ;
 }
+
+.article-sider {
+  padding-left: 10px;
+  height: 200px;
+}
+
+.directory {
+  background-color: #ffffff;
+}

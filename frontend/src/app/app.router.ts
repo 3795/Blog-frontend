@@ -19,9 +19,11 @@ import {ArticleDraftboxComponent} from "./backend/component/article-manage/artic
 import {ArticleRecoverComponent} from "./backend/component/article-manage/article-recover/article-recover.component";
 import {UserInfoComponent} from "./backend/component/user-info/user-info.component";
 import {WriteArticleComponent} from "./backend/component/article-manage/write-article/write-article.component";
+import {ContentPageComponent} from "./frontend/pages/content-page/content-page.component";
 
 const routes: Routes = [
 
+  // 管理系统路由
   {path: 'manage', component: BackendComponent, children: [
       {path: '', component: LoginPageComponent},
       {path: 'login', component: LoginPageComponent},
@@ -45,16 +47,18 @@ const routes: Routes = [
         ]}
     ]},
 
+  // 前台系统路由
   {path: '', component: FrontendComponent, children: [
-      {path: '', component: IndexPageComponent},
-      {path: 'category/:id', component: CategoryPageComponent},
       {path: "article/:id", component: ArticlePageComponent},
-      {path: "search", component: SearchPageComponent},
-      {path: "404", pathMatch: "full", component: NotFoundComponent},
-      {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
-      {path: "**", pathMatch: "full", component: NotFoundComponent}
-    ],
-  }
+      {path: '', component: ContentPageComponent, children: [
+          {path: '', component: IndexPageComponent},
+          {path: 'category/:id', component: CategoryPageComponent},
+          {path: "search", component: SearchPageComponent},
+          {path: "404", pathMatch: "full", component: NotFoundComponent},
+          {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
+          {path: "**", pathMatch: "full", component: NotFoundComponent}
+        ]},
+    ]},
 
 ];
 

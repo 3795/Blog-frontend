@@ -1,0 +1,19 @@
+<div nz-col [nzSpan]="24" class="right-two">
+  <nz-card  [nzTitle]="cardTitle" [nzBordered]="false">
+    <div class="tag-box"><nz-tag [nzColor]="'magenta'">Java</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'red'">SpringBoot</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'geekblue'">算法</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'#2db7f5'">Spring</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'orange'">Linux</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'purple'">多线程</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'lime'">Angular</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'green'">MySQL</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'cyan'">Nginx</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'blue'">Centos</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'gold'">踩坑</nz-tag></div>
+    <div class="tag-box"><nz-tag [nzColor]="'volcano'">环境搭建</nz-tag></div>
+  </nz-card>
+  <ng-template #cardTitle>
+    <i nz-icon type='tags' theme='outline'></i>&nbsp;文章标签
+  </ng-template>
+</div>

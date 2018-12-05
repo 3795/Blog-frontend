@@ -44,6 +44,9 @@ import {SiderComponent} from './frontend/components/sider/sider.component';
 import { HeaderComponent } from './frontend/components/header/header.component';
 import { FooterComponent } from './frontend/components/footer/footer.component';
 import { RightOneComponent } from './frontend/components/right-one/right-one.component';
+import { RightTwoComponent } from './frontend/components/right-two/right-two.component';
+import { RightThreeComponent } from './frontend/components/right-three/right-three.component';
+import { ContentPageComponent } from './frontend/pages/content-page/content-page.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +84,9 @@ import { RightOneComponent } from './frontend/components/right-one/right-one.com
     HeaderComponent,
     FooterComponent,
     RightOneComponent,
+    RightTwoComponent,
+    RightThreeComponent,
+    ContentPageComponent,
   ],
   imports: [
     BrowserModule,

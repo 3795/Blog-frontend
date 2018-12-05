@@ -1,4 +1,4 @@
-<div nz-col [nzSpan]="24" class="article-content">
+<div nz-col [nzSpan]="21" class="article-content">
   <div nz-col [nzSpan]="24" class="title">
     {{article['title']}}
   </div>
@@ -18,3 +18,18 @@
     </nz-spin>
   </div>
 </div>
+<div nz-col [nzSpan]="3" class="article-sider">
+  <div nz-col [nzSpan]="24" class="directory">
+    <nz-anchor>
+      <nz-link nzHref="#c" nzTitle="目录一"></nz-link>
+      <nz-link nzHref="#c" nzTitle="目录二"></nz-link>
+      <nz-link nzHref="#api" nzTitle="目录三">
+        <nz-link nzHref="#nz-anchor" nzTitle="分支一"></nz-link>
+        <nz-link nzHref="#nz-link" nzTitle="分支二"></nz-link>
+      </nz-link>
+      <nz-link nzHref="#co" nzTitle="目录四"></nz-link>
+      <nz-link nzHref="#co" nzTitle="目录五"></nz-link>
+    </nz-anchor>
+  </div>
+</div>
+

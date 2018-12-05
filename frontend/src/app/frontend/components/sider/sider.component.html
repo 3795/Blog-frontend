@@ -7,10 +7,10 @@
       <img src="{{avatar}}" class="avatar">
       <p class="username">{{username}}</p>
       <div nz-col [nzSpan]="12" class="info-box">
-        <span class="weight">28</span>文章
+        <span class="weight">{{articleCount}}</span>文章
       </div>
       <div nz-col [nzSpan]="12" class="info-box">
-        <span class="weight">14</span>分类
+        <span class="weight">{{categoryCount}}</span>分类
       </div>
     </div>
     <ul nz-menu [nzTheme]="'light'" [nzMode]="'inline'">

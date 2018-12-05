@@ -14,14 +14,21 @@ export class SiderComponent implements OnInit {
 
   public navigations: any[] = [];
 
+  public articleCount: number = 0;
+  public categoryCount: number = 0;
+
   constructor(private frontendService: FrontendService,
               private router: Router) { }
 
   ngOnInit() {
     this.getInfo();
     this.initNavigation();
+    this.getCount();
   }
 
+  /**
+   * 获得用户信息
+   */
   getInfo(): void {
     this.frontendService.get("/user")
       .subscribe((data) => {
@@ -30,6 +37,9 @@ export class SiderComponent implements OnInit {
       });
   }
 
+  /**
+   * 初始化导航数据
+   */
   initNavigation(): void {
     this.frontendService.get("/navigation")
       .subscribe( (data) => {
@@ -37,10 +47,39 @@ export class SiderComponent implements OnInit {
       });
   }
 
+  /**
+   * 切换导航
+   * @param {string} url
+   */
   public changeCategory(url: string) {
     this.router.navigateByUrl("/transitionPage")
       .then(() => {
         this.router.navigate([url]);
+      });
+  }
+
+  /**
+   * 获取数量
+   */
+  public getCount(): void {
+    // 获取文章的总数量
+    this.frontendService.get("/article/count")
+      .subscribe((data) => {
+        if (data.code % 2) {
+          this.articleCount = data.data;
+        } else {
+          this.articleCount = 26;
+        }
+      });
+
+    // 获取分类的总个数
+    this.frontendService.get("/category/count")
+      .subscribe((data) => {
+        if (data.code % 2) {
+          this.categoryCount = data.data;
+        } else {
+          this.articleCount = 18;
+        }
       });
   }
 
