@@ -125,7 +125,7 @@ export class NavigationManageComponent implements OnInit {
    * 处理函数
    */
   handle(): void {
-    if (this.id != null) {
+    if (this.id != 0) {
       this.update();
     } else {
       this.insert();
@@ -171,7 +171,7 @@ export class NavigationManageComponent implements OnInit {
     this.visible = true;
 
     // 渲染表单
-    this.id = null;
+    this.id = 0;
     this.name = "";
     this.priority = 0;
     this.link = "";

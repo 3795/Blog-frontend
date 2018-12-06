@@ -1,0 +1,62 @@
+<div>
+  <Navbar class="nav-bar" [icon]="icon"
+          (onLeftClick)="onOpenChange($event)"
+          [rightContent]="rightContent">
+    NTShare
+  </Navbar>
+  <Drawer class="my-drawer"
+          [ngStyle]="{minHeight: this.height+'px'}"
+          [contentStyle]="{paddingTop: '0' }"
+          [sidebar]="sidebar"
+          [open]="this.state.open"
+          (onOpenChange)="onOpenChange($event)">
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-mobile-footer></app-mobile-footer>
+
+  </Drawer>
+</div>
+
+<ng-template #icon>
+  <Icon type="ellipsis"></Icon>
+</ng-template>
+
+<ng-template #rightContent>
+  <Icon [type]="'search'" [ngStyle]="{marginRight: '16px'}" routerLink="/mobile/search"></Icon>
+</ng-template>
+
+<ng-template #sidebar>
+  <div class="sider">
+    <div class="background-box">
+      <img src="http://img.ntshare.cn/bg.jpg" class="background-image">
+    </div>
+    <div class="user-info">
+      <img src="{{avatar}}" class="avatar">
+      <p class="username">{{username}}</p>
+      <div nz-col [nzSpan]="12" class="info-box">
+        <span class="weight">{{articleCount}}</span>文章
+      </div>
+      <div nz-col [nzSpan]="12" class="info-box">
+        <span class="weight">{{categoryCount}}</span>分类
+      </div>
+    </div>
+    <ul nz-menu [nzTheme]="'light'" [nzMode]="'inline'">
+      <li nz-menu-item>
+        <div (click)="changeCategory('')">
+          <span class="nav-text">首页</span>
+        </div>
+      </li>
+      <li nz-menu-item *ngFor="let navigation of navigations">
+        <div (click)="changeCategory(navigation.link)">
+          <span class="nav-text">{{navigation.name}}</span>
+        </div>
+      </li>
+    </ul>
+    <div style="height: 100px;background-color: #ffffff">
+    </div>
+  </div>
+</ng-template>
+

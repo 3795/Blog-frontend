@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.css']
+  selector: 'app-mobile-pagination',
+  templateUrl: './mobile-pagination.component.html',
+  styleUrls: ['./mobile-pagination.component.css']
 })
-export class PaginationComponent implements OnInit {
+export class MobilePaginationComponent implements OnInit {
 
   @Input()
   public pageNum: number = 1;

@@ -1,22 +1,23 @@
 <div nz-col [nzSpan]="21" class="article-content">
-  <div nz-col [nzSpan]="24" class="title">
-    {{article['title']}}
-  </div>
-  <div nz-col [nzSpan]="24" class="label">
-    <div nz-col [nzSpan]="6" style="float: right">
-      <i nz-icon type="clock-circle" theme="outline"></i>&nbsp;{{article['createTime'] | date: 'yyyy-MM-dd'}}
+  <nz-spin [nzSpinning]="spin">
+    <div nz-col [nzSpan]="24" class="title">
+      {{article['title']}}
     </div>
-    <div routerLink="/category/{{article['categoryId']}}" nz-col [nzSpan]="6" style="float: right">
-      <a><i nz-icon type="tags" theme="outline"></i>&nbsp;{{article['categoryName']}}</a>
+    <div nz-col [nzSpan]="24" class="label">
+      <div nz-col [nzSpan]="6" style="float: right">
+        <i nz-icon type="clock-circle" theme="outline"></i>&nbsp;{{article['createTime'] | date: 'yyyy-MM-dd'}}
+      </div>
+      <div routerLink="/category/{{article['categoryId']}}" nz-col [nzSpan]="6" style="float: right">
+        <a><i nz-icon type="tags" theme="outline"></i>&nbsp;{{article['categoryName']}}</a>
+      </div>
     </div>
-  </div>
-  <div nz-col [nzSpan]="24" class="content">
-    <nz-spin [nzSpinning]="spin">
+    <div nz-col [nzSpan]="24" class="content">
+
       <div class="content" id="content-editormd" appEditorShow [content]="article['content']">
         <textarea style="display: none" id="content"></textarea>
       </div>
-    </nz-spin>
-  </div>
+    </div>
+  </nz-spin>
 </div>
 <div nz-col [nzSpan]="3" class="article-sider">
   <div nz-col [nzSpan]="24" class="directory">

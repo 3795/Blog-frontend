@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  ngOnInit(): void { }
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+
+    if (document.body.clientWidth <= 800) {
+      this.router.navigateByUrl("/mobile");
+    }
+  }
 
 }

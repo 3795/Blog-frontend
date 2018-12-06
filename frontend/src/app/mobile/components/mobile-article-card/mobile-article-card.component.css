@@ -1,3 +1,7 @@
+.article-card {
+  height: 180px;
+}
+
 .card .above {
   height: 75%;
   overflow: hidden;
@@ -5,11 +9,6 @@
 
 .card .below {
   height: 25%;
-}
-
-.thumbnail {
-  width: 93%;
-  height: 170px;
 }
 
 .title {
@@ -23,10 +22,9 @@
 }
 
 .summary {
-  padding-top: 10px;
   font-size: 16px;
   text-indent: 2em;
-  height: 126px;
+  height: 100px;
   line-height: 160%;
   overflow: hidden;
 }
@@ -35,7 +33,8 @@
   margin-top: 10px;
   border-top: solid 1px #eaeaea;
   text-align: center;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   padding: 0 5px 0 5px;
+  font-size: 14px;
 }

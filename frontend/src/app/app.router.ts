@@ -20,6 +20,13 @@ import {ArticleRecoverComponent} from "./backend/component/article-manage/articl
 import {UserInfoComponent} from "./backend/component/user-info/user-info.component";
 import {WriteArticleComponent} from "./backend/component/article-manage/write-article/write-article.component";
 import {ContentPageComponent} from "./frontend/pages/content-page/content-page.component";
+import {MobileComponent} from "./mobile/mobile.component";
+import {MobileIndexPageComponent} from "./mobile/pages/mobile-index-page/mobile-index-page.component";
+import {MobileCategoryPageComponent} from "./mobile/pages/mobile-category-page/mobile-category-page.component";
+import {MobileTransitionPageComponent} from "./mobile/pages/mobile-transition-page/mobile-transition-page.component";
+import {NotFoundPageComponent} from "./mobile/pages/not-found-page/not-found-page.component";
+import {MobileArticlePageComponent} from "./mobile/pages/mobile-article-page/mobile-article-page.component";
+import {MobileSearchPageComponent} from "./mobile/pages/mobile-search-page/mobile-search-page.component";
 
 const routes: Routes = [
 
@@ -47,7 +54,19 @@ const routes: Routes = [
         ]}
     ]},
 
-  // 前台系统路由
+  // 前台系统Mobile端路由
+  {path: 'mobile', component: MobileComponent, children: [
+      {path: '', component: MobileIndexPageComponent},
+      {path: 'category/:id', component: MobileCategoryPageComponent},
+      {path: "article/:id", component: MobileArticlePageComponent},
+      {path: "search", component: MobileSearchPageComponent},
+      {path: "transition", pathMatch: "full", component: MobileTransitionPageComponent},
+      {path: "404", pathMatch: "full", component: NotFoundPageComponent},
+      {path: "**", pathMatch: "full", component: NotFoundPageComponent},
+
+    ]},
+
+  // 前台系统PC端路由
   {path: '', component: FrontendComponent, children: [
       {path: "article/:id", component: ArticlePageComponent},
       {path: '', component: ContentPageComponent, children: [

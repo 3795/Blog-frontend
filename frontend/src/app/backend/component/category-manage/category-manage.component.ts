@@ -167,7 +167,7 @@ export class CategoryManageComponent implements OnInit {
     this.visible = true;
 
     // 渲染表单
-    this.id = null;
+    this.id = 0;
     this.name = "";
     this.parentId = 0;
 
@@ -203,7 +203,7 @@ export class CategoryManageComponent implements OnInit {
    * 处理函数
    */
   handle(): void {
-    if (this.id != null) {
+    if (this.id != 0) {
       this.update();
     } else {
       this.insert();
