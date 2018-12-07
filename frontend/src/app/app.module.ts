@@ -35,23 +35,6 @@ import { RightTwoComponent } from './frontend/components/right-two/right-two.com
 import { RightThreeComponent } from './frontend/components/right-three/right-three.component';
 import { ContentPageComponent } from './frontend/pages/content-page/content-page.component';
 
-import {BackendComponent} from './backend/backend.component';
-import {LoginPageComponent} from './backend/page/login-page/login-page.component';
-import {ConsolePageComponent} from './backend/page/console-page/console-page.component';
-import {BackendService} from "./backend/service/backend.service";
-import {BackendNavigationComponent} from './backend/component/backend-navigation/backend-navigation.component';
-import {BackendHeaderComponent} from './backend/component/backend-header/backend-header.component';
-import {BackendDashboardComponent} from './backend/component/backend-dashboard/backend-dashboard.component';
-import {CategoryManageComponent} from './backend/component/category-manage/category-manage.component';
-import {BackendPaginationComponent} from './backend/component/backend-pagination/backend-pagination.component';
-import {BreadCrumbsComponent} from './backend/component/bread-crumbs/bread-crumbs.component';
-import {NavigationManageComponent} from './backend/component/navigation-manage/navigation-manage.component';
-import {ArticleManageComponent} from './backend/component/article-manage/article-manage/article-manage.component';
-import {ArticleDraftboxComponent} from './backend/component/article-manage/article-draftbox/article-draftbox.component';
-import {ArticleRecoverComponent} from './backend/component/article-manage/article-recover/article-recover.component';
-import {UserInfoComponent} from './backend/component/user-info/user-info.component';
-import {WriteArticleComponent} from './backend/component/article-manage/write-article/write-article.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,21 +51,6 @@ import {WriteArticleComponent} from './backend/component/article-manage/write-ar
     SearchCardComponent,
     EditorShowDirective,
     FrontendComponent,
-    BackendComponent,
-    LoginPageComponent,
-    ConsolePageComponent,
-    BackendNavigationComponent,
-    BackendHeaderComponent,
-    BackendDashboardComponent,
-    CategoryManageComponent,
-    BackendPaginationComponent,
-    BreadCrumbsComponent,
-    NavigationManageComponent,
-    ArticleManageComponent,
-    ArticleDraftboxComponent,
-    ArticleRecoverComponent,
-    UserInfoComponent,
-    WriteArticleComponent,
     EditorWriteDirective,
     SiderComponent,
     HeaderComponent,
@@ -105,7 +73,6 @@ import {WriteArticleComponent} from './backend/component/article-manage/write-ar
   providers: [
     HttpService,
     FrontendService,
-    BackendService,
   ],
   bootstrap: [AppComponent]
 })
