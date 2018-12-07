@@ -52,21 +52,6 @@ import {ArticleRecoverComponent} from './backend/component/article-manage/articl
 import {UserInfoComponent} from './backend/component/user-info/user-info.component';
 import {WriteArticleComponent} from './backend/component/article-manage/write-article/write-article.component';
 
-
-import { MobileComponent } from './mobile/mobile.component';
-import { MobileIndexPageComponent } from './mobile/pages/mobile-index-page/mobile-index-page.component';
-import { MobileDefaultCardComponent } from './mobile/components/mobile-default-card/mobile-default-card.component';
-import { MobileArticleCardComponent } from './mobile/components/mobile-article-card/mobile-article-card.component';
-import { MobilePaginationComponent } from './mobile/components/mobile-pagination/mobile-pagination.component';
-import { MobileFooterComponent } from './mobile/components/mobile-footer/mobile-footer.component';
-import { MobileCategoryCardComponent } from './mobile/components/mobile-category-card/mobile-category-card.component';
-import { MobileCategoryPageComponent } from './mobile/pages/mobile-category-page/mobile-category-page.component';
-import { MobileTransitionPageComponent } from './mobile/pages/mobile-transition-page/mobile-transition-page.component';
-import { NotFoundPageComponent } from './mobile/pages/not-found-page/not-found-page.component';
-import { MobileArticlePageComponent } from './mobile/pages/mobile-article-page/mobile-article-page.component';
-import { MobileSearchPageComponent } from './mobile/pages/mobile-search-page/mobile-search-page.component';
-import { MobileSearchCardComponent } from './mobile/components/mobile-search-card/mobile-search-card.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,19 +91,6 @@ import { MobileSearchCardComponent } from './mobile/components/mobile-search-car
     RightTwoComponent,
     RightThreeComponent,
     ContentPageComponent,
-    MobileComponent,
-    MobileIndexPageComponent,
-    MobileDefaultCardComponent,
-    MobileArticleCardComponent,
-    MobilePaginationComponent,
-    MobileFooterComponent,
-    MobileCategoryCardComponent,
-    MobileCategoryPageComponent,
-    MobileTransitionPageComponent,
-    NotFoundPageComponent,
-    MobileArticlePageComponent,
-    MobileSearchPageComponent,
-    MobileSearchCardComponent,
   ],
   imports: [
     BrowserModule,
