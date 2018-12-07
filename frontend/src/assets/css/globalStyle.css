@@ -19,27 +19,6 @@ a {
 }
 
 /***************************************后台管理的CSS样式******************************************/
-.table-head {
-  height: 30px;
-  line-height: 30px;
-  margin-bottom: 10px;
-}
-
-.table-title {
-  font-size: 26px;
-  font-family: "华文行楷";
-}
-
-.drawer-footer {
-  position: absolute;
-  bottom: 36px;
-  width: 100%;
-  border-top: 1px solid rgb(232, 232, 232);
-  padding: 10px 16px;
-  text-align: center;
-  left: 0;
-  background: #fff;
-}
 
 
 

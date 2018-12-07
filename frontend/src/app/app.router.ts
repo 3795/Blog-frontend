@@ -46,7 +46,7 @@ const routes: Routes = [
             ]}
         ]}
     ]},
-  
+
   // 前台系统PC端路由
   {path: '', component: FrontendComponent, children: [
       {path: "article/:id", component: ArticlePageComponent},

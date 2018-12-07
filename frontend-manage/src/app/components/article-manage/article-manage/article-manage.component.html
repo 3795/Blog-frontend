@@ -1,0 +1,47 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div nz-row class="table-head">
+      <div>
+        <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
+        <div nz-col [nzSpan]="12" style="text-align: right">
+
+        </div>
+      </div>
+    </div>
+    <nz-table #articleTable [nzData]="articleData"
+              [(nzPageIndex)]="pageNum" [nzTotal]="total"
+              [nzFrontPagination]="false" (nzPageIndexChange)="turnPage($event)">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>分类名称</th>
+        <th>创建时间</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of articleTable.data">
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.categoryName}}</td>
+        <td>{{data.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>
+          <nz-switch [ngModel]="data.status" [nzCheckedChildren]="checkedTemplate"
+                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeStatus(data.id, $event)"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
+        <td>
+          <a routerLink="/console/article/write/{{data.id}}">编辑文章</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(data.id)">删除</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+</div>
+
+
