@@ -1,27 +1,26 @@
 import {RouterModule, Routes} from "@angular/router";
-
-import {FrontendComponent} from "./frontend/frontend.component";
-import {IndexPageComponent} from "./frontend/pages/index-page/index-page.component";
-import {CategoryPageComponent} from "./frontend/pages/category-page/category-page.component";
-import {ArticlePageComponent} from "./frontend/pages/article-page/article-page.component";
-import {SearchPageComponent} from "./frontend/pages/search-page/search-page.component";
-import {NotFoundComponent} from "./frontend/pages/not-found/not-found.component";
-import {TransitionPageComponent} from "./frontend/pages/transition-page/transition-page.component";
-import {ContentPageComponent} from "./frontend/pages/content-page/content-page.component";
+import {ArticlePageComponent} from "./pages/article-page/article-page.component";
+import {ContentPageComponent} from "./pages/content-page/content-page.component";
+import {IndexPageComponent} from "./pages/index-page/index-page.component";
+import {CategoryPageComponent} from "./pages/category-page/category-page.component";
+import {SearchPageComponent} from "./pages/search-page/search-page.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {TransitionPageComponent} from "./pages/transition-page/transition-page.component";
+import {AdaptGuard} from "./guard/adapt.guard";
 
 const routes: Routes = [
 
-  {path: '', component: FrontendComponent, children: [
-      {path: "article/:id", component: ArticlePageComponent},
-      {path: '', component: ContentPageComponent, children: [
-          {path: '', component: IndexPageComponent},
-          {path: 'category/:id', component: CategoryPageComponent},
-          {path: "search", component: SearchPageComponent},
-          {path: "404", pathMatch: "full", component: NotFoundComponent},
-          {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
-          {path: "**", pathMatch: "full", component: NotFoundComponent}
-        ]},
-    ]},
+  {path: "article/:id", component: ArticlePageComponent, canActivate: [AdaptGuard]},
+  {
+    path: '', component: ContentPageComponent, canActivateChild: [AdaptGuard], children: [
+      {path: '', component: IndexPageComponent},
+      {path: 'category/:id', component: CategoryPageComponent},
+      {path: "search", component: SearchPageComponent},
+      {path: "404", pathMatch: "full", component: NotFoundComponent},
+      {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
+      {path: "**", pathMatch: "full", component: NotFoundComponent}
+    ]
+  },
 
 ];
 

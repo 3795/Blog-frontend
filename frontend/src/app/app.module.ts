@@ -13,27 +13,25 @@ import {NgZorroAntdMobileModule} from "ng-zorro-antd-mobile";
 import {HttpService} from "./service/http.service";
 import {EditorShowDirective} from './directive/editor-show/editor-show.directive';
 import {EditorWriteDirective} from './directive/editor-write/editor-write.directive';
+import {DefaultCardComponent} from "./components/default-card/default-card.component";
+import {PaginationComponent} from "./components/pagination/pagination.component";
+import {ArticleCardComponent} from "./components/article-card/article-card.component";
+import {IndexPageComponent} from "./pages/index-page/index-page.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {TransitionPageComponent} from "./pages/transition-page/transition-page.component";
+import {CategoryPageComponent} from "./pages/category-page/category-page.component";
+import {CategoryCardComponent} from "./components/category-card/category-card.component";
+import {ArticlePageComponent} from "./pages/article-page/article-page.component";
+import {SearchPageComponent} from "./pages/search-page/search-page.component";
+import {SearchCardComponent} from "./components/search-card/search-card.component";
+import {SiderComponent} from "./components/sider/sider.component";
+import {HeaderComponent} from "./components/header/header.component";
+import {FooterComponent} from "./components/footer/footer.component";
+import {RightOneComponent} from "./components/right-one/right-one.component";
+import {RightTwoComponent} from "./components/right-two/right-two.component";
+import {RightThreeComponent} from "./components/right-three/right-three.component";
+import {ContentPageComponent} from "./pages/content-page/content-page.component";
 
-import {FrontendComponent} from './frontend/frontend.component';
-import {ArticleCardComponent} from "./frontend/components/article-card/article-card.component";
-import {CategoryPageComponent} from "./frontend/pages/category-page/category-page.component";
-import {TransitionPageComponent} from "./frontend/pages/transition-page/transition-page.component";
-import {NotFoundComponent} from "./frontend/pages/not-found/not-found.component";
-import {PaginationComponent} from "./frontend/components/pagination/pagination.component";
-import {IndexPageComponent} from "./frontend/pages/index-page/index-page.component";
-import {DefaultCardComponent} from "./frontend/components/default-card/default-card.component";
-import {CategoryCardComponent} from "./frontend/components/category-card/category-card.component";
-import {ArticlePageComponent} from "./frontend/pages/article-page/article-page.component";
-import {SearchPageComponent} from "./frontend/pages/search-page/search-page.component";
-import {SearchCardComponent} from "./frontend/components/search-card/search-card.component";
-import {FrontendService} from "./frontend/service/frontend.service";
-import {SiderComponent} from './frontend/components/sider/sider.component';
-import { HeaderComponent } from './frontend/components/header/header.component';
-import { FooterComponent } from './frontend/components/footer/footer.component';
-import { RightOneComponent } from './frontend/components/right-one/right-one.component';
-import { RightTwoComponent } from './frontend/components/right-two/right-two.component';
-import { RightThreeComponent } from './frontend/components/right-three/right-three.component';
-import { ContentPageComponent } from './frontend/pages/content-page/content-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +48,6 @@ import { ContentPageComponent } from './frontend/pages/content-page/content-page
     SearchPageComponent,
     SearchCardComponent,
     EditorShowDirective,
-    FrontendComponent,
     EditorWriteDirective,
     SiderComponent,
     HeaderComponent,
@@ -72,7 +69,6 @@ import { ContentPageComponent } from './frontend/pages/content-page/content-page
   ],
   providers: [
     HttpService,
-    FrontendService,
   ],
   bootstrap: [AppComponent]
 })

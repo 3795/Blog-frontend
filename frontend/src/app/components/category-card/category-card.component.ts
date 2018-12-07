@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
-import {Category, FrontendService} from "../../service/frontend.service";
+import {HttpService} from "../../service/http.service";
 
 @Component({
   selector: 'app-category-card',
@@ -14,11 +14,11 @@ export class CategoryCardComponent implements OnInit {
 
   public categoryName: string;
 
-  public categories: Category[] = [];
+  public categories: any[] = [];
 
   public id: number;
 
-  constructor(private frontendService: FrontendService,
+  constructor(private httpService: HttpService,
               private router: Router,
               private titleService: Title,
               private routeInfo: ActivatedRoute) { }
@@ -28,7 +28,7 @@ export class CategoryCardComponent implements OnInit {
       this.id = params['id'];
     });
     this.apiUrl += "?id=" + this.id;
-    this.frontendService.get(this.apiUrl)
+    this.httpService.get(this.apiUrl)
       .subscribe(data => {
         if(!(data['code']%2)) {
           this.router.navigateByUrl("/404");

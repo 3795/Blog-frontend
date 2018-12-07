@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {ArticleCard, FrontendService} from "../../service/frontend.service";
 import {HttpParams} from "@angular/common/http";
+import {HttpService} from "../../service/http.service";
 
 @Component({
   selector: 'app-article-card',
@@ -10,7 +10,7 @@ import {HttpParams} from "@angular/common/http";
 })
 export class ArticleCardComponent implements OnInit {
 
-  public articleCards: ArticleCard[] = [];
+  public articleCards: any[] = [];
 
   public pageNum: number = 1;
   public total: number = 0;
@@ -20,7 +20,7 @@ export class ArticleCardComponent implements OnInit {
   @Input()
   private apiUrl: string;
 
-  constructor(private frontendService: FrontendService,
+  constructor(private httpService: HttpService,
               private router: Router) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class ArticleCardComponent implements OnInit {
 
   initDate(): void {
     let params: HttpParams = new HttpParams().set("pageNum", this.pageNum.toString());
-    this.frontendService.getWithParams(this.apiUrl, params)
+    this.httpService.getWithParams(this.apiUrl, params)
       .subscribe(data => {
         if(!(data['code']%2)) {
           this.router.navigateByUrl("/404");

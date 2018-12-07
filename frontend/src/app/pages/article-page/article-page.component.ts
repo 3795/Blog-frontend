@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
-import {FrontendService} from "../../service/frontend.service";
+import {HttpService} from "../../service/http.service";
 
 @Component({
   selector: 'app-article-page',
@@ -18,7 +18,7 @@ export class ArticlePageComponent implements OnInit {
 
   constructor(private routerInfo: ActivatedRoute,
               private titleService: Title,
-              private frontendService: FrontendService,
+              private httpService: HttpService,
               private router: Router) { }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class ArticlePageComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.frontendService.get("/article/" + this.id)
+    this.httpService.get("/article/" + this.id)
       .subscribe((data) => {
         if (data.code % 2) {
           this.article = data.data;

@@ -11,7 +11,7 @@ import {Observable} from "rxjs/internal/Observable";
 @Injectable()
 export class HttpService {
 
-  private prefix: string = "/blog/v1";
+  private prefix: string = "http://api.ntshare.cn/blog/v1";
 
   private httpOptions = {
     headers: new HttpHeaders({

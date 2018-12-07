@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FrontendService} from "../../service/frontend.service";
 import {Router} from "@angular/router";
+import {HttpService} from "../../service/http.service";
 
 @Component({
   selector: 'app-sider',
@@ -17,7 +17,7 @@ export class SiderComponent implements OnInit {
   public articleCount: number = 0;
   public categoryCount: number = 0;
 
-  constructor(private frontendService: FrontendService,
+  constructor(private httpService: HttpService,
               private router: Router) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class SiderComponent implements OnInit {
    * 获得用户信息
    */
   getInfo(): void {
-    this.frontendService.get("/user")
+    this.httpService.get("/user")
       .subscribe((data) => {
         this.username = data.data['username'];
         this.avatar = data.data['avatar'];
@@ -41,7 +41,7 @@ export class SiderComponent implements OnInit {
    * 初始化导航数据
    */
   initNavigation(): void {
-    this.frontendService.get("/navigation")
+    this.httpService.get("/navigation")
       .subscribe( (data) => {
         this.navigations = data.data;
       });
@@ -63,7 +63,7 @@ export class SiderComponent implements OnInit {
    */
   public getCount(): void {
     // 获取文章的总数量
-    this.frontendService.get("/article/count")
+    this.httpService.get("/article/count")
       .subscribe((data) => {
         if (data.code % 2) {
           this.articleCount = data.data;
@@ -73,7 +73,7 @@ export class SiderComponent implements OnInit {
       });
 
     // 获取分类的总个数
-    this.frontendService.get("/category/count")
+    this.httpService.get("/category/count")
       .subscribe((data) => {
         if (data.code % 2) {
           this.categoryCount = data.data;

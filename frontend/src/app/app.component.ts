@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,11 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
-
-    if (document.body.clientWidth <= 800) {
-      this.router.navigateByUrl("/mobile");
+    if (document.body.clientWidth < 801) {
+      location.href = "http://mobile.ntshare.cn";
     }
   }
 
