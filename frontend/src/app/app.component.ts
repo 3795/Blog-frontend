@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (document.body.clientWidth < 801) {
-      location.href = "http://mobile.ntshare.cn";
+      location.href = "http://m.ntshare.cn";
     }
   }
 

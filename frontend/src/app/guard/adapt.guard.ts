@@ -19,7 +19,7 @@ export class AdaptGuard implements CanActivate, CanActivateChild {
 
   checkScreenSize(): boolean {
     if (document.body.clientWidth < 801) {
-      location.href = "http://mobile.ntshare.cn";
+      location.href = "http://m.ntshare.cn";
     }
     return true;
   }
