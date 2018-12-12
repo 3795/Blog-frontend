@@ -7,7 +7,7 @@ import {Observable} from "rxjs/internal/Observable";
 })
 export class HttpService {
 
-  private prefix: string = "http://api.ntshare.cn/blog/v1/backend";
+  private prefix: string = "/blog/v1/backend";
 
   private httpOptions = {
     headers: new HttpHeaders({

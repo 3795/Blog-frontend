@@ -17,8 +17,8 @@
       <nz-form-item>
         <nz-input-group [nzPrefix]="prefixCaptcha">
           <input type="text" nz-input placeholder="请输入验证码" class="captcha-input" [(ngModel)]="captchaCode" name="captchaCode">
-          <img src="http://api.ntshare.cn/blog/v1/captcha" title="验证码" alt="验证码" class="captcha"
-               onclick="this.src='http://api.ntshare.cn/blog/v1/captcha?d=' + new Date() * 1">
+          <img src="/blog/v1/captcha" title="验证码" alt="验证码" class="captcha"
+               onclick="this.src='/blog/v1/captcha?d=' + new Date() * 1">
         </nz-input-group>
       </nz-form-item>
 

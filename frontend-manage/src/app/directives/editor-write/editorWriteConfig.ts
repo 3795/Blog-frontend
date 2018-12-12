@@ -25,7 +25,7 @@ export class EditorWriteConfig {
   public sequenceDiagram = true;
   public imageUpload = true;
   public imageFormats = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'];
-  public imageUploadURL = 'http://api.ntshare.cn/blog/v1/backend/edUploadImg';
+  public imageUploadURL = '/blog/v1/backend/edUploadImg';
 
   constructor() {}
 }
