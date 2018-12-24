@@ -70,6 +70,15 @@ export class HttpService {
   }
 
   /**
+   * 无参Patch请求
+   * @param {string} url
+   * @returns {Observable<any>}
+   */
+  public patchWithOutBody(url: string): Observable<any> {
+    return this.httpClient.patch(this.prefix + url, this.httpOptions);
+  }
+
+  /**
    * Delete请求
    * @param {string} url
    * @returns {Observable<any>}

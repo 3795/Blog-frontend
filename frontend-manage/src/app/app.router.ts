@@ -15,6 +15,7 @@ import {WriteArticleComponent} from "./components/article-manage/write-article/w
 import {ArticleManageComponent} from "./components/article-manage/article-manage/article-manage.component";
 import {ArticleDraftboxComponent} from "./components/article-manage/article-draftbox/article-draftbox.component";
 import {ArticleRecoverComponent} from "./components/article-manage/article-recover/article-recover.component";
+import {TagManageComponent} from "./components/tag-manage/tag-manage.component";
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
       {path: '', redirectTo: '/console/dashboard', pathMatch: 'full'},
       {path: 'dashboard', component: ManageDashboardComponent, data: {breadcrumb: "仪表盘"}},
       {path: 'category', component: CategoryManageComponent, data: {breadcrumb: "分类管理"}},
+      {path: 'tag', component: TagManageComponent, data: {breadcrumb: "标签管理"}},
       {path: 'navigation', component: NavigationManageComponent, data: {breadcrumb: "导航管理"}},
       {path: 'user', component: UserProfileComponent, data: {breadcrumb: "个人中心"}},
       {path: 'article', data: {breadcrumb: "文章管理"},

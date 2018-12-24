@@ -23,6 +23,7 @@ import { EditorShowDirective } from './directives/editor-show/editor-show.direct
 import { ArticleManageComponent } from './components/article-manage/article-manage/article-manage.component';
 import { ArticleRecoverComponent } from './components/article-manage/article-recover/article-recover.component';
 import { ArticleDraftboxComponent } from './components/article-manage/article-draftbox/article-draftbox.component';
+import { TagManageComponent } from './components/tag-manage/tag-manage.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ArticleDraftboxComponent } from './components/article-manage/article-dr
     EditorShowDirective,
     ArticleManageComponent,
     ArticleRecoverComponent,
-    ArticleDraftboxComponent
+    ArticleDraftboxComponent,
+    TagManageComponent
   ],
   imports: [
     BrowserModule,

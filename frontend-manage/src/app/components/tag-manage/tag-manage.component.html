@@ -4,36 +4,34 @@
       <div>
         <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
         <div nz-col [nzSpan]="12" style="text-align: right">
-          <button type="button" class="ant-btn ant-btn-primary">写文章</button>
+          <button type="button" class="ant-btn ant-btn-primary" (click)="insertDrawer()">添加标签</button>
         </div>
       </div>
     </div>
-    <nz-table #articleTable [nzData]="articleData"
+    <nz-table #categoryTable [nzData]="tagData"
               [(nzPageIndex)]="pageNum" [nzTotal]="total"
               [nzFrontPagination]="false" (nzPageIndexChange)="turnPage($event)">
       <thead>
       <tr>
         <th>ID</th>
         <th>名称</th>
-        <th>分类名称</th>
-        <th>创建时间</th>
+        <th>颜色</th>
         <th>状态</th>
         <th>操作</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of articleTable.data">
+      <tr *ngFor="let data of categoryTable.data">
         <td>{{data.id}}</td>
-        <td>{{data.title}}</td>
-        <td>{{data.categoryName}}</td>
-        <td>{{data.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.color}}</td>
         <td>
-          <nz-switch [ngModel]="data.type" [nzCheckedChildren]="checkedTemplate"
-                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeType(data.id, $event)"></nz-switch>
+          <nz-switch [ngModel]="data.status" [nzCheckedChildren]="checkedTemplate"
+                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeStatus(data.id, $event)"></nz-switch>
           <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
         <td>
-          <a routerLink="/console/article/write/{{data.id}}">编辑文章</a>
+          <a (click)="updateDrawer(data)">编辑</a>
           <nz-divider nzType="vertical"></nz-divider>
           <a (click)="delete(data.id)">删除</a>
         </td>
@@ -43,5 +41,4 @@
 
   </div>
 </div>
-
 

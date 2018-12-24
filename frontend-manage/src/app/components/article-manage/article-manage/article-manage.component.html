@@ -28,8 +28,8 @@
         <td>{{data.categoryName}}</td>
         <td>{{data.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
         <td>
-          <nz-switch [ngModel]="data.status" [nzCheckedChildren]="checkedTemplate"
-                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeStatus(data.id, $event)"></nz-switch>
+          <nz-switch [ngModel]="data.type" [nzCheckedChildren]="checkedTemplate"
+                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeType(data.id, $event)"></nz-switch>
           <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
         <td>

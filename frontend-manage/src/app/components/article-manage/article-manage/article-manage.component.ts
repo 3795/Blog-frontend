@@ -20,7 +20,6 @@ export class ArticleManageComponent implements OnInit {
 
   private url: string = "/article";
 
-
   constructor(private httpService: HttpService,
               private message: NzMessageService,
               private modalService: NzModalService) { }
@@ -30,7 +29,7 @@ export class ArticleManageComponent implements OnInit {
   }
 
   initData(): void {
-    let params = new HttpParams().set("status", "1");
+    let params = new HttpParams().set("status", "1").set("type", "1");
     this.httpService.getWithParams(this.url, params)
       .subscribe((data) => {
         if (!(data['code']%2)) {
@@ -59,20 +58,24 @@ export class ArticleManageComponent implements OnInit {
   }
 
   turnPage(nowPageNum: number): void {
-    let params = new HttpParams().set("pageNum", nowPageNum.toString()).set("status", "1");
+    let params = new HttpParams().set("pageNum", nowPageNum.toString())
+      .set("status", "1")
+      .set("type", "1");
     this.updateData(params);
   }
 
-  changeStatus(id: number, $event): void{
-    let status = ($event == true) ? 1 : 0;
-    let body: string = "id=" + id + "&status=" + status;
-    this.httpService.patch(this.url, body)
+  changeType(id: number, $event): void{
+    let type = ($event == true) ? 1 : 0;
+    let body: string = "id=" + id + "&type=" + type;
+    this.httpService.patch(this.url + "/type", body)
       .subscribe((data) => {
         if (!(data['code']%2)) {
           this.message.create('error', data.msg);
         } else {
           this.message.create('success', "下架成功");
-          let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
+          let params = new HttpParams().set("pageNum", this.pageNum.toString())
+            .set("status", "1")
+            .set("type", "1");
           this.updateData(params);
         }
       });
@@ -84,9 +87,11 @@ export class ArticleManageComponent implements OnInit {
       nzOkText    : '删除',
       nzOkType    : 'danger',
       nzOnOk      : () => {
-        let params = new HttpParams().set("pageNum", this.pageNum.toString()).set("status", "1");
-        let body: string = "id=" + id + "&status=" + 2;
-        this.httpService.patch(this.url, body)
+        let params = new HttpParams().set("pageNum", this.pageNum.toString())
+          .set("status", "1")
+          .set("type", "1");
+        let body: string = "id=" + id + "&status=" + 0;
+        this.httpService.patch(this.url + "/status", body)
           .subscribe((data) => {
             if (data['code']%2) {
               this.updateData(params);
