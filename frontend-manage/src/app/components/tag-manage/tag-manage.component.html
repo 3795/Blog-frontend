@@ -4,7 +4,7 @@
       <div>
         <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
         <div nz-col [nzSpan]="12" style="text-align: right">
-          <button type="button" class="ant-btn ant-btn-primary" (click)="insertDrawer()">添加标签</button>
+          <button type="button" class="ant-btn ant-btn-primary" (click)="showModal()">添加标签</button>
         </div>
       </div>
     </div>
@@ -31,13 +31,26 @@
           <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
         <td>
-          <a (click)="updateDrawer(data)">编辑</a>
+          <a (click)="showUpdateModal(data)">编辑</a>
           <nz-divider nzType="vertical"></nz-divider>
           <a (click)="delete(data.id)">删除</a>
         </td>
       </tr>
       </tbody>
     </nz-table>
+
+    <nz-modal [(nzVisible)]="visible" nzTitle="编辑标签" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-label nzRequired>标签名称</nz-form-label>
+          <input nz-input type="text" [(ngModel)]="name" name="name" placeholder="请输入标签名称">
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>颜色</nz-form-label>
+          <input nz-input type="text" [(ngModel)]="color" name="color" placeholder="请输入标签颜色">
+        </nz-form-item>
+      </form>
+    </nz-modal>
 
   </div>
 </div>

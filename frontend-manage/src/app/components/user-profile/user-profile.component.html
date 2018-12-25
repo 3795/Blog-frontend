@@ -1,6 +1,18 @@
 <div nz-col [nzSpan]="6" class="left-box">
-  <div>
-    <img src="{{avatar}}" title="{{username}}" alt="{{username}}" class="avatar"/>
+  <div style="padding-left: 67px">
+    <nz-upload class="avatar-uploader"
+               nzAction="/blog/v1/backend/uploadImg"
+               nzName="file"
+               nzListType="picture-card"
+               [nzShowUploadList]="false"
+               [nzBeforeUpload]="beforeUpload"
+               (nzChange)="handleChange($event)">
+      <ng-container *ngIf="!avatar">
+        <i nz-icon type="plus"></i>
+        <div class="ant-upload-text">Upload</div>
+      </ng-container>
+      <img *ngIf="avatar" [src]="avatar" title="{{username}}" class="avatar">
+    </nz-upload>
   </div>
   <p></p>
   <p class="username">{{username}}</p>

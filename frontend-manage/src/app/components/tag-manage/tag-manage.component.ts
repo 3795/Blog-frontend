@@ -20,11 +20,12 @@ export class TagManageComponent implements OnInit {
 
   public visible: boolean = false;
 
+  private httpParams: HttpParams = new HttpParams().set("pageNum", this.pageNum.toString());
+
   // 表单部分
-  private id: number;
+  private id: number = -1;
   public name: string;
-  public priority: number;
-  public link: string;
+  public color: number;
 
   private url: string = "/tag";
 
@@ -71,20 +72,20 @@ export class TagManageComponent implements OnInit {
   }
 
   /**
-   * 删除导航
+   * 删除标签
    * @param id
    */
   delete(id: number): void {
     this.modalService.confirm({
-      nzTitle     : '确认删除该导航吗?',
+      nzTitle     : '确认删除该标签吗?',
       nzOkText    : '删除',
       nzOkType    : 'danger',
       nzOnOk      : () => {
-        let params = new HttpParams().set("pageNum", this.pageNum.toString());
+        // let params = new HttpParams().set("pageNum", this.pageNum.toString());
         this.httpService.delete(this.url + "/" + id)
           .subscribe((data) => {
             if (data['code']%2) {
-              this.updateData(params);
+              this.updateData(this.httpParams);
               this.message.create('success', data.msg);
             } else {
               this.message.create('error', data.msg);
@@ -119,85 +120,72 @@ export class TagManageComponent implements OnInit {
       });
   }
 
-
   /**
-   * 处理函数
+   * 显示新增的模态框
    */
-  handle(): void {
-    if (this.id != 0) {
-      this.update();
-    } else {
-      this.insert();
-    }
+  showModal(): void {
+    this.visible = true;
   }
 
   /**
-   * 打开更新导航的抽屉
+   * 显示更新的模态框
    * @param data
    */
-  updateDrawer(data: any): void {
-    this.visible = true;
-
-    // 渲染表单
+  showUpdateModal(data: any): void {
     this.id = data.id;
     this.name = data.name;
-    this.priority = data.priority;
-    this.link = data.link;
-
-  }
-
-  /**
-   * 更新导航信息
-   */
-  update(): void {
-    let params = new HttpParams().set("pageNum", this.pageNum.toString());
-    let body: string = "id=" + this.id + "&name=" + this.name + "&priority=" + this.priority + "&link=" + this.link + "&status=1";
-    this.httpService.put(this.url, body).subscribe((data) => {
-      if (data['code']%2) {
-        this.closeDrawer();
-        this.updateData(params);
-        this.message.create('success', data.msg);
-      } else {
-        this.message.create('error', data.msg);
-      }
-    });
-  }
-
-  /**
-   * 打开新增导航的抽屉
-   */
-  insertDrawer(): void {
+    this.color = data.color;
     this.visible = true;
-
-    // 渲染表单
-    this.id = 0;
-    this.name = "";
-    this.priority = 0;
-    this.link = "";
   }
 
   /**
-   * 添加导航信息
+   * 添加标签
    */
-  insert(): void {
-    let params = new HttpParams().set("pageNum", this.total.toString());
-    let body: string = "name=" + this.name + "&priority=" + this.priority + "&link=" + this.link + "&status=1";
-    this.httpService.post(this.url, body).subscribe((data) => {
-      if (data['code']%2) {
-        this.closeDrawer();
-        this.updateData(params);
-        this.message.create('success', data.msg);
-      } else {
-        this.message.create('error', data.msg);
-      }
-    });
-  }
-
-  /**
-   * 关闭抽屉
-   */
-  closeDrawer(): void{
+  handleOk(): void {
+    if (this.id === -1) {
+      this.insertTag();
+    } else {
+      this.updateTag();
+    }
     this.visible = false;
+    this.updateData(this.httpParams);
+  }
+
+  /**
+   * 取消
+   */
+  handleCancel(): void {
+    this.visible = false;
+  }
+
+  /**
+   * 新增标签
+   */
+  insertTag(): void {
+    let body = "name=" + this.name + "&color=" + this.color;
+    this.httpService.post(this.url, body)
+      .subscribe((data) => {
+        if (data['code']%2) {
+          this.message.create('success', "添加成功");
+        } else {
+          this.message.create('error', data.msg);
+        }
+      });
+  }
+
+  /**
+   * 更新标签
+   */
+  updateTag(): void {
+    let body = "name=" + this.name + "&color=" + this.color;
+    this.httpService.put(this.url + "/" + this.id, body)
+      .subscribe((data) => {
+        if (data['code']%2) {
+          this.message.create('success', "更新成功");
+        } else {
+          this.message.create('error', data.msg);
+        }
+      });
   }
 
 }

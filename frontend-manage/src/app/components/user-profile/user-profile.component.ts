@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from "../../services/http.service";
-import {NzMessageService} from "ng-zorro-antd";
+import {NzMessageService, UploadFile} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-user-profile',
@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   private url: string = "/user";
 
   constructor(private httpService: HttpService,
+              private msg: NzMessageService,
               private messageService: NzMessageService) { }
 
   ngOnInit() {
@@ -33,5 +34,32 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
+  /**
+   * 文件上传前的校验
+   * @param {File} file
+   * @returns {boolean}
+   */
+  beforeUpload = (file: File) => {
+    const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
+    if (!isJPG) {
+      this.msg.error('图片格式错误');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      this.msg.error('图片大于2M');
+    }
+    return isJPG && isLt2M;
+  };
+
+  /**
+   * 图片上传成功后的回调
+   * @param {{file: UploadFile}} info
+   */
+  handleChange(info: { file: UploadFile }): void {
+    if (info.file.status === 'done') {
+      this.msg.success("图片上传成功");
+      this.avatar = info.file.response.data;
+    }
+  }
 
 }
