@@ -12,7 +12,7 @@ export class ArticlePageComponent implements OnInit {
 
   public id: number;
 
-  public article: object;
+  public article: any;
 
   public spin: boolean = true;
 
@@ -36,7 +36,6 @@ export class ArticlePageComponent implements OnInit {
           this.router.navigateByUrl("/404");
         }
       });
-
   }
 
 }

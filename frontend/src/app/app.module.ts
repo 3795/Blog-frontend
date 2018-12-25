@@ -31,6 +31,7 @@ import {RightOneComponent} from "./components/right-one/right-one.component";
 import {RightTwoComponent} from "./components/right-two/right-two.component";
 import {RightThreeComponent} from "./components/right-three/right-three.component";
 import {ContentPageComponent} from "./pages/content-page/content-page.component";
+import { ArticleContentComponent } from './components/article-content/article-content.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {ContentPageComponent} from "./pages/content-page/content-page.component"
     RightTwoComponent,
     RightThreeComponent,
     ContentPageComponent,
+    ArticleContentComponent,
   ],
   imports: [
     BrowserModule,
