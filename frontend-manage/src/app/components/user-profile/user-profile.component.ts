@@ -9,27 +9,22 @@ import {NzMessageService, UploadFile} from "ng-zorro-antd";
 })
 export class UserProfileComponent implements OnInit {
 
-  public account: string;
-  public username: string;
-  public avatar: string;
-  public createTime: string;
+  public userInfo: object = {};
 
   private url: string = "/user";
 
+  public isVisible: boolean = false;
+
   constructor(private httpService: HttpService,
-              private msg: NzMessageService,
-              private messageService: NzMessageService) { }
+              private msg: NzMessageService) { }
 
   ngOnInit() {
     this. httpService.get(this.url + "/detail")
       .subscribe((data) => {
         if (data.code%2) {
-          this.account = data.data['account'];
-          this.username = data.data['username'];
-          this.avatar = data.data['avatar'];
-          this.createTime = data.data['createTime'];
+          this.userInfo = data.data;
         } else {
-          this.messageService.create('error', data.msg);
+          this.msg.create('error', data.msg);
         }
       });
   }
@@ -58,8 +53,34 @@ export class UserProfileComponent implements OnInit {
   handleChange(info: { file: UploadFile }): void {
     if (info.file.status === 'done') {
       this.msg.success("图片上传成功");
-      this.avatar = info.file.response.data;
+      this.userInfo['avatar'] = info.file.response.data;
     }
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    let body: string = "username=" + this.userInfo['username']
+      + "&phone=" + this.userInfo['phone']
+      + "&email=" + this.userInfo['email']
+      + "&signature=" + this.userInfo['signature'];
+
+    this.httpService.put(this.url + "/info", body)
+      .subscribe((data) => {
+        if (data.code % 2) {
+          this.msg.success("信息修改成功");
+        } else {
+          this.msg.error(data.msg);
+        }
+      });
+
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 
 }

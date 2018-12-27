@@ -32,8 +32,18 @@
     </nz-cascader>
   </p>
 
+  <p>添加标签：
+    <nz-select nzMode="tags" style="width: 17%;" nzPlaceHolder="添加标签"
+               [(ngModel)]="listOfTagOptions">
+      <nz-option *ngFor="let option of listOfOption"
+                 [nzLabel]="option.label"
+                 [nzValue]="option.value">
+      </nz-option>
+    </nz-select>
+  </p>
+
   <p>是否发布：
-    <nz-switch [(ngModel)]="status" [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+    <nz-switch [(ngModel)]="type" [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
     <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
     <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template>
   </p>

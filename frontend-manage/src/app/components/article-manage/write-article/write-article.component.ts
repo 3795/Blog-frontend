@@ -17,11 +17,15 @@ export class WriteArticleComponent implements OnInit {
   public summary: string;
   public category: any[];
   public categoryId: number;
-  public status: any = true;
+  public type: any = true;
 
   loading = false;
 
   public options: any[] = [];
+
+  listOfOption = [];
+
+  listOfTagOptions = [];
 
   public markdown: any;
   conf = new EditorWriteConfig();
@@ -32,8 +36,14 @@ export class WriteArticleComponent implements OnInit {
               private routerInfo: ActivatedRoute) { }
 
   ngOnInit() {
-    this.initOptions();
+    this.initCategoryOptions();
     this.initArticle();
+
+    const children = [];
+    for (let i = 10; i < 36; i++) {
+      children.push({ label: i, value: 100+i });
+    }
+    this.listOfOption = children;
   }
 
   syncModel($event): void {
@@ -57,7 +67,7 @@ export class WriteArticleComponent implements OnInit {
             this.summary = data.data['summary'];
             this.imgUrl = data.data['img'];
             this.markdown = data.data['content'];
-            this.status = data.data['status'];
+            this.type = data.data['type'];
           } else {
             this.msg.error(data.msg);
           }
@@ -68,7 +78,7 @@ export class WriteArticleComponent implements OnInit {
   /**
    * 初始化分类数据
    */
-  initOptions(): void {
+  initCategoryOptions(): void {
     this.httpService.get("/category/cascade")
       .subscribe((data) => {
         if (data.code%2) {
@@ -77,6 +87,15 @@ export class WriteArticleComponent implements OnInit {
           this.msg.error(data.msg);
         }
       });
+  }
+
+  /**
+   * 初始化标签数据
+   */
+  initTagOptions(): void {
+    // label为页面数据
+    // value为实际数据
+    // 最终数据为一个数组
   }
 
   /**
@@ -120,30 +139,31 @@ export class WriteArticleComponent implements OnInit {
    * 添加文章到数据库
    */
   addArticle(): void {
-    this.categoryId = this.category[this.category.length - 1];
-    this.status = (this.status == true) ? 1 : 0;
+    // this.categoryId = this.category[this.category.length - 1];
+    // this.type = (this.type == true) ? 1 : 0;
+    //
+    // let body = "title=" + this.title
+    //   + "&img=" + this.imgUrl
+    //   + "&summary=" + this.summary
+    //   + "&content=" + this.markdown
+    //   + "&categoryId=" + this.categoryId
+    //   + "&type=" + this.type;
 
-    let body = "title=" + this.title
-      + "&img=" + this.imgUrl
-      + "&summary=" + this.summary
-      + "&content=" + this.markdown
-      + "&categoryId=" + this.categoryId
-      + "&status=" + this.status;
-
-    this.httpService.post("/article", body)
-      .subscribe((data) => {
-        if (data.code % 2) {
-          this.msg.success(data.msg);
-          this.router.navigateByUrl("/console/article/list")
-        } else {
-          this.msg.error(data.msg);
-        }
-      });
+    // this.httpService.post("/article", body)
+    //   .subscribe((data) => {
+    //     if (data.code % 2) {
+    //       this.msg.success(data.msg);
+    //       this.router.navigateByUrl("/console/article/list")
+    //     } else {
+    //       this.msg.error(data.msg);
+    //     }
+    //   });
+    console.log(this.listOfTagOptions);
   }
 
   updateArticle(): void {
     this.categoryId = this.category[this.category.length - 1];
-    this.status = (this.status == true) ? 1 : 0;
+    this.type = (this.type == true) ? 1 : 0;
 
     let body = "id=" + this.id
       + "&title=" + this.title
@@ -151,7 +171,7 @@ export class WriteArticleComponent implements OnInit {
       + "&summary=" + this.summary
       + "&content=" + this.markdown
       + "&categoryId=" + this.categoryId
-      + "&status=" + this.status;
+      + "&type=" + this.type;
 
     this.httpService.put("/article", body)
       .subscribe((data) => {

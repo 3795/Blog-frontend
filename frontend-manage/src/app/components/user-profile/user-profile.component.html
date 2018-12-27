@@ -1,22 +1,50 @@
 <div nz-col [nzSpan]="6" class="left-box">
   <div style="padding-left: 67px">
     <nz-upload class="avatar-uploader"
-               nzAction="/blog/v1/backend/uploadImg"
+               nzAction="/blog/v1/backend/user/avatar"
                nzName="file"
                nzListType="picture-card"
                [nzShowUploadList]="false"
                [nzBeforeUpload]="beforeUpload"
                (nzChange)="handleChange($event)">
-      <ng-container *ngIf="!avatar">
+      <ng-container *ngIf="!userInfo['avatar']">
         <i nz-icon type="plus"></i>
         <div class="ant-upload-text">Upload</div>
       </ng-container>
-      <img *ngIf="avatar" [src]="avatar" title="{{username}}" class="avatar">
+      <img *ngIf="userInfo['avatar']" [src]="userInfo['avatar']"
+           title="{{userInfo['username']}}" class="avatar">
     </nz-upload>
+  </div><br/>
+  <p class="username">{{userInfo['username']}}</p>
+  <div class="detail-info">
+    <p>我的账号：{{userInfo['account']}}</p>
+    <p>联系方式：{{userInfo['phone']}}</p>
+    <p>电子邮箱：{{userInfo['email']}}</p>
+    <p>个性签名：{{userInfo['signature']}}</p>
   </div>
-  <p></p>
-  <p class="username">{{username}}</p>
-  <p>{{account}}</p>
+  <button nz-button nzType="primary" (click)="showModal()">修改信息</button>
+
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="修改信息" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label nzRequired>用户名称</nz-form-label>
+        <input nz-input type="text" [(ngModel)]="userInfo['username']" name="username" placeholder="请输入用户名称">
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>联系方式</nz-form-label>
+        <input nz-input type="text" [(ngModel)]="userInfo['phone']" name="phone" placeholder="请输入联系方式">
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>电子邮箱</nz-form-label>
+        <input nz-input type="text" [(ngModel)]="userInfo['email']" name="email" placeholder="请输入电子邮箱">
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>个性签名</nz-form-label>
+        <input nz-input type="text" [(ngModel)]="userInfo['signature']" name="signature" placeholder="请输入个性签名">
+      </nz-form-item>
+    </form>
+  </nz-modal>
+
 </div>
 
 <div nz-col [nzSpan]="17" [nzOffset]="1" class="right-box">
