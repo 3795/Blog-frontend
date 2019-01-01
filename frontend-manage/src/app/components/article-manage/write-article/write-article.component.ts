@@ -38,12 +38,8 @@ export class WriteArticleComponent implements OnInit {
   ngOnInit() {
     this.initCategoryOptions();
     this.initArticle();
+    this.initTagOptions();
 
-    const children = [];
-    for (let i = 10; i < 36; i++) {
-      children.push({ label: i, value: 100+i });
-    }
-    this.listOfOption = children;
   }
 
   syncModel($event): void {
@@ -93,9 +89,14 @@ export class WriteArticleComponent implements OnInit {
    * 初始化标签数据
    */
   initTagOptions(): void {
-    // label为页面数据
-    // value为实际数据
-    // 最终数据为一个数组
+    this.httpService.get("/tag/options")
+      .subscribe((data) => {
+        if (data.code%2) {
+          this.listOfOption = data.data;
+        } else {
+          this.msg.error(data.msg);
+        }
+      });
   }
 
   /**
@@ -139,26 +140,26 @@ export class WriteArticleComponent implements OnInit {
    * 添加文章到数据库
    */
   addArticle(): void {
-    // this.categoryId = this.category[this.category.length - 1];
-    // this.type = (this.type == true) ? 1 : 0;
-    //
-    // let body = "title=" + this.title
-    //   + "&img=" + this.imgUrl
-    //   + "&summary=" + this.summary
-    //   + "&content=" + this.markdown
-    //   + "&categoryId=" + this.categoryId
-    //   + "&type=" + this.type;
+    this.categoryId = this.category[this.category.length - 1];
+    this.type = (this.type == true) ? 1 : 0;
 
-    // this.httpService.post("/article", body)
-    //   .subscribe((data) => {
-    //     if (data.code % 2) {
-    //       this.msg.success(data.msg);
-    //       this.router.navigateByUrl("/console/article/list")
-    //     } else {
-    //       this.msg.error(data.msg);
-    //     }
-    //   });
-    console.log(this.listOfTagOptions);
+    let body = "title=" + this.title
+      + "&img=" + this.imgUrl
+      + "&summary=" + this.summary
+      + "&content=" + this.markdown
+      + "&categoryId=" + this.categoryId
+      + "&type=" + this.type
+      + "&tags=" + this.listOfTagOptions;
+
+    this.httpService.post("/article", body)
+      .subscribe((data) => {
+        if (data.code % 2) {
+          this.msg.success(data.msg);
+          this.router.navigateByUrl("/console/article/list")
+        } else {
+          this.msg.error(data.msg);
+        }
+      });
   }
 
   updateArticle(): void {
@@ -171,7 +172,8 @@ export class WriteArticleComponent implements OnInit {
       + "&summary=" + this.summary
       + "&content=" + this.markdown
       + "&categoryId=" + this.categoryId
-      + "&type=" + this.type;
+      + "&type=" + this.type
+      + "&tags=" + this.listOfTagOptions;
 
     this.httpService.put("/article", body)
       .subscribe((data) => {
