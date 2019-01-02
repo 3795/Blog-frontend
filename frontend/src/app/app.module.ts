@@ -32,6 +32,8 @@ import {RightTwoComponent} from "./components/right-two/right-two.component";
 import {RightThreeComponent} from "./components/right-three/right-three.component";
 import {ContentPageComponent} from "./pages/content-page/content-page.component";
 import { ArticleContentComponent } from './components/article-content/article-content.component';
+import { TagPageComponent } from './pages/tag-page/tag-page.component';
+import { TagCardComponent } from './components/tag-card/tag-card.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { ArticleContentComponent } from './components/article-content/article-co
     RightThreeComponent,
     ContentPageComponent,
     ArticleContentComponent,
+    TagPageComponent,
+    TagCardComponent,
   ],
   imports: [
     BrowserModule,

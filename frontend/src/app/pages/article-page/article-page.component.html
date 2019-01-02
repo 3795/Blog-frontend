@@ -4,11 +4,18 @@
       {{article['title']}}
     </div>
     <div nz-col [nzSpan]="24" class="label">
-      <div nz-col [nzSpan]="6" style="float: right">
-        <i nz-icon type="clock-circle" theme="outline"></i>&nbsp;{{article['createTime'] | date: 'yyyy-MM-dd'}}
+      <div nz-col [nzSpan]="6" [nzOffset]="8">
+        <nz-tag *ngFor="let tag of article['tags']"
+                routerLink="/tag/{{tag['id']}}"
+                [nzColor]="tag['color']">
+          {{tag['name']}}
+        </nz-tag>
       </div>
-      <div routerLink="/category/{{article['categoryId']}}" nz-col [nzSpan]="6" style="float: right">
-        <a><i nz-icon type="tags" theme="outline"></i>&nbsp;{{article['categoryName']}}</a>
+      <div routerLink="/category/{{article['categoryId']}}" nz-col [nzSpan]="4" >
+        <a><i nz-icon type="appstore" theme="outline"></i>&nbsp;{{article['categoryName']}}</a>
+      </div>
+      <div nz-col [nzSpan]="4" >
+        <i nz-icon type="clock-circle" theme="outline"></i>&nbsp;{{article['createTime'] | date: 'yyyy-MM-dd'}}
       </div>
     </div>
     <div nz-col [nzSpan]="24">

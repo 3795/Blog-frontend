@@ -7,6 +7,7 @@ import {SearchPageComponent} from "./pages/search-page/search-page.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {TransitionPageComponent} from "./pages/transition-page/transition-page.component";
 import {AdaptGuard} from "./guard/adapt.guard";
+import {TagPageComponent} from "./pages/tag-page/tag-page.component";
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: '', component: ContentPageComponent, canActivateChild: [AdaptGuard], children: [
       {path: '', component: IndexPageComponent},
       {path: 'category/:id', component: CategoryPageComponent},
+      {path: 'tag/:id', component: TagPageComponent},
       {path: "search", component: SearchPageComponent},
       {path: "404", pathMatch: "full", component: NotFoundComponent},
       {path: "transitionPage", pathMatch: "full", component: TransitionPageComponent},
