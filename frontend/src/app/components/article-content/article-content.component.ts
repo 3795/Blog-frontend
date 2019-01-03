@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {HttpService} from "../../service/http.service";
 
+/**
+ * 该组件暂时封存，未使用
+ */
 @Component({
   selector: 'app-article-content',
   templateUrl: './article-content.component.html',
@@ -11,7 +14,7 @@ export class ArticleContentComponent implements OnInit {
 
   private id: number;
 
-  private content: string = "";
+  public content: string = "";
 
   constructor(private routerInfo: ActivatedRoute,
               private httpService: HttpService) { }
