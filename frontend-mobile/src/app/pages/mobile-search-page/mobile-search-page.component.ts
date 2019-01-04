@@ -22,11 +22,11 @@ export class MobileSearchPageComponent implements OnInit {
       this.keywords = params['keywords'];
     });
 
-    if(this.keywords == undefined)
-      return ;
-    else {
-      this.apiUrl += "?keywords=" + this.keywords;
+    if(this.keywords == undefined) {
+      this.keywords = "j";
     }
+
+    this.apiUrl += "?keywords=" + this.keywords;
   }
 
 }

@@ -12,7 +12,6 @@ import { MobileDefaultCardComponent } from './components/mobile-default-card/mob
 import { MobilePaginationComponent } from './components/mobile-pagination/mobile-pagination.component';
 import { MobileArticleCardComponent } from './components/mobile-article-card/mobile-article-card.component';
 import { MobileCategoryCardComponent } from './components/mobile-category-card/mobile-category-card.component';
-import { MobileMobileSearchCardComponent } from './components/mobile-mobile-search-card/mobile-mobile-search-card.component';
 import { MobileCategoryPageComponent } from './pages/mobile-category-page/mobile-category-page.component';
 import { MobileTransitionPageComponent } from './pages/mobile-transition-page/mobile-transition-page.component';
 import { MobileNotFoundPageComponent } from './pages/mobile-not-found-page/mobile-not-found-page.component';
@@ -33,7 +32,6 @@ import { MobileArticleContentComponent } from './components/mobile-article-conte
     MobilePaginationComponent,
     MobileArticleCardComponent,
     MobileCategoryCardComponent,
-    MobileMobileSearchCardComponent,
     MobileCategoryPageComponent,
     MobileTransitionPageComponent,
     MobileNotFoundPageComponent,
