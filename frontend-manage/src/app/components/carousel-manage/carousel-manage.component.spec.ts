@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RightThreeComponent } from './right-three.component';
+import { CarouselManageComponent } from './carousel-manage.component';
 
-describe('RightThreeComponent', () => {
-  let component: RightThreeComponent;
-  let fixture: ComponentFixture<RightThreeComponent>;
+describe('CarouselManageComponent', () => {
+  let component: CarouselManageComponent;
+  let fixture: ComponentFixture<CarouselManageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RightThreeComponent ]
+      declarations: [ CarouselManageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RightThreeComponent);
+    fixture = TestBed.createComponent(CarouselManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

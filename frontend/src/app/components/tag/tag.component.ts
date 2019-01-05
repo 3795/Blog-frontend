@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../service/http.service";
 import {Router} from "@angular/router";
+import {HttpService} from "../../service/http.service";
 
 @Component({
-  selector: 'app-right-two',
-  templateUrl: './right-two.component.html',
-  styleUrls: ['./right-two.component.css']
+  selector: 'app-tag',
+  templateUrl: './tag.component.html',
+  styleUrls: ['./tag.component.css']
 })
-export class RightTwoComponent implements OnInit {
+export class TagComponent implements OnInit {
 
   public tags: any = [];
 
@@ -29,6 +29,5 @@ export class RightTwoComponent implements OnInit {
         this.router.navigateByUrl(this.baseUrl + "/" + id)
       });
   }
-
 
 }

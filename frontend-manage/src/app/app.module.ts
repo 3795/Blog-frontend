@@ -24,6 +24,7 @@ import { ArticleManageComponent } from './components/article-manage/article-mana
 import { ArticleRecoverComponent } from './components/article-manage/article-recover/article-recover.component';
 import { ArticleDraftboxComponent } from './components/article-manage/article-draftbox/article-draftbox.component';
 import { TagManageComponent } from './components/tag-manage/tag-manage.component';
+import { CarouselManageComponent } from './components/carousel-manage/carousel-manage.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TagManageComponent } from './components/tag-manage/tag-manage.component
     ArticleManageComponent,
     ArticleRecoverComponent,
     ArticleDraftboxComponent,
-    TagManageComponent
+    TagManageComponent,
+    CarouselManageComponent
   ],
   imports: [
     BrowserModule,

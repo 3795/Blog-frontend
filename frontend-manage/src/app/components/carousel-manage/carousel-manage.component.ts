@@ -1,35 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../../services/http.service";
-import {NzMessageService, NzModalService} from "ng-zorro-antd";
 import {HttpParams} from "@angular/common/http";
+import {NzMessageService, NzModalService, UploadFile} from "ng-zorro-antd";
 
 @Component({
-  selector: 'app-tag-manage',
-  templateUrl: './tag-manage.component.html',
-  styleUrls: ['./tag-manage.component.css']
+  selector: 'app-carousel-manage',
+  templateUrl: './carousel-manage.component.html',
+  styleUrls: ['./carousel-manage.component.css']
 })
-export class TagManageComponent implements OnInit {
+export class CarouselManageComponent implements OnInit {
 
-  public tagData: any[] =  [];
+  public carouselImg: any[] = [];
 
   public pageNum: number = 1;
 
   public total: number = 1;
 
-  public tableTitle: string = "标签管理";
+  public tableTitle: string = "轮播图管理";
 
   public visible: boolean = false;
 
   // 表单部分
-  private id: number = -1;
-  public name: string;
-  public color: string;
+  public img: string;
+  public link: string;
 
-  private url: string = "/tag";
+  private url: string = "/carouselImg";
 
   constructor(private httpService: HttpService,
               private message: NzMessageService,
-              private modalService: NzModalService) { }
+              private modalService: NzModalService) {
+  }
 
   ngOnInit() {
     this.initData();
@@ -41,8 +41,8 @@ export class TagManageComponent implements OnInit {
   initData(): void {
     this.httpService.get(this.url)
       .subscribe((data) => {
-        if (data['code']%2) {
-          this.tagData = data['data']['list'];
+        if (data['code'] % 2) {
+          this.carouselImg = data['data']['list'];
           this.pageNum = data['data']['pageNum'];
           this.total = data['data']['total'];
         } else {
@@ -58,10 +58,10 @@ export class TagManageComponent implements OnInit {
   updateData(params: HttpParams): void {
     this.httpService.getWithParams(this.url, params)
       .subscribe((data) => {
-        if (!(data['code']%2)) {
+        if (!(data['code'] % 2)) {
           this.message.create('error', data['msg']);
         } else {
-          this.tagData = data['data']['list'];
+          this.carouselImg = data['data']['list'];
 
           this.pageNum = data['data']['pageNum'];
           this.total = data['data']['total'];
@@ -70,19 +70,19 @@ export class TagManageComponent implements OnInit {
   }
 
   /**
-   * 删除标签
+   * 删除图片
    * @param id
    */
   delete(id: number): void {
     this.modalService.confirm({
-      nzTitle     : '确认删除该标签吗?',
-      nzOkText    : '删除',
-      nzOkType    : 'danger',
-      nzOnOk      : () => {
+      nzTitle: '确认删除该图片吗?',
+      nzOkText: '删除',
+      nzOkType: 'danger',
+      nzOnOk: () => {
         let params = new HttpParams().set("pageNum", this.pageNum.toString());
         this.httpService.delete(this.url + "/" + id)
           .subscribe((data) => {
-            if (data['code']%2) {
+            if (data['code'] % 2) {
               this.updateData(params);
               this.message.create('success', data.msg);
             } else {
@@ -91,7 +91,8 @@ export class TagManageComponent implements OnInit {
           });
       },
       nzCancelText: '取消',
-      nzOnCancel  : () => {}
+      nzOnCancel: () => {
+      }
     });
   }
 
@@ -110,32 +111,18 @@ export class TagManageComponent implements OnInit {
    * @param $event
    */
   changeStatus(id: number, $event): void {
-    this.httpService.patchWithOutBody(this.url + "/" + id)
-      .subscribe((data) => {
-        if (!(data['code']%2)) {
-          this.message.create('error', data.msg);
-        }
-      });
+    // this.httpService.patchWithOutBody(this.url + "/" + id)
+    //   .subscribe((data) => {
+    //     if (!(data['code']%2)) {
+    //       this.message.create('error', data.msg);
+    //     }
+    //   });
   }
 
   /**
    * 显示新增的模态框
    */
   showModal(): void {
-    this.id = -1;
-    this.name = "";
-    this.color = "";
-    this.visible = true;
-  }
-
-  /**
-   * 显示更新的模态框
-   * @param data
-   */
-  showUpdateModal(data: any): void {
-    this.id = data.id;
-    this.name = data.name;
-    this.color = data.color;
     this.visible = true;
   }
 
@@ -143,15 +130,9 @@ export class TagManageComponent implements OnInit {
    * 添加标签
    */
   handleOk(): void {
-    if (this.id === -1) {
-      this.insertTag();
-      let httpParams = new HttpParams().set("pageNum", this.total.toString());
-      this.updateData(httpParams);
-    } else {
-      this.updateTag();
-      let params = new HttpParams().set("pageNum", this.pageNum.toString());
-      this.updateData(params);
-    }
+    this.insertImg();
+    let httpParams = new HttpParams().set("pageNum", this.total.toString());
+    this.updateData(httpParams);
     this.visible = false;
   }
 
@@ -163,13 +144,13 @@ export class TagManageComponent implements OnInit {
   }
 
   /**
-   * 新增标签
+   * 新增图片
    */
-  insertTag(): void {
-    let body = "name=" + this.name + "&color=" + this.color;
+  insertImg(): void {
+    let body = "img=" + this.img + "&link=" + this.link;
     this.httpService.post(this.url, body)
       .subscribe((data) => {
-        if (data['code']%2) {
+        if (data['code'] % 2) {
           this.message.create('success', "添加成功");
         } else {
           this.message.create('error', data.msg);
@@ -177,19 +158,24 @@ export class TagManageComponent implements OnInit {
       });
   }
 
-  /**
-   * 更新标签
-   */
-  updateTag(): void {
-    let body = "name=" + this.name + "&color=" + this.color;
-    this.httpService.put(this.url + "/" + this.id, body)
-      .subscribe((data) => {
-        if (data['code']%2) {
-          this.message.create('success', "更新成功");
-        } else {
-          this.message.create('error', data.msg);
-        }
-      });
+  beforeUpload = (file: File) => {
+    const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
+    if (!isJPG) {
+      this.message.error('图片格式错误');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      this.message.error('图片大于2M');
+    }
+    return isJPG && isLt2M;
+  };
+
+  handleChange(info: { file: UploadFile }): void {
+    if (info.file.status === 'done') {
+      this.message.success("图片上传成功");
+      this.img = info.file.response.data;
+    }
   }
+
 
 }

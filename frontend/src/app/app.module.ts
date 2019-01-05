@@ -27,13 +27,13 @@ import {SearchCardComponent} from "./components/search-card/search-card.componen
 import {SiderComponent} from "./components/sider/sider.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
-import {RightOneComponent} from "./components/right-one/right-one.component";
-import {RightTwoComponent} from "./components/right-two/right-two.component";
-import {RightThreeComponent} from "./components/right-three/right-three.component";
 import {ContentPageComponent} from "./pages/content-page/content-page.component";
 import { ArticleContentComponent } from './components/article-content/article-content.component';
 import { TagPageComponent } from './pages/tag-page/tag-page.component';
 import { TagCardComponent } from './components/tag-card/tag-card.component';
+import { CarouselImgComponent } from './components/carousel-img/carousel-img.component';
+import { TagComponent } from './components/tag/tag.component';
+import { LinksComponent } from './components/links/links.component';
 
 
 @NgModule({
@@ -55,13 +55,13 @@ import { TagCardComponent } from './components/tag-card/tag-card.component';
     SiderComponent,
     HeaderComponent,
     FooterComponent,
-    RightOneComponent,
-    RightTwoComponent,
-    RightThreeComponent,
     ContentPageComponent,
     ArticleContentComponent,
     TagPageComponent,
     TagCardComponent,
+    CarouselImgComponent,
+    TagComponent,
+    LinksComponent,
   ],
   imports: [
     BrowserModule,
