@@ -17,6 +17,7 @@ import {ArticleDraftboxComponent} from "./components/article-manage/article-draf
 import {ArticleRecoverComponent} from "./components/article-manage/article-recover/article-recover.component";
 import {TagManageComponent} from "./components/tag-manage/tag-manage.component";
 import {CarouselManageComponent} from "./components/carousel-manage/carousel-manage.component";
+import {IpManageComponent} from "./components/ip-manage/ip-manage.component";
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'navigation', component: NavigationManageComponent, data: {breadcrumb: "导航管理"}},
       {path: 'user', component: UserProfileComponent, data: {breadcrumb: "个人中心"}},
       {path: 'carousel', component: CarouselManageComponent, data: {breadcrumb: "轮播图管理"}},
+      {path: 'ip', component: IpManageComponent, data: {breadcrumb: "IP管理"}},
       {path: 'article', data: {breadcrumb: "文章管理"},
         children: [
           {path: '', redirectTo: "/manage/console/article/list", pathMatch: 'full'},

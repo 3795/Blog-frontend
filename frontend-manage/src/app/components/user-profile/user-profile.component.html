@@ -48,5 +48,27 @@
 </div>
 
 <div nz-col [nzSpan]="17" [nzOffset]="1" class="right-box">
-  信息面板
+  <nz-tabset [nzTabBarExtraContent]="clearMessageTemplate">
+    <nz-tab [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate>
+        <nz-badge [nzCount]="unreadMsgCount">
+          消息中心&nbsp;&nbsp;
+        </nz-badge>
+      </ng-template>
+      <div style="overflow: auto; height: 500px">
+        <div class="message" *ngFor="let message of messages">
+          <div class="up">
+            <div class="title"><strong>标题</strong></div>
+            <div class="button"><button nz-button nzType="primary" nzSize="small">已阅</button></div>
+          </div>
+          <div class="content">
+            我将是长长的内容
+          </div>
+        </div>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+  <ng-template #clearMessageTemplate>
+    <button nz-button>清空消息</button>
+  </ng-template>
 </div>

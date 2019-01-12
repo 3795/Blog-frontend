@@ -23,9 +23,41 @@
 }
 
 .right-box {
-  padding-top: 20px;
+  padding: 20px 20px 0 20px;
   background-color: #ffffff;
   height: 600px;
   border: solid 1px #efefef;
   box-shadow: -2px 5px 5px #cecccc;
+}
+
+.message {
+  width: 100%;
+  height: auto;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  padding: 0 20px 10px 20px;
+  overflow: auto;
+}
+
+.up {
+  height: 40px;
+  line-height: 40px;
+}
+
+.message .title {
+  width: 90%;
+  float: left;
+  font-size: 18px;
+}
+
+
+.message .button {
+  width: 10%;
+  float: left;
+  text-align: center;
+}
+
+.message .content {
+  font-family: "华文宋体";
+  font-size: 15px;
 }

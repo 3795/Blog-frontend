@@ -50,6 +50,16 @@ export class HttpService {
   }
 
   /**
+   * 对工具接口的Post请求
+   * @param {string} url
+   * @param body
+   * @returns {Observable<any>}
+   */
+  public utilPost(url: string, body: any): Observable<any> {
+    return this.httpClient.post("/blog/v1" + url, body, this.httpOptions);
+  }
+
+  /**
    * Put请求
    * @param {string} url
    * @param body
@@ -88,4 +98,6 @@ export class HttpService {
       withCredentials: true
     });
   }
+
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {NzMessageService, UploadFile} from "ng-zorro-antd";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-user-profile',
@@ -11,22 +12,24 @@ export class UserProfileComponent implements OnInit {
 
   public userInfo: object = {};
 
-  private url: string = "/user";
+  private userInfoUrl: string = "/user";
 
   public isVisible: boolean = false;
+
+  public unreadMsgCount: number = 0;
+
+  public messageUrl: string = "/message";
+
+  // 消息列表
+  public messages: object = [1, 2, 3, 4, 5, 6, 7];
 
   constructor(private httpService: HttpService,
               private msg: NzMessageService) { }
 
   ngOnInit() {
-    this. httpService.get(this.url + "/detail")
-      .subscribe((data) => {
-        if (data.code%2) {
-          this.userInfo = data.data;
-        } else {
-          this.msg.create('error', data.msg);
-        }
-      });
+    this.getUserInfo();
+    this.getUnreadMsgCount();
+    this.getMessages();
   }
 
   /**
@@ -57,17 +60,37 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * 获取用户信息
+   */
+  getUserInfo(): void {
+    this. httpService.get(this.userInfoUrl + "/detail")
+      .subscribe((data) => {
+        if (data.code%2) {
+          this.userInfo = data.data;
+        } else {
+          this.msg.create('error', data.msg);
+        }
+      });
+  }
+
+  /**
+   * 显示修改信息的模态框
+   */
   showModal(): void {
     this.isVisible = true;
   }
 
+  /**
+   * 更新信息
+   */
   handleOk(): void {
     let body: string = "username=" + this.userInfo['username']
       + "&phone=" + this.userInfo['phone']
       + "&email=" + this.userInfo['email']
       + "&signature=" + this.userInfo['signature'];
 
-    this.httpService.put(this.url + "/info", body)
+    this.httpService.put(this.userInfoUrl + "/info", body)
       .subscribe((data) => {
         if (data.code % 2) {
           this.msg.success("信息修改成功");
@@ -79,8 +102,37 @@ export class UserProfileComponent implements OnInit {
     this.isVisible = false;
   }
 
+  /**
+   * 取消修改信息
+   */
   handleCancel(): void {
     this.isVisible = false;
   }
+
+  /**
+   * 获取未读消息的数量
+   */
+  getUnreadMsgCount(): void {
+    let params = new HttpParams().set("status", "0");
+    this.httpService.getWithParams(this.messageUrl + "/count", params)
+      .subscribe((data) => {
+        this.unreadMsgCount = data['data'];
+      });
+  }
+
+  /**
+   * 获取消息列表
+   */
+  getMessages(): void {
+    this.httpService.get(this.messageUrl)
+      .subscribe((data) => {
+        if (data['code']%2) {
+          // this.messages = data['data'];
+        }
+      });
+  }
+
+
+
 
 }
