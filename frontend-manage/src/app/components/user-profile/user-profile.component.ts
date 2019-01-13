@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from "../../services/http.service";
-import {NzMessageService, UploadFile} from "ng-zorro-antd";
+import {NzMessageService, NzModalService, UploadFile} from "ng-zorro-antd";
 import {HttpParams} from "@angular/common/http";
 
 @Component({
@@ -21,10 +21,11 @@ export class UserProfileComponent implements OnInit {
   public messageUrl: string = "/message";
 
   // 消息列表
-  public messages: object = [1, 2, 3, 4, 5, 6, 7];
+  public messages: Array<any> = [];
 
   constructor(private httpService: HttpService,
-              private msg: NzMessageService) { }
+              private msg: NzMessageService,
+              private modalService: NzModalService) { }
 
   ngOnInit() {
     this.getUserInfo();
@@ -116,7 +117,7 @@ export class UserProfileComponent implements OnInit {
     let params = new HttpParams().set("status", "0");
     this.httpService.getWithParams(this.messageUrl + "/count", params)
       .subscribe((data) => {
-        this.unreadMsgCount = data['data'];
+        this.unreadMsgCount = data.data;
       });
   }
 
@@ -126,13 +127,77 @@ export class UserProfileComponent implements OnInit {
   getMessages(): void {
     this.httpService.get(this.messageUrl)
       .subscribe((data) => {
-        if (data['code']%2) {
-          // this.messages = data['data'];
+        if (data.code%2) {
+          this.messages = data.data;
         }
       });
   }
 
+  /**
+   * 将该消息标记为已读
+   * @param {number} id
+   */
+  read(id: number): void {
+    for (let message of this.messages) {
+      if (message.id == id) {
+        message.status = 1;
+        break;
+      }
+    }
+    this.unreadMsgCount -= 1;
 
+    this.httpService.patchWithOutBody(this.messageUrl + "/" + id)
+      .subscribe((data) => {
+        if (!(data.code%2)) {
+          this.msg.error(data.msg);
+        }
+      });
+  }
 
+  /**
+   * 删除该消息
+   * @param {number} id
+   */
+  delete(id: number): void {
+    for (let index in this.messages) {
+      if (this.messages[index].id == id) {
+        this.messages.splice(parseInt(index), 1);
+        break;
+      }
+    }
+
+    this.httpService.delete(this.messageUrl + "/" + id)
+      .subscribe((data) => {
+        if (!(data.code%2)) {
+          this.msg.error(data.msg);
+        }
+      });
+  }
+
+  clearMessage(): void {
+    this.modalService.confirm({
+      nzTitle     : '确认删除清空所有已读消息吗?',
+      nzOkText    : '确认',
+      nzOkType    : 'danger',
+      nzOnOk      : () => {
+        let tmp: Array<any> = [];
+        for (let message of this.messages) {
+          if (message.status == 0) {
+            tmp.push(message);
+          }
+        }
+        this.messages = tmp;
+
+        this.httpService.post(this.messageUrl + "/empty", "")
+          .subscribe((data) => {
+            if (!(data.code%2)) {
+              this.msg.error(data.msg);
+            }
+          });
+      },
+      nzCancelText: '取消',
+      nzOnCancel  : () => {}
+    });
+  }
 
 }
