@@ -26,6 +26,7 @@ import { ArticleDraftboxComponent } from './components/article-manage/article-dr
 import { TagManageComponent } from './components/tag-manage/tag-manage.component';
 import { CarouselManageComponent } from './components/carousel-manage/carousel-manage.component';
 import { IpManageComponent } from './components/ip-manage/ip-manage.component';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { IpManageComponent } from './components/ip-manage/ip-manage.component';
     HttpClientModule,
     NgZorroAntdModule,
     AppRouting,
+    NgxEchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
