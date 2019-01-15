@@ -1,3 +1,36 @@
-<p>
-  仪表盘
-</p>
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div nz-col [nzSpan]="12" class="card-area">
+      <div class="data-card" style="background-color: #E3E625" nz-col [nzSpan]="7">
+        <strong>31</strong><span class="font">篇文章</span>
+      </div>
+      <div class="data-card" style="background-color: #54e627" nz-col [nzSpan]="7">
+        <strong>15</strong><span class="font">种分类</span>
+      </div>
+      <div class="data-card" style="background-color: #51e6dd" nz-col [nzSpan]="7">
+        <strong>17</strong><span class="font">个标签</span>
+      </div>
+      <div class="data-card" style="background-color: #e66c11;" nz-col [nzSpan]="7">
+        <span class="font">本周新增文章</span>
+        <strong>3</strong>
+        <span class="font">篇</span>
+      </div>
+      <div class="data-card" style="background-color: #c378d2" nz-col [nzSpan]="7">
+        <span class="font">今日访问量</span>
+        <strong>10</strong>
+        <span class="font">次</span>
+      </div>
+      <div class="data-card" style="background-color: #eb3208" nz-col [nzSpan]="7">
+        <span class="font">本周访问量</span>
+        <strong>124</strong>
+        <span class="font">次</span>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="12" class="card-area" style="height: 300px">
+      我是频率图区域
+    </div>
+  </div>
+  <div nz-col [nzSpan]="24" style="margin-top: 20px; height: 300px">
+    我是下面的区域
+  </div>
+</div>
