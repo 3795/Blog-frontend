@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-manage-dashboard',
@@ -11,10 +12,22 @@ export class ManageDashboardComponent implements OnInit {
 
   echartsInstance: any;
 
-  constructor() { }
+  public cardData: Array<string> = [];
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.initCardData();
     this.chartA();
+  }
+
+  initCardData(): void {
+    this.httpService.get("/monitor/cardData")
+      .subscribe((data) => {
+        if (data.code%2) {
+          this.cardData = data.data;
+        }
+      });
   }
 
   onChartInit(e: any) {
