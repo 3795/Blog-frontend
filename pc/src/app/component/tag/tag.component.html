@@ -1,0 +1,10 @@
+<div nz-col [nzSpan]="24" class="right-two">
+  <nz-card  [nzTitle]="cardTitle" [nzBordered]="false">
+    <div class="tag-box" *ngFor="let tag of tags">
+      <nz-tag (click)="changeTag(tag['id'])" [nzColor]="tag['color']">{{tag['name']}}</nz-tag>
+    </div>
+  </nz-card>
+  <ng-template #cardTitle>
+    <i nz-icon type='tags' theme='outline'></i>&nbsp;文章标签
+  </ng-template>
+</div>

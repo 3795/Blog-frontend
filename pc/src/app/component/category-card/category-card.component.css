@@ -1,0 +1,24 @@
+.mix {
+  text-align: center;
+  height: 220px;
+  margin: 10px;
+  font-family: "华文彩云";
+}
+
+.category-name {
+  height: 150px;
+  line-height: 180px;
+  font-size: 60px;
+}
+
+.category-children {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+
+

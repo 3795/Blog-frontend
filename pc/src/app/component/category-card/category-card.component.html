@@ -1,0 +1,12 @@
+<div nz-col [nzSpan]="24">
+  <div class="mix card">
+    <div nz-col [nzSpan]="24" class="category-name">
+      {{categoryName}}
+    </div>
+    <div nz-col [nzSpan]="24">
+      <div nz-col [nzSpan]="4" class="category-children" *ngFor="let category of categories">
+        <a (click)="changeCategory(category.id)">{{category.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>

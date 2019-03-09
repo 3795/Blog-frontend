@@ -1,0 +1,10 @@
+<div nz-col [nzSpan]="24" class="right-three">
+  <nz-card [nzBordered]="false" [nzTitle]="linkTitle">
+    <p><a href="https://www.angular.cn/" target="_blank" title="Angular中文网">Angular中文网</a></p>
+    <p><a href="https://ng.ant.design/docs/introduce/zh" target="_blank" title="Ng-Zorro">Ant Design of Angular</a></p>
+    <p><a href="https://juejin.im/" title="掘金" target="_blank">掘金-juejin.im</a></p>
+  </nz-card>
+  <ng-template #linkTitle>
+    <i nz-icon type="link" theme="outline"></i>&nbsp;资源链接
+  </ng-template>
+</div>

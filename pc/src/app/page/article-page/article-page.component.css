@@ -1,0 +1,37 @@
+
+.article-content {
+  background-color: #ffffff;
+  min-height: 650px;
+}
+
+.title {
+  font-size: 30px;
+  font-family: '华文隶书';
+  height: 60px;
+  line-height: 80px;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.label {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: #efefef solid 1px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.content {
+  font-size: 16px;
+  padding-bottom: 30px ;
+  width: 100%;
+}
+
+.article-sider {
+  padding-left: 10px;
+  height: 200px;
+}
+
+.directory {
+  background-color: #ffffff;
+}

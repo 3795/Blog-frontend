@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Pc</title>
+  <title>NTShare</title>
   <base href="/">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="NTShare, 个人博客, 技术分享, 后端开发,">
+  <meta name="description" content="NTShare，一个记录挖坑方法与爬坑技巧的空间，随缘更新">
+  <meta name="fragment" content="!">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
-  <app-root></app-root>
+<body onload="checkDevice()">
+<app-root>
+  <div style="text-align: center; padding-top: 200px">
+    <p style="font-size: 30px;font-family:'华文行楷' ">
+      首次加载有些慢
+    </p>
+  </div>
+</app-root>
+
 </body>
+<script type="text/javascript">
+  function checkDevice() {
+    if (document.body.clientWidth < 801) {
+      location.href = "https://m.ntshare.cn";
+    }
+  }
+</script>
 </html>

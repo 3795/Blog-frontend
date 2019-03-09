@@ -1,0 +1,10 @@
+<div nz-col [nzSpan]="24" class="carousel">
+  <nz-carousel nzEffect="fade" nzAutoPlay="true" nzAutoPlaySpeed="5000" >
+    <div nz-carousel-content>
+      <img src="https://img.ntshare.cn/15466603904.jpg" class="image" alt="加载中" />
+    </div>
+    <div nz-carousel-content *ngFor="let img of imgs">
+      <img src="{{img['img']}}" class="image" alt="加载中" />
+    </div>
+  </nz-carousel>
+</div>
