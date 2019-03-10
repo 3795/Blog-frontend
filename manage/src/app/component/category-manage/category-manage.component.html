@@ -1,0 +1,72 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div nz-row class="table-head">
+      <div>
+        <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
+        <div nz-col [nzSpan]="12" style="text-align: right">
+          <button type="button" class="ant-btn ant-btn-primary" (click)="insertDrawer()">添加分类</button>
+        </div>
+      </div>
+    </div>
+    <nz-table #categoryTable [nzData]="categoryData"
+              [(nzPageIndex)]="pageNum" [nzTotal]="total"
+              [nzFrontPagination]="false" (nzPageIndexChange)="turnPage($event)">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>父级名称</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of categoryTable.data">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.parentName}}</td>
+        <td>
+          <nz-switch [ngModel]="data.status" [nzCheckedChildren]="checkedTemplate"
+                     [nzUnCheckedChildren]="unCheckedTemplate" (ngModelChange)="changeStatus(data.id)"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon type="check"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon type="close"></i></ng-template></td>
+        <td>
+          <a (click)="updateDrawer(data)">编辑</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(data.id)">删除</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+    <nz-drawer [nzClosable]="true" [nzVisible]="visible"
+               nzPlacement='right' nzTitle="编辑分类" [nzWidth]="350" (nzOnClose)="closeDrawer()">
+
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-label nzRequired>分类名称</nz-form-label>
+          <input nz-input type="text" [(ngModel)]="name" name="name" placeholder="请输入分类名称">
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired>父级分类</nz-form-label>
+          <nz-select [(ngModel)]="parentId" name="parentId" nzAllowClear nzPlaceHolder="parentId">
+            <nz-option nzValue="0" nzLabel="无"></nz-option>
+            <ng-container *ngFor="let o of firstLevel">
+              <ng-container *ngIf="o.name != name">
+                <nz-option [nzValue]="o.id" [nzLabel]="o.name"></nz-option>
+              </ng-container>
+            </ng-container>
+          </nz-select>
+        </nz-form-item>
+      </form>
+
+      <div class="drawer-footer">
+        <button type="button" (click)="closeDrawer()" class="ant-btn" style="margin-right: 20px;"><span>取消</span></button>
+        <button type="button" (click)="handle()" class="ant-btn ant-btn-primary"><span>确认</span></button>
+      </div>
+
+    </nz-drawer>
+
+  </div>
+</div>
+

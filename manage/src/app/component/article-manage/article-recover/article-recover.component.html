@@ -1,0 +1,39 @@
+<div nz-row>
+  <div nz-col [nzSpan]="24">
+    <div nz-row class="table-head">
+      <div>
+        <div nz-col [nzSpan]="12" class="table-title">{{tableTitle}}</div>
+      </div>
+    </div>
+    <nz-table #articleTable [nzData]="articleData"
+              [(nzPageIndex)]="pageNum" [nzTotal]="total"
+              [nzFrontPagination]="false" (nzPageIndexChange)="turnPage($event)">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>分类名称</th>
+        <th>创建时间</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of articleTable.data">
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.categoryName}}</td>
+        <td>{{data.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>已删除<td>
+        <a (click)="recover(data.id)">还原文章</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="delete(data.id)">彻底删除</a>
+      </td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+</div>
+
+
