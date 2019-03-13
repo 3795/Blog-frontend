@@ -1,13 +1,13 @@
 .carousel {
-  height: 180px;
+  height: 14rem;
   box-shadow: 0 6px 5px #d7d8db;
   margin-bottom: 20px;
 }
 
 [nz-carousel-content] {
   text-align: center;
-  height: 180px;
-  line-height: 180px;
+  height: 14rem;
+  line-height: 14rem;
   overflow: hidden;
 }
 

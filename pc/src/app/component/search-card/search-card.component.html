@@ -1,7 +1,7 @@
 <div nz-col [nzSpan]="24">
   <div class="card search">
     <div nz-col [nzSpan]="16" [nzOffset]="4">
-      <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixButton">
+      <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
         <input type="text" [(ngModel)]="keywords" (keyup.enter)="search()" nz-input placeholder="请输入关键词">
       </nz-input-group>
       <ng-template #suffixButton>

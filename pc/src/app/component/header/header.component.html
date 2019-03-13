@@ -3,11 +3,17 @@
     NTShare
   </div>
   <div nz-col [nzSpan]="7" [nzOffset]="12" >
-    <nz-input-group nzSearch [nzSuffix]="suffixIconButton">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="请输入关键字" [(ngModel)]="keywords" (keyup.enter)="search()">
     </nz-input-group>
     <ng-template #suffixIconButton>
       <button nz-button nzType="primary" nzSearch (click)="search()"><i nz-icon type="search"></i></button>
     </ng-template>
+    <!--<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">-->
+      <!--<input type="text" nz-input placeholder="input search text">-->
+    <!--</nz-input-group>-->
+    <!--<ng-template #suffixIconButton>-->
+      <!--<button nz-button nzType="primary" nzSearch><i nz-icon type="search"></i></button>-->
+    <!--</ng-template>-->
   </div>
 </div>

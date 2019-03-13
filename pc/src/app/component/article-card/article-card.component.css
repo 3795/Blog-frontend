@@ -9,7 +9,7 @@
 
 .thumbnail {
   width: 93%;
-  height: 170px;
+  height: 13rem;
 }
 
 .title {
@@ -26,7 +26,7 @@
   padding-top: 10px;
   font-size: 16px;
   text-indent: 2em;
-  height: 126px;
+  height: 10rem;
   line-height: 160%;
   overflow: hidden;
 }
