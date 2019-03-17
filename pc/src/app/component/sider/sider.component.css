@@ -15,6 +15,12 @@
   height: 8rem;
   margin-top: -3.5rem;
   border-radius: 50%;
+  border: solid #fff 3px;
+  transition: all 2.0s;
+}
+
+.avatar:hover {
+  transform: rotate(360deg);
 }
 
 .background-image{

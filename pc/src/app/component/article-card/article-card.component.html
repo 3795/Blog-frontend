@@ -1,8 +1,10 @@
 <nz-skeleton nzActive="true" [nzLoading]="loading">
   <div nz-col [nzSpan]="24" *ngFor="let articleCard of articleCards">
     <div class="card">
-      <div nz-col [nzSpan]="8">
-        <img src="{{articleCard.img}}" title='{{articleCard.title}}' alt="{{articleCard.title}}" class="thumbnail">
+      <div nz-col [nzSpan]="8" style="overflow: hidden;">
+        <div class="thumbnail-box">
+          <img src="{{articleCard.img}}" title='{{articleCard.title}}' alt="{{articleCard.title}}" class="thumbnail">
+        </div>
       </div>
       <div nz-col [nzSpan]="16">
         <div nz-col [nzSpan]="24" class="title">
