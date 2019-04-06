@@ -4,3 +4,7 @@
   padding-left: 15px;
   color: #1890ff;
 }
+
+.ant-input-group-wrapper {
+  vertical-align: middle;
+}

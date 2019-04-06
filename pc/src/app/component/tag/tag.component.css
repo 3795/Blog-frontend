@@ -10,6 +10,7 @@
 
 .ant-card-body {
   padding: 10px;
+  min-height: 3rem;
 }
 
 .ant-tag {

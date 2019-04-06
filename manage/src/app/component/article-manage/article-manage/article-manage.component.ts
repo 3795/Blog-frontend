@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpParams} from "@angular/common/http";
 import {HttpService} from "../../../service/http.service";
 import {NzMessageService, NzModalService} from "ng-zorro-antd";
+import {ArticleEntity} from "../../../entity/ArticleEntity";
 
 @Component({
   selector: 'app-article-manage',
@@ -12,7 +13,7 @@ export class ArticleManageComponent implements OnInit {
 
   public tableTitle: string = "文章列表";
 
-  public articleData: any[] = [];
+  public articleData: Array<ArticleEntity> = [];
 
   public pageNum: number = 1;
 
@@ -28,6 +29,9 @@ export class ArticleManageComponent implements OnInit {
     this.initData();
   }
 
+  /**
+   * 初始化数据
+   */
   initData(): void {
     let params = new HttpParams().set("status", "1").set("type", "1");
     this.httpService.getWithParams(this.url, params)
@@ -43,6 +47,10 @@ export class ArticleManageComponent implements OnInit {
       });
   }
 
+  /**
+   * 更新页面数据
+   * @param params
+   */
   updateData(params: HttpParams): void {
     this.httpService.getWithParams(this.url, params)
       .subscribe((data) => {
@@ -57,6 +65,10 @@ export class ArticleManageComponent implements OnInit {
       });
   }
 
+  /**
+   * 翻页
+   * @param nowPageNum
+   */
   turnPage(nowPageNum: number): void {
     let params = new HttpParams().set("pageNum", nowPageNum.toString())
       .set("status", "1")
@@ -64,6 +76,11 @@ export class ArticleManageComponent implements OnInit {
     this.updateData(params);
   }
 
+  /**
+   * 更改当前文章状态
+   * @param id
+   * @param $event
+   */
   changeType(id: number, $event): void{
     let type = ($event == true) ? 1 : 0;
     let body: string = "id=" + id + "&type=" + type;
@@ -81,6 +98,10 @@ export class ArticleManageComponent implements OnInit {
       });
   }
 
+  /**
+   * 将该文章加入回收站
+   * @param id
+   */
   delete(id: number): void {
     this.modalService.confirm({
       nzTitle     : '确认删除该文章吗?',

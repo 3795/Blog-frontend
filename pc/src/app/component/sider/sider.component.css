@@ -1,25 +1,30 @@
 .sider {
   width: 100%;
-  position: fixed;
   text-align: center;
   background-color: #ffffff;
 }
 
 .background-box {
   width: 100%;
-  height: 170px;
+  height: 11rem;
   background-color: #f9f9f9;
 }
 
 .avatar {
-  width: 130px;
-  height: 130px;
-  margin-top: -75px;
+  width: 8rem;
+  height: 8rem;
+  margin-top: -3.5rem;
   border-radius: 50%;
+  border: solid #fff 3px;
+  transition: all 2.0s;
+}
+
+.avatar:hover {
+  transform: rotate(360deg);
 }
 
 .background-image{
-  width: 246px;
+  width: 100%;
   height: 100%;
 }
 
