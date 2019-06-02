@@ -1,14 +1,14 @@
 <template>
   <div id="app" class="app">
     <Row :gutter="16">
-      <Col span="5" offset="2">
+      <Col span="4" offset="2">
         <div class="nav-bar">
           <Affix :offset-top="5">
             <nav-bar></nav-bar>
           </Affix>
         </div>
       </Col>
-      <Col span="15">
+      <Col span="16">
         <my-header></my-header>
         <div class="content">
           <router-view></router-view>
@@ -27,7 +27,6 @@
     .content
       min-height 15.4rem
       height auto
-      border solid .01rem
       padding .2rem 0 0 0
 
     .nav-bar
@@ -36,7 +35,7 @@
 <script>
   import NavBar from "./components/NavBar";
   import MyHeader from "./components/Header";
-  import Home from "./views/home/Home";
+  import Home from "./views/curtainPage/CurtainPage";
   import MyFooter from "./components/Footer";
 
   export default {

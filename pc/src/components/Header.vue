@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <Row>
-      <Col span="8" class="web-name">NTShare</Col>
+      <Col span="8"><span class="web-name">NTShare</span></Col>
       <Col span="8" offset="8">
         <div class="search-input">
           <Input search enter-button placeholder="Enter something..."/>

@@ -14,7 +14,9 @@
     <Row class="nav-info">
       <Col span="24">
         <Menu style="text-align: center; width: 100%">
-          <MenuItem v-for="(item, index) of navigationList" :name="1-index" class="my-menu-item">{{item.name}}</MenuItem>
+          <MenuItem v-for="(item, index) of navigationList" :name="1-index" :key="index" class="my-menu-item">
+            {{item.name}}
+          </MenuItem>
         </Menu>
       </Col>
     </Row>
@@ -126,6 +128,6 @@
     padding-bottom 3rem
 
     .my-menu-item
-      font-size .4rem
+      font-size .32rem
       font-family "楷体"
 </style>

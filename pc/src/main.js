@@ -5,6 +5,7 @@ import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import './assets/css/reset.css'
+import './assets/css/global.css'
 
 Vue.config.productionTip = false
 Vue.use(iView)
