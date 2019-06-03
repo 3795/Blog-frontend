@@ -14,7 +14,12 @@
     <Row class="nav-info">
       <Col span="24">
         <Menu style="text-align: center; width: 100%">
-          <MenuItem v-for="(item, index) of navigationList" :name="1-index" :key="index" class="my-menu-item">
+
+          <MenuItem v-for="(item, index) of navigationList"
+                    @click.native="changeNavigation(item.link)"
+                    :name="1-index"
+                    :key="index"
+                    class="my-menu-item">
             {{item.name}}
           </MenuItem>
         </Menu>
@@ -74,6 +79,9 @@
         if (res.code % 2) {
           this.navigationList = res.data;
         }
+      },
+      changeNavigation(url) {
+        this.$router.history.push(url)
       }
     },
     mounted() {

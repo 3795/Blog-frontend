@@ -1,18 +1,27 @@
 <template>
   <div class="pagination">
-<!--    更改currentPage名称为pageNum-->
-    <page :total=total :page-size="5" :current="currentPage"></page>
+    <page
+      :total=total
+      :page-size="5"
+      :current="pageNum"
+      @on-change="changePageNum"
+    ></page>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "Pagination",
-        props: {
-          total: Number,
-          currentPage: Number,
-        }
+  export default {
+    name: "Pagination",
+    props: {
+      total: Number,
+      pageNum: Number,
+    },
+    methods: {
+      changePageNum(num) {
+        this.$emit('pageNumChange', num);
+      }
     }
+  }
 </script>
 
 <style scoped lang="stylus">

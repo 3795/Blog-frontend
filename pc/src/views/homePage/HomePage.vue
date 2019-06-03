@@ -1,11 +1,11 @@
 <template>
   <div class="home-page">
-    <div class="home-card">
+    <div class="first-card">
       <p class="web-title">NTShare</p>
       <p class="web-desc">记录挖坑技巧与爬坑方法的小站</p>
     </div>
     <article-card :articleList="articleList"></article-card>
-    <pagination :total="total" :currentPage="currentPage"></pagination>
+    <pagination :total="total" :pageNum="pageNum" @pageNumChange="handlePageNumChange"></pagination>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
       return {
         articleList: [],
         total: 5,
-        currentPage: 1,
+        pageNum: 1,
       }
     },
     methods: {
@@ -33,8 +33,15 @@
         if (res.code % 2) {
           this.articleList = res.data.list;
           this.total = res.data.total;
-          this.currentPage = res.data.pageNum;
+          this.pageNum = res.data.pageNum;
         }
+      },
+      handlePageNumChange(num) {
+        axios.get('/api/article', {
+          params: {
+            pageNum: num
+          }
+        }).then(this.handleGetArticleList)
       }
     },
     mounted() {
@@ -47,12 +54,6 @@
 <style scoped lang="stylus">
   .home-page
     height auto
-
-  .home-card
-    width 100%
-    height 5rem
-    background-color #fff
-    margin 0 0 .4rem 0
 
   .web-title
     display block

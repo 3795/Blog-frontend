@@ -9,9 +9,12 @@
         </Col>
         <Col span="16">
           <div class="article-info">
-            <div class="article-title">
-              {{article.title}}
-            </div>
+            <router-link :to="{path: `/article/${article.id}`}">
+              <div class="article-title">
+                <span>{{article.title}}</span>
+              </div>
+            </router-link>
+
             <br>
             <div class="article-summary">
               <div>
@@ -40,11 +43,10 @@
 
 <script>
   import myDateFormat from "../assets/js/data";
+
   export default {
     name: "ArticleCard",
-    props: {
-      articleList: Array,
-    },
+    props: ['articleList'],
     filters: {
       formatDate(time) {
         let date = new Date(time);
@@ -80,6 +82,7 @@
     height .8rem
     line-height .8rem
     overflow hidden
+    color #000
 
     &:hover
       margin-left 10px
