@@ -19,8 +19,10 @@
         </Col>
       </Row>
     </div>
+    <h4>算法定义</h4>
     <div class="article-content">
-<!--      <vue-markdown>i am a ~~tast~~ **test**.</vue-markdown>-->
+      <h4>算法定义</h4>
+      <vue-markdown :source="article.content"></vue-markdown>
     </div>
   </div>
 </template>
@@ -28,10 +30,11 @@
 <script>
   import axios from 'axios'
   import myDateFormat from "../../assets/js/data";
+  import VueMarkdown from 'vue-markdown'
 
   export default {
     name: "ArticlePage",
-
+    components: {VueMarkdown},
     data() {
       return {
         article: Object
