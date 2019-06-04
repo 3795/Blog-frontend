@@ -11,7 +11,9 @@
       <Col span="16">
         <my-header></my-header>
         <div class="content">
-          <router-view></router-view>
+          <keep-alive exclude="ArticlePage,CarouselImg">
+            <router-view></router-view>
+          </keep-alive>
         </div>
         <my-footer></my-footer>
       </Col>

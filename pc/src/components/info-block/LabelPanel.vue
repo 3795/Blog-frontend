@@ -9,6 +9,7 @@
              :color="item.color"
              :key="item.id"
              class="tag-item"
+             @click.native="changeTag(item.id)"
         >
           {{item.name}}
         </Tag>
@@ -36,6 +37,9 @@
         if (res.code % 2) {
           this.tagList = res.data;
         }
+      },
+      changeTag(id) {
+        this.$router.history.push("/tag/" + id)
       }
     },
     mounted() {

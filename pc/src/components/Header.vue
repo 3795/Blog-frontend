@@ -6,7 +6,12 @@
       </Col>
       <Col span="8" offset="8">
         <div class="search-input">
-          <Input search enter-button placeholder="Enter something..."/>
+          <Input search
+                 enter-button placeholder="Enter something..."
+                 @enter="search"
+                 @on-search="search"
+                 v-model="keywords"
+          />
         </div>
       </Col>
     </Row>
@@ -15,7 +20,21 @@
 
 <script>
   export default {
-    name: "MyHeader"
+    name: "MyHeader",
+    data() {
+      return {
+        keywords: '',
+      }
+    },
+    methods: {
+      search() {
+        if (this.keywords === '') {
+          return
+        }
+        this.$router.push({ path: '/search', query: { keywords: this.keywords }});
+        this.keywords = ''
+      }
+    }
   }
 </script>
 
@@ -31,7 +50,8 @@
       padding-left .3rem
       color #1890ff
     .search-input
-      width 80%
+      width 95%
       display inline-block
       vertical-align middle
+      padding-left 1.2rem
 </style>

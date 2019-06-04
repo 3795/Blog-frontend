@@ -1,6 +1,6 @@
 <template>
-    <div>
-      页面走丢了
+    <div class="page-not-found">
+      404 Not Found
     </div>
 </template>
 
@@ -10,6 +10,13 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+  .page-not-found
+    background-color #fff
+    height 14rem
+    line-height 10rem
+    font-size 1rem
+    font-family "华文行楷"
+    text-align center
+    color #e46022
 </style>

@@ -39,6 +39,9 @@
     methods: {
       getData() {
         this.id = this.$route.params.id;
+        if (this.$route.path !== ('/category/' + this.id)) {
+          return
+        }
         this.getCategoryInfo(this.id);
         this.getArticleList(this.id);
       },
@@ -57,6 +60,8 @@
         if (res.code % 2) {
           this.categoryName = res.data.name;
           this.categoryChildrenList = res.data.categoryDTOList;
+        } else {
+          this.$router.push("/404")
         }
       },
       handleGetArticleList(res) {

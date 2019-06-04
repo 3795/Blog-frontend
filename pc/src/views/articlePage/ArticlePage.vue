@@ -19,10 +19,14 @@
         </Col>
       </Row>
     </div>
-    <h4>算法定义</h4>
     <div class="article-content">
-      <h4>算法定义</h4>
-      <vue-markdown :source="article.content"></vue-markdown>
+    <mavon-editor v-model="article.content"
+                  :subfield="false"
+                  :toolbarsFlag="false"
+                  :defaultOpen="'preview'"
+                  :ishljs="true"
+                  :codeStyle="'vs2015'">
+    </mavon-editor>
     </div>
   </div>
 </template>
@@ -30,14 +34,12 @@
 <script>
   import axios from 'axios'
   import myDateFormat from "../../assets/js/data";
-  import VueMarkdown from 'vue-markdown'
 
   export default {
     name: "ArticlePage",
-    components: {VueMarkdown},
     data() {
       return {
-        article: Object
+        article: Object,
       }
     },
     mounted() {
@@ -51,8 +53,10 @@
         res = res.data;
         if (res.code % 2) {
           this.article = res.data;
+        } else {
+          this.$router.push("/404")
         }
-      }
+      },
     },
     filters: {
       formatDate(time) {
@@ -79,11 +83,11 @@
 
   .article-info
     font-size 16px
-    border-bottom solid .01rem #e2e2e2
     height 1rem
     line-height 1rem
     text-align center
 
   .article-content
-    padding .5rem 0 .5rem 0
+    font-size .36rem
+    overflow hidden
 </style>
