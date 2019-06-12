@@ -44,7 +44,7 @@
     },
     methods: {
       getUserInfo() {
-        axios.get('/api/user').then(this.handleGetUserInfo)
+        axios.get('/api/account').then(this.handleGetUserInfo)
       },
       handleGetUserInfo(res) {
         res = res.data;

@@ -1,14 +1,16 @@
 module.exports = {
   publicPath: '/',
   devServer: {
+    port: 8001,
+    host: 'dev.ntshare.cn',
     proxy: {
       '/api': {
-        target: 'http://api.ntshare.cn:80',
+        target: 'https://api.ntshare.cn',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/blog/v1'
-        }
+        },
       }
     }
   },
