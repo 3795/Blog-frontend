@@ -39,21 +39,21 @@
     methods: {
       getData() {
         this.id = this.$route.params.id;
-        if (this.$route.path !== ('/categoryList/' + this.id)) {
+        if (this.$route.path !== ('/category/' + this.id)) {
           return
         }
         this.getCategoryInfo(this.id);
         this.getArticleList(this.id);
       },
       getCategoryInfo(id) {
-        axios.get('/api/categoryList/children', {
+        axios.get('/api/category/children', {
           params: {
             id: id
           }
         }).then(this.handleGetCategoryInfo);
       },
       getArticleList(id) {
-        axios.get('/api/categoryList/' + id).then(this.handleGetArticleList)
+        axios.get('/api/category/' + id).then(this.handleGetArticleList)
       },
       handleGetCategoryInfo(res) {
         res = res.data;
@@ -73,7 +73,7 @@
         }
       },
       handlePageNumChange(num) {
-        axios.get('/api/categoryList/' + this.id, {
+        axios.get('/api/category/' + this.id, {
           params: {
             pageNum: num
           }

@@ -63,7 +63,7 @@
           this.total = res.data.total;
           this.pageNum = res.data.pageNum;
         } else {
-          this.$router.push("/404")
+          // this.$router.push("/404")
         }
       },
       handlePageNumChange(num) {

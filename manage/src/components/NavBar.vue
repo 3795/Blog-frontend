@@ -25,8 +25,12 @@
       <MenuItem name="3">
         <router-link to="/console/category">分类管理</router-link>
       </MenuItem>
-      <MenuItem name="4">标签管理</MenuItem>
-      <MenuItem name="5">导航管理</MenuItem>
+      <MenuItem name="4">
+        <router-link to="/console/tag">标签管理</router-link>
+      </MenuItem>
+      <MenuItem name="5">
+        <router-link to="/console/navigation">导航管理</router-link>
+      </MenuItem>
       <Submenu name="6">
         <template slot="title">
           <Icon type="ios-stats"/>
@@ -36,7 +40,9 @@
           <MenuItem name="6-1">图片管理</MenuItem>
         </MenuGroup>
         <MenuGroup title="安全设置">
-          <MenuItem name="6-2">IP管理</MenuItem>
+          <MenuItem name="6-2">
+            <router-link to="/console/ip">IP管理</router-link>
+          </MenuItem>
         </MenuGroup>
       </Submenu>
     </Menu>

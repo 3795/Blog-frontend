@@ -44,7 +44,7 @@
     },
     methods: {
       getUserInfo() {
-        axios.get('/api/account').then(this.handleGetUserInfo)
+        axios.get('/api/user').then(this.handleGetUserInfo)
       },
       handleGetUserInfo(res) {
         res = res.data;
@@ -63,7 +63,7 @@
         }
       },
       getCategoryNum() {
-        axios.get('/api/categoryList/count').then(this.handleGetCategoryNum)
+        axios.get('/api/category/count').then(this.handleGetCategoryNum)
       },
       handleGetCategoryNum(res) {
         res = res.data;

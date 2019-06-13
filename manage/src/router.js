@@ -8,6 +8,9 @@ import ArticleEdit from "./views/article/ArticleEdit";
 import DraftBox from "./views/article/DraftBox";
 import Recycle from "./views/article/Recycle";
 import CategoryPage from "./views/CategoryPage";
+import TagPage from "./views/TagPage";
+import NavigationPage from "./views/NavigationPage";
+import IpPage from "./views/IpPage";
 
 Vue.use(Router);
 
@@ -45,6 +48,18 @@ export default new Router({
         path: '/console/category',
         name: 'categoryPage',
         component: CategoryPage
+      }, {
+        path: '/console/tag',
+        name: 'tagPage',
+        component: TagPage
+      }, {
+        path: '/console/navigation',
+        name: 'navigationPage',
+        component: NavigationPage
+      }, {
+        path: '/console/ip',
+        name: 'ipPage',
+        component: IpPage
       }],
     }
   ],

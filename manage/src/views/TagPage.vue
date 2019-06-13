@@ -11,26 +11,24 @@
       </Col>
     </Row>
     <Modal
-      v-model="addCategoryModel"
+      v-model="addTagModel"
       title="添加标签"
       @on-ok="ok"
       @on-cancel="cancel"
     >
-      <Form :model="categoryForm" :label-width="100">
+      <Form :model="tagForm" :label-width="100">
         <FormItem label="标签名称">
-          <Input v-model="categoryForm.name" placeholder="请输入标签名称"></Input>
+          <Input v-model="tagForm.name" placeholder="请输入标签名称"></Input>
         </FormItem>
-        <FormItem label="父级标签">
-          <Select v-model="categoryForm.parentId" style="width:200px">
-            <Option v-for="item in firstLevel" :value="item.value" :key="item.value">{{ item.label }}</Option>
-          </Select>
+        <FormItem label="标签颜色">
+          <ColorPicker v-model="tagForm.color" />
         </FormItem>
       </Form>
     </Modal>
-    <Table :data="categoryList" :columns="columns1" stripe>
+    <Table :data="tagList" :columns="columns1" stripe>
       <template slot-scope="{ row, index }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="editCategory(row.id)">编辑</Button>
-        <Button type="error" size="small" @click="removeCategory(row.id, index)">删除</Button>
+        <Button type="primary" size="small" style="margin-right: 5px" @click="editTag(row.id)">编辑</Button>
+        <Button type="error" size="small" @click="removeTag(row.id, index)">删除</Button>
       </template>
       <template slot-scope="{ row, index }" slot="status">
         <i-switch :value="row.status === 1" @on-change="changeType(row.id)"></i-switch>
@@ -48,7 +46,7 @@
   import {BASE_URL} from "../main";
 
   export default {
-    name: "CategoryPage",
+    name: "TagPage",
     data() {
       return {
         columns1: [
@@ -65,8 +63,8 @@
             align: 'center',
           },
           {
-            title: '父级名称',
-            key: 'parentName',
+            title: '标签颜色',
+            key: 'color',
             align: "center",
             width: 400
           },
@@ -85,30 +83,29 @@
             slot: 'action'
           }
         ],
-        categoryList: [],
-        firstLevel: [],
+        tagList: [],
         pageNum: 1,
         total: 0,
-        addCategoryModel: false,
-        categoryForm: {
+        addTagModel: false,
+        tagForm: {
           name: '',
-          parentId: '',
+          color: '',
           id: '-1'
         }
       }
     },
     methods: {
-      getCategoryList(pageNum) {
-        this.$axios.get(BASE_URL + '/backend/category', {
+      getTagList(pageNum) {
+        this.$axios.get(BASE_URL + '/backend/tag', {
           params: {
             pageNum: pageNum
           }
-        }).then(this.handleGetCategoryList)
+        }).then(this.handleGetTagList)
       },
-      handleGetCategoryList(res) {
+      handleGetTagList(res) {
         res = res.data;
         if (res.code % 2) {
-          this.categoryList = res.data.list;
+          this.tagList = res.data.list;
           this.total = res.data.total;
           this.pageNum = res.data.pageNum;
         } else {
@@ -116,24 +113,24 @@
         }
       },
       changePage(pageNum) {
-        this.getCategoryList(pageNum)
+        this.getTagList(pageNum)
       },
-      editCategory(id) {
+      editTag(id) {
         this.showEditModel(id);
       },
-      removeCategory(id, index) {
+      removeTag(id, index) {
         this.$Modal.confirm({
           title: '确认删除',
           content: '确认删除该标签吗',
           onOk: () => {
-            this.$axios.delete(BASE_URL + '/backend/category/' + id).then(this.handleDeleteCategory);
-            this.categoryList.splice(index, 1);
+            this.$axios.delete(BASE_URL + '/backend/tag/' + id).then(this.handleDeleteTag);
+            this.tagList.splice(index, 1);
           },
           onCancel: () => {
           }
         });
       },
-      handleDeleteCategory(res) {
+      handleDeleteTag(res) {
         res = res.data;
         if (res.code % 2) {
           this.$Message.success("删除成功");
@@ -142,74 +139,45 @@
         }
       },
       changeType(id) {
-        let params = new URLSearchParams();
-        params.append("id", id);
-        this.$axios.patch(BASE_URL + '/backend/category/' + id).then(this.handleChangeType);
+        this.$axios.patch(BASE_URL + '/backend/tag/' + id).then(this.handleChangeType);
       },
       handleChangeType(res) {
         res = res.data;
         if (res.code % 2) {
           this.$Message.success("更改成功");
-          this.getCategoryList(this.pageNum);
+          this.getTagList(this.pageNum);
         } else {
           this.$Message.error(res.msg);
         }
       },
       showAddModel() {
-        this.addCategoryModel = true;
-        if (this.firstLevel.length === 0) {
-          this.getParentCategory();
-        }
-        this.categoryForm.name = '';
-        this.categoryForm.parentId = 0;
-        this.categoryForm.id = -1;
+        this.addTagModel = true;
+        this.tagForm.name = '';
+        this.tagForm.color = '';
+        this.tagForm.id = -1;
       },
       showEditModel(id) {
-        this.addCategoryModel = true;
-        if (this.firstLevel.length === 0) {
-          this.getParentCategory();
-        }
-        this.$axios.get('/api/backend/category/' + id).then((res) => {
+        this.addTagModel = true;
+        this.$axios.get('/api/backend/tag/' + id).then((res) => {
           res = res.data;
           if (res.code % 2) {
-            this.categoryForm.id = res.data.id;
-            this.categoryForm.name = res.data.name;
-            this.categoryForm.parentId = res.data.parentId;
+            this.tagForm.id = res.data.id;
+            this.tagForm.name = res.data.name;
+            this.tagForm.color = res.data.color;
           } else {
             this.$Message.error(res.msg);
           }
         })
       },
-      getParentCategory() {
-        this.$axios.get('/api/backend/category/firstLevel').then((res) => {
-          res = res.data;
-          if (res.code % 2) {
-            let data = res.data;
-            let o = {};
-            o.value = 0;
-            o.label = "无父级标签";
-            this.firstLevel.push(o);
-            for (let i = 0; i < data.length; i++) {
-              let o = {};
-              o.value = data[i].id;
-              o.label = data[i].name;
-              this.firstLevel.push(o);
-            }
-          } else {
-            this.$Message.error(data.msg);
-          }
-        })
-      },
       ok() {
         let params = new URLSearchParams();
-        params.append("name", this.categoryForm.name);
-        params.append("parentId", this.categoryForm.parentId);
+        params.append("name", this.tagForm.name);
+        params.append("color", this.tagForm.color);
         params.append("status", "1");
-        if (this.categoryForm.id > 0) {
-          params.append("id", this.categoryForm.id);
-          this.$axios.put(BASE_URL + '/backend/category', params).then(this.handleOk)
+        if (this.tagForm.id > 0) {
+          this.$axios.put(BASE_URL + '/backend/tag/' + this.tagForm.id, params).then(this.handleOk)
         } else {
-          this.$axios.post(BASE_URL + '/backend/category', params).then(this.handleOk)
+          this.$axios.post(BASE_URL + '/backend/tag', params).then(this.handleOk)
         }
       },
       cancel() {
@@ -218,10 +186,10 @@
         res = res.data;
         if (res.code % 2) {
           this.$Message.success(res.msg);
-          if (this.categoryForm.id > 0) {
-            this.getCategoryList(this.pageNum);
+          if (this.tagForm.id > 0) {
+            this.getTagList(this.pageNum);
           } else {
-            this.getCategoryList(this.total);
+            this.getTagList(this.total);
           }
         } else {
           this.$Message.error(res.msg);
@@ -229,7 +197,7 @@
       }
     },
     mounted() {
-      this.getCategoryList(this.pageNum);
+      this.getTagList(this.pageNum);
     }
   }
 </script>

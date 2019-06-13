@@ -56,6 +56,7 @@
 
 <script>
   import {BASE_URL} from "../main";
+
   export default {
     name: "Login",
     data() {
@@ -87,20 +88,24 @@
     },
     methods: {
       handleSubmit(name) {
-        let params = new URLSearchParams();
-        params.append("account", this.loginForm.account);
-        params.append("password", this.loginForm.password);
-        params.append("captchaCode", this.loginForm.captcha);
-        if (this.smsCode !== '') {
-          params.append("phoneCaptchaCode", this.smsCode);
-        }
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            this.$axios.post(BASE_URL + '/backend/login', params).then(this.handleLogin);
-          } else {
-            this.$Message.error('Fail!');
+        if (this.smsToken !== '' && this.smsCode === '') {
+          this.inputSms = true;
+        } else {
+          let params = new URLSearchParams();
+          params.append("account", this.loginForm.account);
+          params.append("password", this.loginForm.password);
+          params.append("captchaCode", this.loginForm.captcha);
+          if (this.smsCode !== '') {
+            params.append("phoneCaptchaCode", this.smsCode);
           }
-        })
+          this.$refs[name].validate((valid) => {
+            if (valid) {
+              this.$axios.post(BASE_URL + '/backend/login', params).then(this.handleLogin);
+            } else {
+              this.$Message.error('Fail!');
+            }
+          })
+        }
       },
       handleLogin(res) {
         res = res.data;
@@ -108,24 +113,27 @@
           this.sendSms = true;
           this.phoneNumber = res.data[0];
           this.smsToken = res.data[1];
-        } else if (res.code % 2 ) {
+        } else if (res.code % 2) {
           this.$Message.success(res.msg);
           console.log("登录成功");
           this.$router.push('/console');
         } else {
           this.$Message.error(res.msg);
+          if (this.smsCode !== '') {
+            this.inputSms = true;
+          }
         }
       },
-      ok () {
+      ok() {
         let params = new URLSearchParams();
         params.append("phoneToken", this.smsToken);
         this.$axios.post(BASE_URL + "/sms", params).then(this.handleSmsCaptcha);
       },
-      cancel () {
+      cancel() {
       },
       handleSmsCaptcha(res) {
         res = res.data;
-        if (res.code%2) {
+        if (res.code % 2) {
           this.$Message.success(res.msg);
           this.inputSms = true;
         } else {
