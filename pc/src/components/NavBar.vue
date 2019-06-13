@@ -63,7 +63,7 @@
         }
       },
       getCategoryNum() {
-        axios.get('/api/category/count').then(this.handleGetCategoryNum)
+        axios.get('/api/categoryList/count').then(this.handleGetCategoryNum)
       },
       handleGetCategoryNum(res) {
         res = res.data;

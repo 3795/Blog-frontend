@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="table-title">文章列表</p>
+    <p class="table-title">草稿箱</p>
     <Table :data="articleList" :columns="columns1" stripe>
       <template slot-scope="{ row, index }" slot="action">
         <Button type="primary" size="small" style="margin-right: 5px" @click="editArticle(row.id)">编辑</Button>
@@ -26,7 +26,7 @@
   import myDateFormat from "../../assets/js/data";
 
   export default {
-    name: "ArticleList",
+    name: "DraftBox",
     data() {
       return {
         columns1: [
@@ -78,7 +78,7 @@
         this.$axios.get(BASE_URL + '/backend/article', {
           params: {
             status: 1,
-            type: 1,
+            type: 0,
             pageNum: pageNum
           }
         }).then(this.handleGetArticleList)

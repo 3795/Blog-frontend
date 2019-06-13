@@ -10,15 +10,21 @@
           文章管理
         </template>
         <MenuItem name="2-1">
-          <router-link to="/article/edit">写文章</router-link>
+          <router-link to="/console/article/edit/-1">写文章</router-link>
         </MenuItem>
         <MenuItem name="2-2">
-          <router-link to="/article/list">文章列表</router-link>
+          <router-link to="/console/article/list">文章列表</router-link>
         </MenuItem>
-        <MenuItem name="2-3">草稿箱</MenuItem>
-        <MenuItem name="2-4">回收站</MenuItem>
+        <MenuItem name="2-3">
+          <router-link to="/console/article/draft">草稿箱</router-link>
+        </MenuItem>
+        <MenuItem name="2-4">
+          <router-link to="/console/article/recycle">回收站</router-link>
+        </MenuItem>
       </Submenu>
-      <MenuItem name="3">分类管理</MenuItem>
+      <MenuItem name="3">
+        <router-link to="/console/category">分类管理</router-link>
+      </MenuItem>
       <MenuItem name="4">标签管理</MenuItem>
       <MenuItem name="5">导航管理</MenuItem>
       <Submenu name="6">

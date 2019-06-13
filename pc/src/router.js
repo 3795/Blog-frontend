@@ -25,7 +25,7 @@ export default new Router({
         name: 'HomePage',
         component: HomePage
       }, {
-        path: '/category/:id',
+        path: '/categoryList/:id',
         name: 'CategoryPage',
         component: CategoryPage
       }, {
