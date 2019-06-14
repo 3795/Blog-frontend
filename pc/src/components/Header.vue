@@ -8,7 +8,7 @@
         <div class="search-input">
           <Input search
                  enter-button placeholder="Enter something..."
-                 @enter="search"
+                 @on-enter="search"
                  @on-search="search"
                  v-model="keywords"
           />

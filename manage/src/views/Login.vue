@@ -19,7 +19,8 @@
               <FormItem prop="captcha">
                 <Row>
                   <Col span="16">
-                    <Input type="text" v-model="loginForm.captcha" placeholder="请输入验证码">
+                    <Input type="text" v-model="loginForm.captcha" placeholder="请输入验证码"
+                           @on-enter="handleSubmit('loginForm')">
                       <Icon type="ios-checkmark-circle-outline" slot="prepend"/>
                     </Input>
                   </Col>
@@ -30,7 +31,7 @@
                 </Row>
               </FormItem>
               <FormItem>
-                <Button type="primary" @click="handleSubmit('loginForm')">Sign&nbsp;In</Button>
+                <Button type="primary" @click="handleSubmit('loginForm')">出发</Button>
               </FormItem>
             </Form>
           </div>
@@ -115,7 +116,6 @@
           this.smsToken = res.data[1];
         } else if (res.code % 2) {
           this.$Message.success(res.msg);
-          console.log("登录成功");
           this.$router.push('/console');
         } else {
           this.$Message.error(res.msg);

@@ -68,7 +68,6 @@
             title: '父级名称',
             key: 'parentName',
             align: "center",
-            width: 400
           },
           {
             title: '状态',

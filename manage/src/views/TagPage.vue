@@ -66,7 +66,6 @@
             title: '标签颜色',
             key: 'color',
             align: "center",
-            width: 400
           },
           {
             title: '状态',

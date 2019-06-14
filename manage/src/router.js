@@ -11,10 +11,13 @@ import CategoryPage from "./views/CategoryPage";
 import TagPage from "./views/TagPage";
 import NavigationPage from "./views/NavigationPage";
 import IpPage from "./views/IpPage";
+import CarouselPage from "./views/CarouselPage";
+import PersonalPage from "./views/PersonalPage";
+import axios from 'axios'
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -60,10 +63,32 @@ export default new Router({
         path: '/console/ip',
         name: 'ipPage',
         component: IpPage
+      }, {
+        path: '/console/carousel',
+        name: 'carouselPage',
+        component: CarouselPage
+      }, {
+        path: '/console/personal',
+        name: 'personalPage',
+        component: PersonalPage
       }],
     }
   ],
   scrollBehavior(to, from, savedPosition) {
     return {x: 0, y: 0}
   }
-})
+});
+
+router.beforeEach((to, from, next) => {
+  axios.get('/api/backend/user/isLogin').then((res) => {
+    res = res.data;
+    if ((res.code % 2) || to.path === '/') {
+      next();
+    } else {
+      next("/");
+    }
+  })
+});
+
+export default router;
+

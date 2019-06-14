@@ -87,6 +87,8 @@
           this.$Message.success("图片上传成功");
           this.articleForm.img = response.data;
           this.showImg = true;
+        } else {
+          this.$Message.error(response.msg);
         }
       },
       handleImgError(response, file) {

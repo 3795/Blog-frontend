@@ -56,7 +56,6 @@
             title: '登录次数',
             key: 'count',
             align: "center",
-            width: 200
           },
           {
             title: '状态',

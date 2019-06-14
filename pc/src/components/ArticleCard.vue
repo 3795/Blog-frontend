@@ -30,7 +30,9 @@
                   <Icon type="ios-list"/>&nbsp;{{article.categoryName}}
                 </Col>
                 <Col span="8">
-                  <Icon type="ios-book-outline"/>&nbsp;阅读全文
+                  <router-link :to="{path: `/article/${article.id}`}">
+                    <Button type="info" size="small">阅读全文</Button>
+                  </router-link>
                 </Col>
               </Row>
             </div>
@@ -63,6 +65,7 @@
     height 5rem;
     margin: .4rem 0 .4rem 0
     padding .3rem
+    box-shadow 2px 2px 5px #e2e2e2
 
   .thumb-image-box, article-info
     height 4.4rem
@@ -99,5 +102,6 @@
     height .85rem
     line-height .85rem
     text-align center
+    border-top solid .02rem #e2e2e2
 
 </style>

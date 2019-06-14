@@ -69,7 +69,6 @@
             title: '优先级',
             key: 'priority',
             align: "center",
-            width: 100
           },
           {
             title: '导航地址',
