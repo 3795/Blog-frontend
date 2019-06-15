@@ -168,7 +168,7 @@
         if (this.firstLevel.length === 0) {
           this.getParentCategory();
         }
-        this.$axios.get('/api/backend/category/' + id).then((res) => {
+        this.$axios.get(BASE_URL + '/backend/category/' + id).then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.categoryForm.id = res.data.id;
@@ -180,7 +180,7 @@
         })
       },
       getParentCategory() {
-        this.$axios.get('/api/backend/category/firstLevel').then((res) => {
+        this.$axios.get(BASE_URL + '/backend/category/firstLevel').then((res) => {
           res = res.data;
           if (res.code % 2) {
             let data = res.data;

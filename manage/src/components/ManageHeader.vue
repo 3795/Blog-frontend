@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import {BASE_URL} from "../main";
+
   export default {
     name: "ManageHeader",
     data() {
@@ -33,7 +35,7 @@
     },
     methods: {
       getAvatar() {
-        this.$axios.get('/api/backend/user/brief').then((res) => {
+        this.$axios.get(BASE_URL + '/backend/user/brief').then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.avatar = res.data.avatar;
@@ -45,7 +47,7 @@
           title: '确认',
           content: '确认退出登录吗',
           onOk: () => {
-            this.$axios.get('/api/backend/user/logout').then((res) => {
+            this.$axios.get(BASE_URL + '/backend/user/logout').then((res) => {
               res = res.data;
               if (res.code % 2) {
                 this.$Message.success("退出登录成功");

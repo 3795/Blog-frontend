@@ -102,7 +102,7 @@
         this.$Message.error("图片格式不正确");
       },
       getCategory() {
-        this.$axios.get("/api/backend/category/cascade").then(this.handleGetCategory)
+        this.$axios.get(BASE_URL + "/backend/category/cascade").then(this.handleGetCategory)
       },
       handleGetCategory(res) {
         res = res.data;
@@ -111,7 +111,7 @@
         }
       },
       getTag() {
-        this.$axios.get("/api/backend/tag/options").then(this.handleGetTag)
+        this.$axios.get(BASE_URL + "/backend/tag/options").then(this.handleGetTag)
       },
       handleGetTag(res) {
         res = res.data;
@@ -171,7 +171,7 @@
         }
       },
       getArticleById(id) {
-        this.$axios.get("/api/backend/article/" + id).then(this.handleGetArticleById)
+        this.$axios.get(BASE_URL + "/backend/article/" + id).then(this.handleGetArticleById)
       },
       handleGetArticleById(res) {
         res = res.data;

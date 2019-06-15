@@ -14,6 +14,7 @@ import IpPage from "./views/IpPage";
 import CarouselPage from "./views/CarouselPage";
 import PersonalPage from "./views/PersonalPage";
 import axios from 'axios'
+import {BASE_URL} from "./main";
 
 Vue.use(Router);
 
@@ -80,7 +81,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  axios.get('/api/backend/user/isLogin').then((res) => {
+  axios.get(BASE_URL + '/backend/user/isLogin').then((res) => {
     res = res.data;
     if ((res.code % 2) || to.path === '/') {
       next();

@@ -157,7 +157,7 @@
       },
       showEditModel(id) {
         this.addTagModel = true;
-        this.$axios.get('/api/backend/tag/' + id).then((res) => {
+        this.$axios.get(BASE_URL + '/backend/tag/' + id).then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.tagForm.id = res.data.id;

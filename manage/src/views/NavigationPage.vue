@@ -172,7 +172,7 @@
       },
       showEditModel(id) {
         this.addNavigationModel = true;
-        this.$axios.get('/api/backend/navigation/' + id).then((res) => {
+        this.$axios.get(BASE_URL + '/backend/navigation/' + id).then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.navigationForm.id = res.data.id;

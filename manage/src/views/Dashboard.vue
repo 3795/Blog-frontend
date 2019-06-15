@@ -67,6 +67,8 @@
 </template>
 
 <script>
+  import {BASE_URL} from "../main";
+
   export default {
     name: "Dashboard",
     data() {
@@ -76,7 +78,7 @@
     },
     methods: {
       getCardData() {
-        this.$axios.get('/api/backend/monitor/cardData').then((res) => {
+        this.$axios.get(BASE_URL + '/backend/monitor/cardData').then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.cardData = res.data;

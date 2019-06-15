@@ -45,7 +45,7 @@
     },
     methods: {
       getMessageList() {
-        this.$axios.get('/api/backend/message').then((res) => {
+        this.$axios.get(BASE_URL + '/backend/message').then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.messageList = res.data;
@@ -53,7 +53,7 @@
         })
       },
       getMessageCount() {
-        this.$axios.get('/api/backend/message/count', {
+        this.$axios.get(BASE_URL + '/backend/message/count', {
           params: {
             status: 0,
           }

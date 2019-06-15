@@ -84,7 +84,7 @@
     },
     methods: {
       getUserInfo() {
-        this.$axios.get("/api/backend/user/detail").then((res) => {
+        this.$axios.get(BASE_URL + "/backend/user/detail").then((res) => {
           res = res.data;
           if (res.code % 2) {
             this.userInfo = res.data;
