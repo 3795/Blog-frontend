@@ -26,7 +26,7 @@
     },
     methods: {
       getArticleList() {
-        axios.get('api/article').then(this.handleGetArticleList)
+        axios.get('api/article?t=' + Date.now()).then(this.handleGetArticleList)
       },
       handleGetArticleList(res) {
         res = res.data;
@@ -37,7 +37,7 @@
         }
       },
       handlePageNumChange(num) {
-        axios.get('/api/article', {
+        axios.get('/api/article?t=' + Date.now(), {
           params: {
             pageNum: num
           }

@@ -52,7 +52,8 @@
       getArticleList() {
         axios.get('/api/article/search', {
           params: {
-            keywords: this.keywords
+            keywords: this.keywords,
+            t: Date.now(),
           }
         }).then(this.handleGetArticleList)
       },
@@ -70,7 +71,8 @@
         axios.get('/api/article/search', {
           params: {
             keywords: this.keywords,
-            pageNum: num
+            pageNum: num,
+            t: Date.now(),
           }
         }).then(this.handleGetArticleList)
       },

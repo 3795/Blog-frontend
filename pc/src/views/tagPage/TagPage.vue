@@ -35,12 +35,17 @@
         this.getArticleList(this.id);
       },
       getTagInfo(id) {
-        axios.get('/api/tag/' + id).then(this.handleGetTagInfo);
+        axios.get('/api/tag/' + id, {
+          params: {
+            t: Date.now()
+          }
+        }).then(this.handleGetTagInfo);
       },
       getArticleList(id) {
         axios.get('/api/tag/article', {
           params: {
-            id: id
+            id: id,
+            t: Date.now()
           }
         }).then(this.handleGetArticleList)
       },
@@ -65,7 +70,8 @@
         axios.get('/api/tag/article', {
           params: {
             id: this.id,
-            pageNum: num
+            pageNum: num,
+            t: Date.now()
           }
         }).then(this.handleGetArticleList)
       },

@@ -47,7 +47,11 @@
     },
     methods: {
       getArticle(id) {
-        axios.get('/api/article/' + id).then(this.handleGetArticle);
+        axios.get('/api/article/' + id, {
+          params: {
+            t: Date.now()
+          }
+        }).then(this.handleGetArticle);
       },
       handleGetArticle(res) {
         res = res.data;

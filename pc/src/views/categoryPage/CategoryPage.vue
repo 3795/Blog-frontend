@@ -48,12 +48,17 @@
       getCategoryInfo(id) {
         axios.get('/api/category/children', {
           params: {
-            id: id
+            id: id,
+            t: Date.now()
           }
         }).then(this.handleGetCategoryInfo);
       },
       getArticleList(id) {
-        axios.get('/api/category/' + id).then(this.handleGetArticleList)
+        axios.get('/api/category/' + id, {
+          params: {
+            t: Date.now()
+          }
+        }).then(this.handleGetArticleList)
       },
       handleGetCategoryInfo(res) {
         res = res.data;
@@ -75,7 +80,8 @@
       handlePageNumChange(num) {
         axios.get('/api/category/' + this.id, {
           params: {
-            pageNum: num
+            pageNum: num,
+            t: Date.now()
           }
         }).then(this.handleGetArticleList)
       },
@@ -112,6 +118,7 @@
 
   .category-children-name
     color rgba(64, 64, 64, 0.73)
+
     &:hover
       color #1890ff
 </style>

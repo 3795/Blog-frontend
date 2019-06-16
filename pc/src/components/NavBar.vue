@@ -44,7 +44,7 @@
     },
     methods: {
       getUserInfo() {
-        axios.get('/api/user').then(this.handleGetUserInfo)
+        axios.get('/api/user?t=' + Date.now()).then(this.handleGetUserInfo)
       },
       handleGetUserInfo(res) {
         res = res.data;
@@ -54,7 +54,7 @@
         }
       },
       getArticleNum() {
-        axios.get('/api/article/count').then(this.handleGetArticleNum)
+        axios.get('/api/article/count?t=' + Date.now()).then(this.handleGetArticleNum)
       },
       handleGetArticleNum(res) {
         res = res.data;
@@ -63,7 +63,7 @@
         }
       },
       getCategoryNum() {
-        axios.get('/api/category/count').then(this.handleGetCategoryNum)
+        axios.get('/api/category/count?t=' + Date.now()).then(this.handleGetCategoryNum)
       },
       handleGetCategoryNum(res) {
         res = res.data;
@@ -72,7 +72,7 @@
         }
       },
       getNavigationList() {
-        axios.get('/api/navigation').then(this.handleGetNavigationList)
+        axios.get('/api/navigation?t=' + Date.now()).then(this.handleGetNavigationList)
       },
       handleGetNavigationList(res) {
         res = res.data;

@@ -20,7 +20,7 @@
     },
     methods: {
       getCarouselImg() {
-        axios.get('/api/carouselImg').then(this.handleGetCarouselImg)
+        axios.get('/api/carouselImg?t=' + Date.now()).then(this.handleGetCarouselImg)
       },
       handleGetCarouselImg(res) {
         res = res.data;

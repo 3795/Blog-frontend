@@ -30,7 +30,7 @@
     },
     methods: {
       getTagList() {
-        axios.get('/api/tag').then(this.handleGetTagList)
+        axios.get('/api/tag?t=' + Date.now()).then(this.handleGetTagList)
       },
       handleGetTagList(res) {
         res = res.data;

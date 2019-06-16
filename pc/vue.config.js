@@ -12,7 +12,7 @@ module.exports = {
       }
     }
   },
-  outputDir: 'dist',
+  outputDir: 'pc',
   assetsDir: 'static',
   lintOnSave: false,
 };
