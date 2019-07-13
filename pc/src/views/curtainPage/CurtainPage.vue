@@ -10,6 +10,7 @@
         <div class="info-block">
           <carousel-map></carousel-map>
           <label-panel></label-panel>
+          <survive-panel></survive-panel>
           <link-panel></link-panel>
         </div>
       </Col>
@@ -21,10 +22,12 @@
   import CarouselMap from "../../components/info-block/CarouselMap";
   import LabelPanel from "../../components/info-block/LabelPanel";
   import LinkPanel from "../../components/info-block/LinkPanel";
+  import SurvivePanel from "../../components/info-block/SurvivePanel";
 
   export default {
     name: 'CurtainPage',
     components: {
+      SurvivePanel,
       LinkPanel,
       LabelPanel,
       CarouselMap

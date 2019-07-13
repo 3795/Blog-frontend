@@ -22,6 +22,7 @@
   import axios from 'axios'
   import ArticleCard from "../../components/ArticleCard";
   import Pagination from "../../components/Pagination";
+  import {generateTitle} from "../../main";
 
   export default {
     name: "CategoryPage",
@@ -65,6 +66,7 @@
         if (res.code % 2) {
           this.categoryName = res.data.name;
           this.categoryChildrenList = res.data.categoryDTOList;
+          document.title = generateTitle(this.categoryName)
         } else {
           this.$router.push("/404")
         }

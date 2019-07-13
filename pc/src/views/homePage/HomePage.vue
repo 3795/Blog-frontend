@@ -13,6 +13,7 @@
   import axios from 'axios'
   import ArticleCard from "../../components/ArticleCard";
   import Pagination from "../../components/Pagination";
+  import {generateTitle} from "../../main";
 
   export default {
     name: "HomePage",
@@ -45,6 +46,7 @@
       }
     },
     mounted() {
+      document.title = generateTitle("");
       this.getArticleList();
     }
 

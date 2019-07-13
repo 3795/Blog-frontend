@@ -12,6 +12,7 @@
   import axios from 'axios'
   import ArticleCard from "../../components/ArticleCard";
   import Pagination from "../../components/Pagination";
+  import {generateTitle} from "../../main";
 
   export default {
     name: "TagPage",
@@ -54,6 +55,7 @@
         if (res.code % 2) {
           this.tag = res.data;
           this.$refs.tagName.style.color = this.tag.color;
+          document.title = generateTitle(this.tag.name)
         } else {
           this.$router.push("/404")
         }

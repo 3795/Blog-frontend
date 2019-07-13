@@ -24,6 +24,7 @@
   import axios from 'axios'
   import ArticleCard from "../../components/ArticleCard";
   import Pagination from "../../components/Pagination";
+  import {generateTitle} from "../../main";
 
   export default {
     name: "SearchPage",
@@ -84,6 +85,7 @@
       }
     },
     mounted() {
+      document.title = generateTitle("");
       this.getData();
     },
     watch: {

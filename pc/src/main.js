@@ -29,3 +29,11 @@ new Vue({
   mounted () {
   }
 }).$mount('#app');
+
+export function generateTitle(name) {
+  if (name === "") {
+    return "NTShare-记录挖坑技巧与爬坑方法的小站"
+  } else {
+    return name + "-NTShare-记录挖坑技巧与爬坑方法的小站"
+  }
+}

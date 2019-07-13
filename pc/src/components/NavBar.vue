@@ -4,12 +4,15 @@
       <img src="https://img.ntshare.cn/bg.jpg" class="bkg-img"/>
     </div>
     <div class="user-info">
-      <img :src="avatar" class="avatar">
-      <p class="username">{{username}}</p>
+      <Row>
+        <Col span="12"><img :src="avatar" class="avatar"></Col>
+        <Col span="12"><span class="username">{{username}}</span></Col>
+      </Row>
+      <div class="sign">{{signature}}</div>
     </div>
     <Row class="blog-info">
-      <Col span="12" class="blog-info-item">{{articleNum}}文章</Col>
-      <Col span="12" class="blog-info-item">{{categoryNum}}分类</Col>
+      <Col span="12" class="blog-info-item"><span class="underline"><b>{{articleNum}}</b></span>&nbsp;文章</Col>
+      <Col span="12" class="blog-info-item"><span class="underline"><b>{{categoryNum}}</b></span>&nbsp;分类</Col>
     </Row>
     <Row class="nav-info">
       <Col span="24">
@@ -37,6 +40,7 @@
       return {
         username: '3795',
         avatar: 'https://img.ntshare.cn/15465091750.jpg',
+        signature: '每天起床第一句，先给自己打个气',
         navigationList: [],
         articleNum: 16,
         categoryNum: 18
@@ -51,6 +55,7 @@
         if (res.code % 2) {
           this.username = res.data.username;
           this.avatar = res.data.avatar;
+          this.signature = res.data.signature;
         }
       },
       getArticleNum() {
@@ -95,21 +100,23 @@
 
 <style scoped lang="stylus">
   .nav
-    background-color #ffffff
     height 100%
 
     .bkg-img
       width 100%
-      height 4.4rem
+      height 4rem
 
   .user-info
-    text-align center
+    text-align left
+    padding-bottom .5rem
+    padding-left .5rem
+    background-color #ffffff
 
     .avatar
       border-radius 50%
-      width 45%
-      height 45%
-      margin-top -22%
+      width 70%
+      height 70%
+      margin-top -30%
       border solid 3px #ffffff
       transition all 2s
 
@@ -117,23 +124,37 @@
         transform rotate(360deg)
 
     .username
-      height: .6rem;
+      height .6rem
       line-height 1rem
       font-family "华文行楷"
       font-size .5rem
 
+    .sign
+      padding-right .5rem
+      margin-top .15rem
+      font-size 14px
+      font-family "华文楷体"
+      height auto
+
+
   .blog-info
+    background-color #ffffff
     text-align center
     font-size .3rem
-    padding-top .5rem
+    padding .3rem 0 .3rem 0
+    margin-top .1rem
 
     .blog-info-item
       height .6rem
       line-height .6rem
 
+    .underline
+      font-size 16px
+
   .nav-info
-    padding-top .5rem
-    padding-bottom 3rem
+    margin-top .1rem
+    padding-bottom 2rem
+    background-color #fff
 
     .my-menu-item
       font-size .32rem

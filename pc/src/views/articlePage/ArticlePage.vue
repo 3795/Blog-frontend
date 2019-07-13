@@ -34,6 +34,7 @@
 <script>
   import axios from 'axios'
   import myDateFormat from "../../assets/js/data";
+  import {generateTitle} from "../../main";
 
   export default {
     name: "ArticlePage",
@@ -57,6 +58,7 @@
         res = res.data;
         if (res.code % 2) {
           this.article = res.data;
+          document.title = generateTitle(this.article.title)
         } else {
           this.$router.push("/404")
         }
