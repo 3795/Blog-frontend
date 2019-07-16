@@ -5,7 +5,7 @@
         <Icon type="ios-heart-outline" />&nbsp;平稳运行
       </p>
       <div class="content">
-        <img src="../../assets/images/心跳.gif"/>
+        <img src="https://img.ntshare.cn/15632872026.gif"/>
         <div class="time">&nbsp;{{operationHours}}</div>
       </div>
     </Card>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import axios from "axios"
   export default {
     name: "SurvivePanel",
     data() {
@@ -34,9 +35,19 @@
         let minute = Math.floor((s - hour * 3600) / 60);
         let second = s - hour * 3600 - minute * 60;
         return this.days + " 天 " + hour + " 时 " + minute + " 分 " + second + " 秒";
-      }
+      },
+      getRuntime() {
+        axios.get('/api/data/runtime?t=' + Date.now()).then((res) => {
+          res = res.data;
+          if (res.code % 2) {
+            this.days = res.data.days;
+            this.seconds = res.data.seconds;
+          }
+        })
+      },
     },
     mounted() {
+      this.getRuntime();
       this.timing()
     }
   }

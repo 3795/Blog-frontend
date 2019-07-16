@@ -58,22 +58,14 @@
           this.signature = res.data.signature;
         }
       },
-      getArticleNum() {
-        axios.get('/api/article/count?t=' + Date.now()).then(this.handleGetArticleNum)
+      getData() {
+        axios.get('/api/data/count?t=' + Date.now()).then(this.handleGetData)
       },
-      handleGetArticleNum(res) {
+      handleGetData(res) {
         res = res.data;
         if (res.code % 2) {
-          this.articleNum = res.data;
-        }
-      },
-      getCategoryNum() {
-        axios.get('/api/category/count?t=' + Date.now()).then(this.handleGetCategoryNum)
-      },
-      handleGetCategoryNum(res) {
-        res = res.data;
-        if (res.code % 2) {
-          this.categoryNum = res.data;
+          this.articleNum = res.data.articleCount;
+          this.categoryNum = res.data.categoryCount;
         }
       },
       getNavigationList() {
@@ -91,8 +83,7 @@
     },
     mounted() {
       this.getUserInfo();
-      this.getArticleNum();
-      this.getCategoryNum();
+      this.getData();
       this.getNavigationList();
     }
   }
